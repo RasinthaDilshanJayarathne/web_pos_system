@@ -29,22 +29,135 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                    <li class="nav-item">
-                        <a aria-current="page" class="nav-link active" href="#">Home</a>
+                    <li>
+                        <button class="bg-dark text-white" data-bs-target="#exampleModal" data-bs-toggle="modal" style="border: none"
+                                type="button">
+                            Home
+                        </button>
                     </li>
                     <li class="nav-item">
-                        <a aria-current="page" class="nav-link active" href="#">Orders</a>
+                        <button class="bg-dark text-white" data-bs-target="#exampleModal" data-bs-toggle="modal" style="border: none"
+                                type="button">
+                            Orders
+                        </button>
                     </li>
                     <li class="nav-item">
-                        <a aria-current="page" class="nav-link active" href="#">Items</a>
+                        <button class="bg-dark text-white" data-bs-target="#item" data-bs-toggle="modal" style="border: none"
+                                type="button">
+                            Items
+                        </button>
                     </li>
                     <li class="nav-item">
-                        <a aria-current="page" class="nav-link active" href="#">Customers</a>
+                        <button class="bg-dark text-white" data-bs-target="#customer" data-bs-toggle="modal" style="border: none"
+                                type="button">
+                            Customer
+                        </button>
                     </li>
                 </ul>
             </div>
         </div>
     </nav>
+</section>
+<section>
+    <div aria-hidden="true" aria-labelledby="exampleModalLabel" class="modal fade" id="customer" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Customer Registration Form</h5>
+                    <button aria-label="Close" class="btn-close" data-bs-dismiss="modal" type="button"></button>
+                </div>
+                <div class="modal-body">
+                    <section class="row" style="width: 100%">
+                        <div class="mb-2 col-6">
+                            <label class="form-label" for="exampleInputId">ID</label>
+                            <input aria-describedby="idHelp" class="form-control" id="exampleInputId" type="text">
+                            <div class="form-text" id="idHelp"></div>
+                        </div>
+                        <div class="mb-2 col-6">
+                            <label class="form-label" for="exampleInputName">Name</label>
+                            <input aria-describedby="nameHelp" class="form-control" id="exampleInputName" type="text">
+                            <div class="form-text" id="nameHelp"></div>
+                        </div>
+                        <div class="mb-2 col-6">
+                            <label class="form-label" for="exampleInputAddress">Address</label>
+                            <input aria-describedby="addressHelp" class="form-control" id="exampleInputAddress"
+                                   type="text">
+                            <div class="form-text" id="addressHelp"></div>
+                        </div>
+                        <div class="mb-2 col-6">
+                            <label class="form-label" for="exampleInputTelephoneNo">Telephone No</label>
+                            <input aria-describedby="telNoHelp" class="form-control" id="exampleInputTelephoneNo"
+                                   type="text">
+                            <div class="form-text" id="telNoHelp"></div>
+                        </div>
+                        <!--<div class="mb-2 col-6 " style="width: 100%;">
+                            <label class="form-label" for="exampleInputTelephoneNo">Search</label>
+                            <input aria-describedby="searchHelp" class="form-control" id="exampleInputSearch"
+                                   type="text">
+                            <div class="form-text" id="searchHelp"></div>
+                        </div>-->
+                    </section>
+                </div>
+                <div class="modal-footer">
+                    <!--<button class="btn btn-primary  btn-sm" type="button">Search</button>-->
+                    <button class="btn btn-success  btn-sm" type="button">+Add</button>
+                    <button class="btn btn-warning  btn-sm" type="button">Update</button>
+                    <button class="btn btn-danger  btn-sm" type="button">Delete</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section>
+    <div aria-hidden="true" aria-labelledby="exampleModalLabel" class="modal fade" id="item" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel1">Item Registration Form</h5>
+                    <button aria-label="Close" class="btn-close" data-bs-dismiss="modal" type="button"></button>
+                </div>
+                <div class="modal-body">
+                    <section class="row" style="width: 100%">
+                        <div class="mb-2 col-6">
+                            <label class="form-label" for="exampleInputId">Item Code</label>
+                            <input aria-describedby="idHelp" class="form-control" id="exampleInputcode" type="text">
+                            <div class="form-text" id="codeHelp"></div>
+                        </div>
+                        <div class="mb-2 col-6">
+                            <label class="form-label" for="exampleInputName">Name</label>
+                            <input aria-describedby="nameHelp" class="form-control" id="exampleInputName1" type="text">
+                            <div class="form-text" id="nameHelp1"></div>
+                        </div>
+                        <div class="mb-2 col-6">
+                            <label class="form-label" for="exampleInputAddress">Price</label>
+                            <input aria-describedby="addressHelp" class="form-control" id="exampleInputPrice"
+                                   type="text">
+                            <div class="form-text" id="priceHelp"></div>
+                        </div>
+                        <div class="mb-2 col-6">
+                            <label class="form-label" for="exampleInputTelephoneNo">Quntity</label>
+                            <input aria-describedby="telNoHelp" class="form-control" id="exampleInputQuntity"
+                                   type="text">
+                            <div class="form-text" id="quntityHelp"></div>
+                        </div>
+                        <!--<div class="mb-2 col-6 " style="width: 100%;">
+                            <label class="form-label" for="exampleInputTelephoneNo">Search</label>
+                            <input aria-describedby="searchHelp" class="form-control" id="exampleInputSearch"
+                                   type="text">
+                            <div class="form-text" id="searchHelp"></div>
+                        </div>-->
+                    </section>
+                </div>
+                <div class="modal-footer">
+                    <!--<button class="btn btn-primary  btn-sm" type="button">Search</button>-->
+                    <button class="btn btn-success  btn-sm" type="button">+Add</button>
+                    <button class="btn btn-warning  btn-sm" type="button">Update</button>
+                    <button class="btn btn-danger  btn-sm" type="button">Delete</button>
+                </div>
+            </div>
+        </div>
+    </div>
 </section>
 <script crossorigin="anonymous"
         integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
