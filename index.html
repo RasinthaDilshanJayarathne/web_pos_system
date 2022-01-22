@@ -17,6 +17,7 @@
     </style>
 </head>
 <body>
+<!--Navigation Bar-->
 <section>
     <nav class="navbar navbar-expand-lg navbar navbar-dark bg-dark ">
         <div class="container-fluid">
@@ -58,6 +59,7 @@
         </div>
     </nav>
 </section>
+<!--Customer popup-->
 <section>
     <div aria-hidden="true" aria-labelledby="exampleModalLabel" class="modal fade" id="customer" tabindex="-1">
         <div class="modal-dialog">
@@ -66,8 +68,13 @@
                     <h5 class="modal-title" id="exampleModalLabel">Customer Registration Form</h5>
                     <button aria-label="Close" class="btn-close" data-bs-dismiss="modal" type="button"></button>
                 </div>
-                <div class="modal-body">
+                <div class="modal-body" >
                     <section class="row" style="width: 100%">
+                        <div class="mb-2 col-12">
+                            <label class="form-label" for="exampleInputId">Customer Search</label>
+                            <input aria-describedby="idHelp" class="form-control" id="exampleInputCustomerSearch" type="text">
+                            <div class="form-text" id="customeSearchHelp"></div>
+                        </div>
                         <div class="mb-2 col-6">
                             <label class="form-label" for="exampleInputId">ID</label>
                             <input aria-describedby="idHelp" class="form-control" id="exampleInputId" type="text">
@@ -108,7 +115,7 @@
         </div>
     </div>
 </section>
-
+<!--Item popup-->
 <section>
     <div aria-hidden="true" aria-labelledby="exampleModalLabel" class="modal fade" id="item" tabindex="-1">
         <div class="modal-dialog">
@@ -119,6 +126,11 @@
                 </div>
                 <div class="modal-body">
                     <section class="row" style="width: 100%">
+                        <div class="mb-2 col-12">
+                            <label class="form-label" for="exampleInputId">Item Search</label>
+                            <input aria-describedby="idHelp" class="form-control" id="exampleInputSearch" type="text">
+                            <div class="form-text" id="searchHelp"></div>
+                        </div>
                         <div class="mb-2 col-6">
                             <label class="form-label" for="exampleInputId">Item Code</label>
                             <input aria-describedby="idHelp" class="form-control" id="exampleInputcode" type="text">
@@ -130,12 +142,17 @@
                             <div class="form-text" id="nameHelp1"></div>
                         </div>
                         <div class="mb-2 col-6">
+                            <label class="form-label" for="exampleInputName">Pack Size</label>
+                            <input aria-describedby="nameHelp" class="form-control" id="exampleInputPackSize" type="text">
+                            <div class="form-text" id="packSizeHelp"></div>
+                        </div>
+                        <div class="mb-2 col-6">
                             <label class="form-label" for="exampleInputAddress">Price</label>
                             <input aria-describedby="addressHelp" class="form-control" id="exampleInputPrice"
                                    type="text">
                             <div class="form-text" id="priceHelp"></div>
                         </div>
-                        <div class="mb-2 col-6">
+                        <div class="mb-2 col-12">
                             <label class="form-label" for="exampleInputTelephoneNo">Quntity</label>
                             <input aria-describedby="telNoHelp" class="form-control" id="exampleInputQuntity"
                                    type="text">
@@ -159,6 +176,33 @@
         </div>
     </div>
 </section>
+
+<section class="container-fluid">
+    <div class="row col-4 mt-5" >
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">Card title</h5>
+                <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
+                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                <a href="#" class="card-link">Card link</a>
+                <a href="#" class="card-link">Another link</a>
+            </div>
+        </div>
+    </div>
+    <div class="row col-4">
+       <!-- <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">Card title</h5>
+                <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
+                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                <a href="#" class="card-link">Card link</a>
+                <a href="#" class="card-link">Another link</a>
+            </div>
+        </div>-->
+    </div>
+</section>
+
+<section></section>
 <script crossorigin="anonymous"
         integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
         src="assets/bootstrap/js/bootstrap.bundle.min.js"></script>
