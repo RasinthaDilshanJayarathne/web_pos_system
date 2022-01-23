@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Customer Registration</title>
+    <link href="assets/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <meta content="width=device-width, initial-scale=1" name="viewport">
+
+</head>
+<body style="background:#adb5bd">
+<main class="container-fluid" >
+    <!--title (Customer)-->
+    <section>
+        <img src="assets/image/items.png" class="rounded mx-auto d-block mt-2" alt="Customer image" width="15%">
+        <!--<h1 id="header" class="text-success text-center" style="color: black">Customer Registration Form</h1>-->
+        <h1  class="text-center" style="font-family: fantasy">Items Registration Form</h1>
+    </section>
+    <!--Registration-->
+    <section>
+        <form>
+            <section class="row mt-5" style="width: 100%">
+                <section class="row" style="width: 100%">
+                    <div class="mb-2 col-6">
+                        <label class="form-label" for="exampleInputId" style="font-weight: bold">ID</label>
+                        <input aria-describedby="idHelp" class="form-control" id="exampleInputId" type="text">
+                        <div class="form-text" id="idHelp"></div>
+                    </div>
+                    <div class="mb-2 col-6">
+                        <label class="form-label" for="exampleInputName" style="font-weight: bold">Name</label>
+                        <input aria-describedby="nameHelp" class="form-control" id="exampleInputName" type="text">
+                        <div class="form-text" id="nameHelp"></div>
+                    </div>
+                    <div class="mb-2 col-6">
+                        <label class="form-label" for="exampleInputUnitPrice" style="font-weight: bold">Unit Price</label>
+                        <input aria-describedby="unitPriceHelp" class="form-control" id="exampleInputUnitPrice" type="text">
+                        <div class="form-text" id="unitPriceHelp"></div>
+                    </div>
+                    <div class="mb-2 col-6">
+                        <label class="form-label" for="exampleInputQTYOnHand" style="font-weight: bold">Quantity On
+                            Hand</label>
+                        <input aria-describedby="qtyOnHandHelp" class="form-control" id="exampleInputQTYOnHand" type="text">
+                        <div class="form-text" id="qtyOnHandHelp"></div>
+                    </div>
+                </section>
+                <section class="d-grid gap-2 d-md-flex container-fluid mt-4">
+                    <div class="mb-2 col-6">
+                        <label for="searchBar" class="form-label"></label>
+                        <input type="text" id="searchBar" class="form-control" placeholder="Search Customer">
+                    </div>
+                    <button type="button" class="btn btn-primary  btn-sm h-75 mt-3"style="font-size: 20px; font-weight: bold">Search</button>
+                    <button type="button" class="btn btn-warning  btn-sm h-75 mt-3"style="font-size: 20px;font-weight: bold">Update</button>
+                    <button type="button" class="btn btn-danger  btn-sm h-75 mt-3"style="font-size: 20px;font-weight: bold">Delete</button>
+                    <button type="button" class="btn btn-success  btn-sm h-75 mt-3"style="font-size: 20px;font-weight: bold" data-bs-toggle="modal" data-bs-target="#exampleModal">+New Item
+                    </button>
+
+                    <!-- Modal -->
+                    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header" style="background: #fd7e14">
+                                    <h5 class="modal-title" id="exampleModalLabel">Customer Registration Form</h5>
+                                    <button aria-label="Close" class="btn-close" data-bs-dismiss="modal" type="button"></button>
+                                </div>
+                                <div class="modal-body">
+                                    <section class="row" style="width: 100%">
+                                        <div class="mb-2 col-6">
+                                            <label class="form-label" for="exampleInputId">Item Code</label>
+                                            <input aria-describedby="idHelp" class="form-control" id="exampleInputcode" type="text">
+                                            <div class="form-text" id="codeHelp"></div>
+                                        </div>
+                                        <div class="mb-2 col-6">
+                                            <label class="form-label" for="exampleInputName">Name</label>
+                                            <input aria-describedby="nameHelp" class="form-control" id="exampleInputName1" type="text">
+                                            <div class="form-text" id="nameHelp1"></div>
+                                        </div>
+                                        <div class="mb-2 col-6">
+                                            <label class="form-label" for="exampleInputName">Pack Size</label>
+                                            <input aria-describedby="nameHelp" class="form-control" id="exampleInputPackSize" type="text">
+                                            <div class="form-text" id="packSizeHelp"></div>
+                                        </div>
+                                        <div class="mb-2 col-6">
+                                            <label class="form-label" for="exampleInputPrice">Price</label>
+                                            <input aria-describedby="addressHelp" class="form-control" id="exampleInputPrice"
+                                                   type="text">
+                                            <div class="form-text" id="priceHelp"></div>
+                                        </div>
+                                        <div class="mb-2 col-12">
+                                            <label class="form-label" for="exampleInputQuntity">Quntity</label>
+                                            <input aria-describedby="telNoHelp" class="form-control" id="exampleInputQuntity"
+                                                   type="text">
+                                            <div class="form-text" id="quntityHelp"></div>
+                                        </div>
+                                    </section>
+                                </div>
+                                <div class="modal-footer">
+                                    <button class="btn btn-success  btn-sm" type="button">+Add</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </section>
+
+            </section>
+        </form>
+    </section>
+
+    <section>
+        <table class="table table-dark table-striped mt-3">
+            <thead>
+            <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Name</th>
+                <th scope="col">Unit Price</th>
+                <th scope="col">Qty On Hand</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <th scope="row">1</th>
+                <td>Milk</td>
+                <td>50.00/=</td>
+                <td>400</td>
+            </tr>
+            <tr>
+                <th scope="row">2</th>
+                <td>Rice</td>
+                <td>160.00/=</td>
+                <td>80kg</td>
+            </tr>
+            <tr>
+                <th scope="row">3</th>
+                <td>Soap</td>
+                <td>80.00/=</td>
+                <td>250</td>
+            </tr>
+        </table>
+    </section>
+</main>
+<script crossorigin="anonymous"
+        integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+        src="assets/bootstrap/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

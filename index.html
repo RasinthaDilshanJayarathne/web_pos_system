@@ -16,7 +16,7 @@
         }
     </style>
 </head>
-<body>
+<body style="background:#adb5bd">
 <!--Navigation Bar-->
 <section>
     <nav class="navbar navbar-expand-lg navbar navbar-dark bg-dark ">
@@ -59,150 +59,192 @@
         </div>
     </nav>
 </section>
-<!--Customer popup-->
-<section>
-    <div aria-hidden="true" aria-labelledby="exampleModalLabel" class="modal fade" id="customer" tabindex="-1">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header" style="background: #fd7e14">
-                    <h5 class="modal-title" id="exampleModalLabel">Customer Registration Form</h5>
-                    <button aria-label="Close" class="btn-close" data-bs-dismiss="modal" type="button"></button>
-                </div>
-                <div class="modal-body" >
-                    <section class="row" style="width: 100%">
-                        <div class="mb-2 col-12">
-                            <label class="form-label" for="exampleInputId">Customer Search</label>
-                            <input aria-describedby="idHelp" class="form-control" id="exampleInputCustomerSearch" type="text">
-                            <div class="form-text" id="customeSearchHelp"></div>
-                        </div>
-                        <div class="mb-2 col-6">
-                            <label class="form-label" for="exampleInputId">ID</label>
-                            <input aria-describedby="idHelp" class="form-control" id="exampleInputId" type="text">
-                            <div class="form-text" id="idHelp"></div>
-                        </div>
-                        <div class="mb-2 col-6">
-                            <label class="form-label" for="exampleInputName">Name</label>
-                            <input aria-describedby="nameHelp" class="form-control" id="exampleInputName" type="text">
-                            <div class="form-text" id="nameHelp"></div>
-                        </div>
-                        <div class="mb-2 col-6">
-                            <label class="form-label" for="exampleInputAddress">Address</label>
-                            <input aria-describedby="addressHelp" class="form-control" id="exampleInputAddress"
-                                   type="text">
-                            <div class="form-text" id="addressHelp"></div>
-                        </div>
-                        <div class="mb-2 col-6">
-                            <label class="form-label" for="exampleInputTelephoneNo">Telephone No</label>
-                            <input aria-describedby="telNoHelp" class="form-control" id="exampleInputTelephoneNo"
-                                   type="text">
-                            <div class="form-text" id="telNoHelp"></div>
-                        </div>
-                        <!--<div class="mb-2 col-6 " style="width: 100%;">
-                            <label class="form-label" for="exampleInputTelephoneNo">Search</label>
-                            <input aria-describedby="searchHelp" class="form-control" id="exampleInputSearch"
-                                   type="text">
-                            <div class="form-text" id="searchHelp"></div>
-                        </div>-->
-                    </section>
-                </div>
-                <div class="modal-footer">
-                    <!--<button class="btn btn-primary  btn-sm" type="button">Search</button>-->
-                    <button class="btn btn-success  btn-sm" type="button">+Add</button>
-                    <button class="btn btn-warning  btn-sm" type="button">Update</button>
-                    <button class="btn btn-danger  btn-sm" type="button">Delete</button>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-<!--Item popup-->
-<section>
-    <div aria-hidden="true" aria-labelledby="exampleModalLabel" class="modal fade" id="item" tabindex="-1">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header" style="background: #198754">
-                    <h5 class="modal-title" id="exampleModalLabel1">Item Registration Form</h5>
-                    <button aria-label="Close" class="btn-close" data-bs-dismiss="modal" type="button"></button>
-                </div>
-                <div class="modal-body">
-                    <section class="row" style="width: 100%">
-                        <div class="mb-2 col-12">
-                            <label class="form-label" for="exampleInputId">Item Search</label>
-                            <input aria-describedby="idHelp" class="form-control" id="exampleInputSearch" type="text">
-                            <div class="form-text" id="searchHelp"></div>
-                        </div>
-                        <div class="mb-2 col-6">
-                            <label class="form-label" for="exampleInputId">Item Code</label>
-                            <input aria-describedby="idHelp" class="form-control" id="exampleInputcode" type="text">
-                            <div class="form-text" id="codeHelp"></div>
-                        </div>
-                        <div class="mb-2 col-6">
-                            <label class="form-label" for="exampleInputName">Name</label>
-                            <input aria-describedby="nameHelp" class="form-control" id="exampleInputName1" type="text">
-                            <div class="form-text" id="nameHelp1"></div>
-                        </div>
-                        <div class="mb-2 col-6">
-                            <label class="form-label" for="exampleInputName">Pack Size</label>
-                            <input aria-describedby="nameHelp" class="form-control" id="exampleInputPackSize" type="text">
-                            <div class="form-text" id="packSizeHelp"></div>
-                        </div>
-                        <div class="mb-2 col-6">
-                            <label class="form-label" for="exampleInputAddress">Price</label>
-                            <input aria-describedby="addressHelp" class="form-control" id="exampleInputPrice"
-                                   type="text">
-                            <div class="form-text" id="priceHelp"></div>
-                        </div>
-                        <div class="mb-2 col-12">
-                            <label class="form-label" for="exampleInputTelephoneNo">Quntity</label>
-                            <input aria-describedby="telNoHelp" class="form-control" id="exampleInputQuntity"
-                                   type="text">
-                            <div class="form-text" id="quntityHelp"></div>
-                        </div>
-                        <!--<div class="mb-2 col-6 " style="width: 100%;">
-                            <label class="form-label" for="exampleInputTelephoneNo">Search</label>
-                            <input aria-describedby="searchHelp" class="form-control" id="exampleInputSearch"
-                                   type="text">
-                            <div class="form-text" id="searchHelp"></div>
-                        </div>-->
-                    </section>
-                </div>
-                <div class="modal-footer">
-                    <!--<button class="btn btn-primary  btn-sm" type="button">Search</button>-->
-                    <button class="btn btn-success  btn-sm" type="button">+Add</button>
-                    <button class="btn btn-warning  btn-sm" type="button">Update</button>
-                    <button class="btn btn-danger  btn-sm" type="button">Delete</button>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
 
-<section class="container-fluid">
-    <div class="row col-4 mt-5" >
-        <div class="card">
-            <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                <a href="#" class="card-link">Card link</a>
-                <a href="#" class="card-link">Another link</a>
+<main class="container-fluid">
+    <!--title (Place Order)-->
+    <section>
+        <img src="assets/image/placeOrder.png" class="rounded mx-auto d-block mt-3" alt="Customer image" width="120px">
+        <h1 id="header" class="text-center">Placement Of An Order</h1>
+    </section>
+    <!--details section-->
+    <section class="row">
+        <!--invoice details-->
+        <div class="col-4 mt-3">
+            <div class="card border-success mb-3" style="max-width: 30rem; min-height: 22rem">
+                <div class="card-header text-white" style="font-weight: bold; background-color: #38ada9">Invoice Details</div>
+                <div class="card-body">
+                    <form>
+                        <section class="row" style="width: 100%">
+                            <div class="mb-2 col-6">
+                                <label for="exampleInputId" class="form-label" style="font-weight: bold; font-size: 12px">Order ID</label>
+                                <input type="text" class="form-control" id="exampleInputId" aria-describedby="idHelp">
+                                <div id="idHelp" class="form-text"></div>
+                            </div>
+                            <div class="mb-2 col-6">
+                                <label for="exampleInputDate" class="form-label" style="font-weight: bold; font-size: 12px">Date</label>
+                                <input type="date" class="form-control" id="exampleInputDate" aria-describedby="dateHelp">
+                                <div id="dateHelp" class="form-text"></div>
+                            </div>
+                            <div class="mb-2 col-6">
+                                <label class="form-label" style="font-weight: bold; font-size: 12px">Customer ID</label>
+                                <select class="form-select" aria-label="Default select example">
+                                    <option selected>None</option>
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                </select>
+                            </div>
+                            <div class="mb-2 col-6">
+                                <label for="exampleInputItemName" class="form-label" style="font-weight: bold; font-size: 12px">Name</label>
+                                <input type="text" class="form-control" id="exampleInputItemName" aria-describedby="itemNameHelp">
+                                <div id="itemNameHelp" class="form-text"></div>
+                            </div>
+                            <div class="mb-2 col-6">
+                                <label for="exampleInputTelephoneNo" class="form-label" style="font-weight: bold; font-size: 12px">Tel No</label>
+                                <input type="text" class="form-control" id="exampleInputTelephoneNo" aria-describedby="telNoHelp">
+                                <div id="telNoHelp" class="form-text"></div>
+                            </div>
+                            <div class="mb-2 col-6">
+                                <label for="exampleInputAddress" class="form-label" style="font-weight: bold; font-size: 12px">Address</label>
+                                <input type="text" class="form-control" id="exampleInputAddress" aria-describedby="addressHelp">
+                                <div id="addressHelp" class="form-text"></div>
+                            </div>
+                        </section>
+                    </form>
+                </div>
             </div>
         </div>
-    </div>
-    <div class="row col-4">
-       <!-- <div class="card">
-            <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                <a href="#" class="card-link">Card link</a>
-                <a href="#" class="card-link">Another link</a>
+        <!--item selection-->
+        <div class="col-4 mt-3">
+            <div class="card border-warning mb-3" style="max-width: 30rem; min-height: 22rem">
+                <div class="card-header text-white" style="font-weight: bold; background-color: #f6b93b">Item Selection</div>
+                <div class="card-body">
+                    <form>
+                        <section class="row" style="width: 100%">
+                            <div class="mb-2 col-6">
+                                <label class="form-label" style="font-weight: bold; font-size: 12px">Item ID</label>
+                                <select class="form-select" aria-label="Default select example">
+                                    <option selected>None</option>
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                </select>
+                            </div>
+                            <div class="mb-2 col-6">
+                                <label class="form-label" for="exampleInputName"
+                                       style="font-weight: bold; font-size: 12px">Name</label>
+                                <input type="text" class="form-control" id="exampleInputName" aria-describedby="nameHelp">
+                                <div id="nameHelp" class="form-text"></div>
+                            </div>
+                            <div class="mb-2 col-6">
+                                <label for="exampleInputUnitPrice" class="form-label" style="font-weight: bold; font-size: 12px">Unit Price</label>
+                                <input type="text" class="form-control" id="exampleInputUnitPrice" aria-describedby="unitPriceHelp">
+                                <div id="unitPriceHelp" class="form-text"></div>
+                            </div>
+                            <div class="mb-2 col-6">
+                                <label for="exampleInputQtyOnHand" class="form-label" style="font-weight: bold; font-size: 12px">QTY On Hand</label>
+                                <input type="text" class="form-control" id="exampleInputQtyOnHand" aria-describedby="qtyOnHandHelp">
+                                <div id="qtyOnHandHelp" class="form-text"></div>
+                            </div>
+                            <div class="mb-2 col-12">
+                                <label for="exampleInputOrderQty" class="form-label" style="font-weight: bold; font-size: 12px">Order QTY</label>
+                                <input type="text" class="form-control" id="exampleInputOrderQty" aria-describedby="orderQtyHelp">
+                                <div id="orderQtyHelp" class="form-text"></div>
+                            </div>
+                        </section>
+                        <section class="row justify-content-center">
+                            <div class="mt-2 col-5">
+                                <button type="button" class="btn btn-primary  btn-sm" style="width: 100%;">+Add</button>
+                            </div>
+                        </section>
+                    </form>
+                </div>
             </div>
-        </div>-->
-    </div>
-</section>
+        </div>
+        <!--final totals-->
+        <div class="col-4 mt-3">
+            <div class="card border-dark mb-3" style="max-width: 30rem; min-height: 22rem">
+                <div class="card-body">
+                    <form>
+                        <section class="row" style="width: 100%">
+                            <div class="mb-2 col-12 mt-3">
+                                <label for="exampleInputName" class="form-label" style="font-weight: bold; font-size: 25px; color: #f53b57">Total :- </label>
+                            </div>
+                            <div class="mb-2 col-6 mt-3">
+                                <label for="exampleInputCash" class="form-label" style="font-weight: bold; font-size: 12px">Cash</label>
+                                <input type="text" class="form-control" id="exampleInputCash" aria-describedby="cashHelp">
+                                <div id="cashHelp" class="form-text"></div>
+                            </div>
+                            <div class="mb-2 col-6 mt-3">
+                                <label class="form-label" style="font-weight: bold; font-size: 12px">Discount</label>
+                                <select class="form-select" aria-label="Default select example">
+                                    <option selected>0.00</option>
+                                    <option value="1">10</option>
+                                    <option value="2">20</option>
+                                    <option value="3">30</option>
+                                    <option value="3">40</option>
+                                    <option value="3">50</option>
+                                    <option value="3">60</option>
+                                    <option value="3">70</option>
+                                    <option value="3">80</option>
+                                    <option value="3">90</option>
+                                    <option value="3">100</option>
+                                </select>
+                            </div>
+                            <div class="mb-2 col-12 mt-4">
+                                <label for="exampleInputUnitPrice" class="form-label" style="font-weight: bold; font-size: 20px; color: #0fbcf9">Balance :- </label>
+                            </div>
+                        </section>
+                        <section class="row justify-content-center">
+                            <div class="mt-5 col-5">
+                                <button type="button" class="btn btn-success  btn-sm" style="width: 100%;">Purchase</button>
+                            </div>
+                        </section>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--table-->
+    <section>
+        <table class="table table-primary table-striped mt-3">
+            <thead>
+            <tr>
+                <th scope="col">Item Code</th>
+                <th scope="col">Item Name</th>
+                <th scope="col">Price</th>
+                <th scope="col">Quantity</th>
+                <th scope="col">Total</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <th scope="row">I001</th>
+                <td>Soap</td>
+                <td>50.00/=</td>
+                <td>10</td>
+                <td>500.00/=</td>
+            </tr>
+            <tr>
+                <th scope="row">I002</th>
+                <td>Rice</td>
+                <td>160.00/=</td>
+                <td>10kg</td>
+                <td>1600.00/=</td>
+            </tr>
+            <tr>
+                <th scope="row">I003</th>
+                <td>Cake</td>
+                <td>250.00/=</td>
+                <td>2kg</td>
+                <td>500.00/=</td>
+            </tr>
+            </tbody>
+        </table>
+    </section>
+</main>
 
-<section></section>
+
 <script crossorigin="anonymous"
         integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
         src="assets/bootstrap/js/bootstrap.bundle.min.js"></script>
