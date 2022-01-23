@@ -30,29 +30,14 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                    <li>
-                        <button class="bg-dark text-white" data-bs-target="#exampleModal" data-bs-toggle="modal" style="border: none"
-                                type="button">
-                            Home
-                        </button>
+                    <li class="nav-item" style="font-family: cursive; font-weight: bold;">
+                        <a aria-current="page" class="nav-link active" href="index.html">Home</a>
                     </li>
-                    <li class="nav-item">
-                        <button class="bg-dark text-white" data-bs-target="#exampleModal" data-bs-toggle="modal" style="border: none"
-                                type="button">
-                            Orders
-                        </button>
+                    <li class="nav-item" style="font-family: cursive; font-weight: bold">
+                        <a class="nav-link" href="customer.html">Customer</a>
                     </li>
-                    <li class="nav-item">
-                        <button class="bg-dark text-white" data-bs-target="#item" data-bs-toggle="modal" style="border: none"
-                                type="button">
-                            Items
-                        </button>
-                    </li>
-                    <li class="nav-item">
-                        <button class="bg-dark text-white" data-bs-target="#customer" data-bs-toggle="modal" style="border: none"
-                                type="button">
-                            Customer
-                        </button>
+                    <li class="nav-item" style="font-family: cursive; font-weight: bold">
+                        <a class="nav-link" href="item.html">Item</a>
                     </li>
                 </ul>
             </div>
@@ -64,7 +49,7 @@
     <!--title (Place Order)-->
     <section>
         <img src="assets/image/placeOrder.png" class="rounded mx-auto d-block mt-3" alt="Customer image" width="120px">
-        <h1 id="header" class="text-center">Placement Of An Order</h1>
+        <h1 id="header" class="text-center" style="font-family: fantasy">Placement Of An Order</h1>
     </section>
     <!--details section-->
     <section class="row">
@@ -154,7 +139,7 @@
                         </section>
                         <section class="row justify-content-center">
                             <div class="mt-2 col-5">
-                                <button type="button" class="btn btn-primary  btn-sm" style="width: 100%;">+Add</button>
+                                <button type="button" class="btn btn-primary  btn-sm">+Add</button>
                             </div>
                         </section>
                     </form>
@@ -197,7 +182,7 @@
                         </section>
                         <section class="row justify-content-center">
                             <div class="mt-5 col-5">
-                                <button type="button" class="btn btn-success  btn-sm" style="width: 100%;">Purchase</button>
+                                <button type="button" class="btn btn-success  btn-sm">Purchase</button>
                             </div>
                         </section>
                     </form>
@@ -207,7 +192,7 @@
     </section>
     <!--table-->
     <section>
-        <table class="table table-primary table-striped mt-3">
+        <table class="table table-primary table-striped mt-3 container-fluid">
             <thead>
             <tr>
                 <th scope="col">Item Code</th>
