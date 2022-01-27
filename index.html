@@ -31,13 +31,13 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item" style="font-family: cursive; font-weight: bold;">
-                        <a aria-current="page" class="nav-link active" href="index.html">Home</a>
+                        <a aria-current="page" class="nav-link active" >Home</a>
                     </li>
                     <li class="nav-item" style="font-family: cursive; font-weight: bold">
-                        <a class="nav-link" href="customer.html">Customer</a>
+                        <a class="nav-link" >Customer</a>
                     </li>
                     <li class="nav-item" style="font-family: cursive; font-weight: bold">
-                        <a class="nav-link" href="item.html">Item</a>
+                        <a class="nav-link" >Item</a>
                     </li>
                 </ul>
             </div>
@@ -45,7 +45,7 @@
     </nav>
 </section>
 
-<section class="container-fluid">
+<section id="placeOrder" class="container-fluid">
     <!--title (Place Order)-->
     <section>
         <img src="assets/image/placeOrder.png" class="rounded mx-auto d-block mt-3" alt="Customer image" width="120px">
@@ -229,8 +229,8 @@
     </section>
 </section>
 
-<section class="container-fluid" >
-    <!--title (Customer)-->
+<section id="item" class="container-fluid" >
+    <!--title (Item)-->
     <section>
         <img src="assets/image/items.png" class="rounded mx-auto d-block mt-2" alt="Customer image" width="15%">
         <!--<h1 id="header" class="text-success text-center" style="color: black">Customer Registration Form</h1>-->
@@ -357,7 +357,7 @@
     </section>
 </section>
 
-<section class="container-fluid" >
+<section id="customer" class="container-fluid" >
     <!--title (Customer)-->
     <section>
         <img src="assets/image/customer.png" class="rounded mx-auto d-block mt-2" alt="Customer image" width="15%">
@@ -495,6 +495,10 @@
     </section>
 </section>
 
+<script>
+    document.getElementById("customer").style.display="none";
+    document.getElementById("item").style.display="none";
+</script>
 
 <script crossorigin="anonymous"
         integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
