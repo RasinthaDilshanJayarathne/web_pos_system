@@ -30,13 +30,13 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                    <li class="nav-item" style="font-family: cursive; font-weight: bold;">
+                    <li id="navHome" class="nav-item" style="font-family: cursive; font-weight: bold;">
                         <a aria-current="page" class="nav-link active" >Home</a>
                     </li>
-                    <li class="nav-item" style="font-family: cursive; font-weight: bold">
+                    <li id="navCustomer" class="nav-item" style="font-family: cursive; font-weight: bold">
                         <a class="nav-link" >Customer</a>
                     </li>
-                    <li class="nav-item" style="font-family: cursive; font-weight: bold">
+                    <li id="navItem" class="nav-item" style="font-family: cursive; font-weight: bold">
                         <a class="nav-link" >Item</a>
                     </li>
                 </ul>
@@ -498,6 +498,26 @@
 <script>
     document.getElementById("customer").style.display="none";
     document.getElementById("item").style.display="none";
+    document.getElementById("placeOrder").style.display="block";
+
+    document.getElementById("navHome").addEventListener("click",function (){
+        document.getElementById("placeOrder").style.display="block";
+        document.getElementById("customer").style.display="none";
+        document.getElementById("item").style.display="none";
+    });
+
+    document.getElementById("navItem").addEventListener("click",function (){
+        document.getElementById("placeOrder").style.display="none";
+        document.getElementById("customer").style.display="none";
+        document.getElementById("item").style.display="block";
+    });
+
+    document.getElementById("navCustomer").addEventListener("click",function (){
+        document.getElementById("placeOrder").style.display="none";
+        document.getElementById("customer").style.display="block";
+        document.getElementById("item").style.display="none";
+    });
+
 </script>
 
 <script crossorigin="anonymous"
