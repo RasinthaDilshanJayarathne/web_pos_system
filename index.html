@@ -352,11 +352,11 @@
                     <button type="button" class="btn btn-primary  btn-sm h-75 mt-3"style="font-size: 20px; font-weight: bold">Search</button>
                     <button type="button" class="btn btn-warning  btn-sm h-75 mt-3"style="font-size: 20px;font-weight: bold">Update</button>
                     <button type="button" class="btn btn-danger  btn-sm h-75 mt-3"style="font-size: 20px;font-weight: bold">Delete</button>
-                    <button type="button" class="btn btn-success  btn-sm h-75 mt-3"style="font-size: 20px;font-weight: bold" data-bs-toggle="modal" data-bs-target="#exampleModal">+New Customer
+                    <button type="button" class="btn btn-success  btn-sm h-75 mt-3"style="font-size: 20px;font-weight: bold" data-bs-toggle="modal" data-bs-target="#customerPopUp">+New Customer
                     </button>
 
                     <!-- Modal -->
-                    <div class="modal fade" id="exampleModal3" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal fade" id="customerPopUp" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                         <div class="modal-dialog">
                             <div class="modal-content">
                                 <div class="modal-header" style="background: #fd7e14">
@@ -465,15 +465,15 @@
 
     $("#popCustBtnAdd").click(function () {
 
-        let customerId = $("#txtCustId").val();
-        let customerName = $("#txtCustName").val();
-        let customerAddress = $("#txtCustAddress").val();
-        let customerPhone = $("#txtCustPhoneNo").val();
+        let customerId = $("#txtPopCustId").val();
+        let customerName = $("#txtPopCustName").val();
+        let customerAddress = $("#txtPopCustAddress").val();
+        let customerPhone = $("#txtPopCustPhone").val();
 
         console.log(customerId, customerName, customerAddress, customerPhone);
         console.log(typeof customerId, typeof customerName, typeof customerAddress, typeof customerPhone);
 
-        let row = `<tr><td>${customerId}</td><td>${txtCustName}</td><td>${txtCustAddress}</td><td>${txtCustPhoneNo}</td></tr>`;
+        let row = `<tr><td>${customerId}</td><td>${customerName}</td><td>${customerAddress}</td><td>${customerPhone}</td></tr>`;
         console.log(row);
 
         $("#customerTable").append(row);
@@ -481,7 +481,6 @@
         $("#customerTable>tr").click(function () {
             console.log(this);
         });
-
     });
 
 </script>
