@@ -442,7 +442,6 @@
 
     $("#popBtnAdd").click(function () {
 
-
         let itemCode = $("#txtPopItemCode").val();
         let itemName = $("#txtPopItemName").val();
         let itemPrice = $("#txtPopItemPrice").val();
@@ -457,6 +456,27 @@
         $("#itemTable").append(row);
 
         $("#itemTable>tr").click(function () {
+            console.log(this);
+        });
+
+    });
+
+    $("#popCustBtnAdd").click(function () {
+
+        let customerId = $("#txtCustId").val();
+        let customerName = $("#txtCustName").val();
+        let customerAddress = $("#txtCustAddress").val();
+        let customerPhone = $("#txtCustPhoneNo").val();
+
+        console.log(customerId, txtCustName, txtCustAddress, txtCustPhoneNo);
+        console.log(typeof customerId, typeof txtCustName, typeof txtCustAddress, typeof txtCustPhoneNo);
+
+        let row = `<tr><td>${customerId}</td><td>${txtCustName}</td><td>${txtCustAddress}</td><td>${txtCustPhoneNo}</td></tr>`;
+        console.log(row);
+
+        $("#customerTable").append(row);
+
+        $("#customerTable>tr").click(function () {
             console.log(this);
         });
 
