@@ -116,24 +116,23 @@
                                 </select>
                             </div>
                             <div class="mb-2 col-6">
-                                <label class="form-label" for="exampleInputName"
-                                       style="font-weight: bold; font-size: 12px">Name</label>
-                                <input type="text" class="form-control" id="exampleInputName" aria-describedby="nameHelp">
+                                <label class="form-label" for="txtName" style="font-weight: bold; font-size: 12px">Name</label>
+                                <input type="text" class="form-control" id="txtName" aria-describedby="nameHelp">
                                 <div id="nameHelp" class="form-text"></div>
                             </div>
                             <div class="mb-2 col-6">
-                                <label for="exampleInputUnitPrice" class="form-label" style="font-weight: bold; font-size: 12px">Unit Price</label>
-                                <input type="text" class="form-control" id="exampleInputUnitPrice" aria-describedby="unitPriceHelp">
+                                <label for="txtUnitPrice" class="form-label" style="font-weight: bold; font-size: 12px">Unit Price</label>
+                                <input type="text" class="form-control" id="txtUnitPrice" aria-describedby="unitPriceHelp">
                                 <div id="unitPriceHelp" class="form-text"></div>
                             </div>
                             <div class="mb-2 col-6">
-                                <label for="exampleInputQtyOnHand" class="form-label" style="font-weight: bold; font-size: 12px">QTY On Hand</label>
-                                <input type="text" class="form-control" id="exampleInputQtyOnHand" aria-describedby="qtyOnHandHelp">
+                                <label for="txtQtyOnHand" class="form-label" style="font-weight: bold; font-size: 12px">QTY On Hand</label>
+                                <input type="text" class="form-control" id="txtQtyOnHand" aria-describedby="qtyOnHandHelp">
                                 <div id="qtyOnHandHelp" class="form-text"></div>
                             </div>
                             <div class="mb-2 col-12">
-                                <label for="exampleInputOrderQty" class="form-label" style="font-weight: bold; font-size: 12px">Order QTY</label>
-                                <input type="text" class="form-control" id="exampleInputOrderQty" aria-describedby="orderQtyHelp">
+                                <label for="txtOrderQty" class="form-label" style="font-weight: bold; font-size: 12px">Order QTY</label>
+                                <input type="text" class="form-control" id="txtOrderQty" aria-describedby="orderQtyHelp">
                                 <div id="orderQtyHelp" class="form-text"></div>
                             </div>
                         </section>
@@ -153,7 +152,7 @@
                     <form>
                         <section class="row" style="width: 100%">
                             <div class="mb-2 col-12 mt-3">
-                                <label for="exampleInputName" class="form-label" style="font-weight: bold; font-size: 25px; color: #f53b57">Total :- </label>
+                                <label for="txtName" class="form-label" style="font-weight: bold; font-size: 25px; color: #f53b57">Total :- </label>
                             </div>
                             <div class="mb-2 col-6 mt-3">
                                 <label for="exampleInputCash" class="form-label" style="font-weight: bold; font-size: 12px">Cash</label>
@@ -177,7 +176,7 @@
                                 </select>
                             </div>
                             <div class="mb-2 col-12 mt-4">
-                                <label for="exampleInputUnitPrice" class="form-label" style="font-weight: bold; font-size: 20px; color: #0fbcf9">Balance :- </label>
+                                <label for="txtUnitPrice" class="form-label" style="font-weight: bold; font-size: 20px; color: #0fbcf9">Balance :- </label>
                             </div>
                         </section>
                         <section class="row justify-content-center">
@@ -202,28 +201,8 @@
                 <th scope="col">Total</th>
             </tr>
             </thead>
-            <tbody>
-            <tr>
-                <th scope="row">I001</th>
-                <td>Soap</td>
-                <td>50.00/=</td>
-                <td>10</td>
-                <td>500.00/=</td>
-            </tr>
-            <tr>
-                <th scope="row">I002</th>
-                <td>Rice</td>
-                <td>160.00/=</td>
-                <td>10kg</td>
-                <td>1600.00/=</td>
-            </tr>
-            <tr>
-                <th scope="row">I003</th>
-                <td>Cake</td>
-                <td>250.00/=</td>
-                <td>2kg</td>
-                <td>500.00/=</td>
-            </tr>
+            <tbody id="">
+
             </tbody>
         </table>
     </section>
@@ -242,24 +221,24 @@
             <section class="row mt-5" style="width: 100%">
                 <section class="row" style="width: 100%">
                     <div class="mb-2 col-6">
-                        <label class="form-label" for="example1InputId" style="font-weight: bold">ID</label>
-                        <input aria-describedby="idHelp1" class="form-control" id="example1InputId" type="text">
+                        <label class="form-label" for="txtItemCode" style="font-weight: bold">ID</label>
+                        <input aria-describedby="idHelp1" class="form-control" id="txtItemCode" type="text">
                         <div class="form-text" id="idHelp1"></div>
                     </div>
                     <div class="mb-2 col-6">
-                        <label class="form-label" for="example1InputName" style="font-weight: bold">Name</label>
-                        <input aria-describedby="nameHelp1" class="form-control" id="example1InputName" type="text">
+                        <label class="form-label" for="txtItemName" style="font-weight: bold">Name</label>
+                        <input aria-describedby="nameHelp1" class="form-control" id="txtItemName" type="text">
                         <div class="form-text" id="nameHelp1"></div>
                     </div>
                     <div class="mb-2 col-6">
-                        <label class="form-label" for="example1InputUnitPrice" style="font-weight: bold">Unit Price</label>
-                        <input aria-describedby="unitPriceHelp1" class="form-control" id="example1InputUnitPrice" type="text">
+                        <label class="form-label" for="txtItemPrice" style="font-weight: bold">Unit Price</label>
+                        <input aria-describedby="unitPriceHelp1" class="form-control" id="txtItemPrice" type="text">
                         <div class="form-text" id="unitPriceHelp1"></div>
                     </div>
                     <div class="mb-2 col-6">
-                        <label class="form-label" for="example1InputQTYOnHand" style="font-weight: bold">Quantity On
+                        <label class="form-label" for="txtItemQTYOnHand" style="font-weight: bold">Quantity On
                             Hand</label>
-                        <input aria-describedby="qtyOnHandHelp1" class="form-control" id="example1InputQTYOnHand" type="text">
+                        <input aria-describedby="qtyOnHandHelp1" class="form-control" id="txtItemQTYOnHand" type="text">
                         <div class="form-text" id="qtyOnHandHelp1"></div>
                     </div>
                 </section>
@@ -268,10 +247,10 @@
                         <label for="searchBar" class="form-label"></label>
                         <input type="text" id="searchBar" class="form-control" placeholder="Search Customer">
                     </div>
-                    <button type="button" class="btn btn-primary  btn-sm h-75 mt-3"style="font-size: 20px; font-weight: bold">Search</button>
-                    <button type="button" class="btn btn-warning  btn-sm h-75 mt-3"style="font-size: 20px;font-weight: bold">Update</button>
-                    <button type="button" class="btn btn-danger  btn-sm h-75 mt-3"style="font-size: 20px;font-weight: bold">Delete</button>
-                    <button type="button" class="btn btn-success  btn-sm h-75 mt-3"style="font-size: 20px;font-weight: bold" data-bs-toggle="modal" data-bs-target="#exampleModal">+New Item
+                    <button id="btnSearch" type="button" class="btn btn-primary  btn-sm h-75 mt-3"style="font-size: 20px; font-weight: bold">Search</button>
+                    <button id="btnUpdate" type="button" class="btn btn-warning  btn-sm h-75 mt-3"style="font-size: 20px;font-weight: bold">Update</button>
+                    <button id="btnDelete" type="button" class="btn btn-danger  btn-sm h-75 mt-3"style="font-size: 20px;font-weight: bold">Delete</button>
+                    <button id="btnAdd" type="button" class="btn btn-success  btn-sm h-75 mt-3"style="font-size: 20px;font-weight: bold" data-bs-toggle="modal" data-bs-target="#exampleModal">+New Item
                     </button>
 
                     <!-- Modal -->
@@ -285,36 +264,30 @@
                                 <div class="modal-body">
                                     <section class="row" style="width: 100%">
                                         <div class="mb-2 col-6">
-                                            <label class="form-label" for="exampleInputId">Item Code</label>
-                                            <input aria-describedby="idHelp" class="form-control" id="exampleInputcode" type="text">
+                                            <label class="form-label" for="txtPopItemCode">Item Code</label>
+                                            <input aria-describedby="idHelp" class="form-control" id="txtPopItemCode" type="text">
                                             <div class="form-text" id="codeHelp"></div>
                                         </div>
                                         <div class="mb-2 col-6">
-                                            <label class="form-label" for="exampleInputName">Name</label>
-                                            <input aria-describedby="nameHelp2" class="form-control" id="exampleInputName1" type="text">
+                                            <label class="form-label" for="txtPopItemName">Name</label>
+                                            <input aria-describedby="nameHelp2" class="form-control" id="txtPopItemName" type="text">
                                             <div class="form-text" id="nameHelp2"></div>
                                         </div>
                                         <div class="mb-2 col-6">
-                                            <label class="form-label" for="exampleInputName">Pack Size</label>
-                                            <input aria-describedby="nameHelp" class="form-control" id="exampleInputPackSize" type="text">
-                                            <div class="form-text" id="packSizeHelp"></div>
+                                            <label class="form-label" for="txtPopItemQuntity">Quntity</label>
+                                            <input aria-describedby="telNoHelp" class="form-control" id="txtPopItemQuntity" type="text">
+                                            <div class="form-text" id="quntityHelp"></div>
                                         </div>
                                         <div class="mb-2 col-6">
-                                            <label class="form-label" for="exampleInputPrice">Price</label>
-                                            <input aria-describedby="addressHelp" class="form-control" id="exampleInputPrice"
+                                            <label class="form-label" for="txtPopItemPrice">Price</label>
+                                            <input aria-describedby="addressHelp" class="form-control" id="txtPopItemPrice"
                                                    type="text">
                                             <div class="form-text" id="priceHelp"></div>
-                                        </div>
-                                        <div class="mb-2 col-12">
-                                            <label class="form-label" for="exampleInputQuntity">Quntity</label>
-                                            <input aria-describedby="telNoHelp" class="form-control" id="exampleInputQuntity"
-                                                   type="text">
-                                            <div class="form-text" id="quntityHelp"></div>
                                         </div>
                                     </section>
                                 </div>
                                 <div class="modal-footer">
-                                    <button class="btn btn-success  btn-sm" type="button">+Add</button>
+                                    <button id="popBtnAdd" class="btn btn-success  btn-sm" type="button">+Add</button>
                                 </div>
                             </div>
                         </div>
@@ -334,25 +307,8 @@
                 <th scope="col">Qty On Hand</th>
             </tr>
             </thead>
-            <tbody>
-            <tr>
-                <th scope="row">1</th>
-                <td>Milk</td>
-                <td>50.00/=</td>
-                <td>400</td>
-            </tr>
-            <tr>
-                <th scope="row">2</th>
-                <td>Rice</td>
-                <td>160.00/=</td>
-                <td>80kg</td>
-            </tr>
-            <tr>
-                <th scope="row">3</th>
-                <td>Soap</td>
-                <td>80.00/=</td>
-                <td>250</td>
-            </tr>
+            <tbody id="itemTable">
+
         </table>
     </section>
 </section>
@@ -369,23 +325,23 @@
         <form>
             <section class="row mt-5" style="width: 100%">
                 <div class="mb-2 col-6">
-                    <label for="exampleInputId2" class="form-label" style="font-weight: bold">ID</label>
-                    <input type="text" class="form-control" id="exampleInputId2" aria-describedby="idHelp3">
+                    <label for="txtCustId" class="form-label" style="font-weight: bold">ID</label>
+                    <input type="text" class="form-control" id="txtCustId" aria-describedby="idHelp3">
                     <div id="idHelp3" class="form-text"></div>
                 </div>
                 <div class="mb-2 col-6">
-                    <label for="exampleInputName2" class="form-label" style="font-weight: bold">Name</label>
-                    <input type="text" class="form-control" id="exampleInputName2" aria-describedby="nameHelp3">
+                    <label for="txtCustName" class="form-label" style="font-weight: bold">Name</label>
+                    <input type="text" class="form-control" id="txtCustName" aria-describedby="nameHelp3">
                     <div id="nameHelp3" class="form-text"></div>
                 </div>
                 <div class="mb-2 col-6">
-                    <label for="exampleInputAddress2" class="form-label" style="font-weight: bold">Address</label>
-                    <input type="text" class="form-control" id="exampleInputAddress2" aria-describedby="addressHelp3">
+                    <label for="txtCustAddress" class="form-label" style="font-weight: bold">Address</label>
+                    <input type="text" class="form-control" id="txtCustAddress" aria-describedby="addressHelp3">
                     <div id="addressHelp3" class="form-text"></div>
                 </div>
                 <div class="mb-2 col-6">
-                    <label for="exampleInputTelephoneNo2" class="form-label" style="font-weight: bold">Telephone No</label>
-                    <input type="text" class="form-control" id="exampleInputTelephoneNo2" aria-describedby="telNoHelp3">
+                    <label for="txtCustPhoneNo" class="form-label" style="font-weight: bold">Telephone No</label>
+                    <input type="text" class="form-control" id="txtCustPhoneNo" aria-describedby="telNoHelp3">
                     <div id="telNoHelp3" class="form-text"></div>
                 </div>
                 <section class="d-grid gap-2 d-md-flex container-fluid mt-4">
@@ -409,37 +365,32 @@
                                 </div>
                                 <div class="modal-body" >
                                     <section class="row" style="width: 100%">
-                                        <!-- <div class="mb-2 col-12">
-                                             <label class="form-label" for="exampleInputId">Customer Search</label>
-                                             <input aria-describedby="idHelp" class="form-control" id="exampleInputCustomerSearch" type="text">
-                                             <div class="form-text" id="customeSearchHelp"></div>
-                                         </div>-->
                                         <div class="mb-2 col-6">
-                                            <label class="form-label" for="exampleInputId">ID</label>
-                                            <input aria-describedby="idHelp" class="form-control" id="InputId" type="text">
+                                            <label class="form-label" for="txtPopCustId">ID</label>
+                                            <input aria-describedby="idHelp" class="form-control" id="txtPopCustId" type="text">
                                             <div class="form-text" id="id"></div>
                                         </div>
                                         <div class="mb-2 col-6">
-                                            <label class="form-label" for="exampleInputName">Name</label>
-                                            <input aria-describedby="nameHelp" class="form-control" id="InputName" type="text">
+                                            <label class="form-label" for="txtPopCustName">Name</label>
+                                            <input aria-describedby="nameHelp" class="form-control" id="txtPopCustName" type="text">
                                             <div class="form-text" id="name"></div>
                                         </div>
                                         <div class="mb-2 col-6">
-                                            <label class="form-label" for="exampleInputAddress">Address</label>
-                                            <input aria-describedby="addressHelp" class="form-control" id="InputAddress"
+                                            <label class="form-label" for="txtPopCustAddress">Address</label>
+                                            <input aria-describedby="addressHelp" class="form-control" id="txtPopCustAddress"
                                                    type="text">
                                             <div class="form-text" id="address"></div>
                                         </div>
                                         <div class="mb-2 col-6">
-                                            <label class="form-label" for="exampleInputTelephoneNo">Telephone No</label>
-                                            <input aria-describedby="telNoHelp" class="form-control" id="InputTelephoneNo"
+                                            <label class="form-label" for="txtPopCustPhone">Telephone No</label>
+                                            <input aria-describedby="telNoHelp" class="form-control" id="txtPopCustPhone"
                                                    type="text">
                                             <div class="form-text" id="telNo"></div>
                                         </div>
                                     </section>
                                 </div>
                                 <div class="modal-footer">
-                                    <button class="btn btn-success  btn-sm" type="button">+Add</button>
+                                    <button id="popCustBtnAdd" class="btn btn-success  btn-sm" type="button">+Add</button>
                                 </div>
                             </div>
                         </div>
@@ -459,37 +410,8 @@
                 <th scope="col">Tel No</th>
             </tr>
             </thead>
-            <tbody>
-            <tr>
-                <th Books="row">1</th>
-                <td>A</td>
-                <td>Galle</td>
-                <td>077-3212111</td>
-            </tr>
-            <tr>
-                <th Milk="row">2</th>
-                <td>B</td>
-                <td>Panadura</td>
-                <td>078-2356743</td>
-            </tr>
-            <tr>
-                <th Cake="row">3</th>
-                <td>C</td>
-                <td>Gampaha</td>
-                <td>075-4534567</td>
-            </tr>
-            <tr>
-                <th Cake="row">4</th>
-                <td>C</td>
-                <td>Gampaha</td>
-                <td>075-4534567</td>
-            </tr>
-            <tr>
-                <th Cake="row">5</th>
-                <td>C</td>
-                <td>Gampaha</td>
-                <td>075-4534567</td>
-            </tr>
+            <tbody id="customerTable">
+
             </tbody>
         </table>
     </section>
@@ -516,6 +438,28 @@
         document.getElementById("placeOrder").style.display="none";
         document.getElementById("customer").style.display="block";
         document.getElementById("item").style.display="none";
+    });
+
+    $("#popBtnAdd").click(function () {
+
+
+        let itemCode = $("#txtPopItemCode").val();
+        let itemName = $("#txtPopItemName").val();
+        let itemPrice = $("#txtPopItemPrice").val();
+        let itemQtyOnHand = $("#txtPopItemQuntity").val();
+
+        console.log(itemCode, itemName, itemPrice, itemQtyOnHand);
+        console.log(typeof itemCode, typeof itemName, typeof itemPrice, typeof itemQtyOnHand);
+
+        let row = `<tr><td>${itemCode}</td><td>${itemName}</td><td>${itemPrice}</td><td>${itemQtyOnHand}</td></tr>`;
+        console.log(row);
+
+        $("#itemTable").append(row);
+
+        $("#itemTable>tr").click(function () {
+            console.log(this);
+        });
+
     });
 
 </script>
