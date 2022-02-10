@@ -441,8 +441,11 @@
         document.getElementById("item").style.display="none";
     });
 
+    /*======================================================================================================================*/
 
     $("#popBtnAdd").click(function () {
+
+        $("#itemTable>tr").off("click");
 
         let itemCode = $("#txtPopItemCode").val();
         let itemName = $("#txtPopItemName").val();
@@ -458,12 +461,59 @@
         $("#itemTable").append(row);
 
         $("#itemTable>tr").click(function () {
-            console.log(this);
-        });
+           /* console.log($(this));*/
 
+            let itemCode1 = $(this).children(":eq(0)").text();
+            let itemName1 = $(this).children(":eq(1)").text();
+            let itemPrice1 = $(this).children(":eq(2)").text();
+            let itemQtyOnHand1 = $(this).children(":eq(3)").text();
+
+            console.log(itemCode1, itemName1, itemPrice1, itemQtyOnHand1);
+
+            $("#txtItemCode").val(itemCode1);
+            $("#txtItemName").val(itemName1);
+            $("#txtItemPrice").val(itemPrice1);
+            $("#txtItemQTYOnHand").val(itemQtyOnHand1);
+        });
     });
 
+    $("#txtPopItemCode").keydown(function (event){
+        if (event.key=="Enter"){
+            $("#txtPopItemName").focus();
+        }
+    });
+    $("#txtPopItemName").keydown(function (event){
+        if (event.key=="Enter"){
+            $("#txtPopItemQuntity").focus();
+        }
+    });
+    $("#txtPopItemQuntity").keydown(function (event){
+        if (event.key=="Enter"){
+            $("#txtPopItemPrice").focus();
+        }
+    });
+
+    $("#txtItemCode").keydown(function (event){
+        if (event.key=="Enter"){
+            $("#txtItemName").focus();
+        }
+    });
+    $("#txtItemName").keydown(function (event){
+        if (event.key=="Enter"){
+            $("#txtItemPrice").focus();
+        }
+    });
+    $("#txtItemPrice").keydown(function (event){
+        if (event.key=="Enter"){
+            $("#txtItemQTYOnHand").focus();
+        }
+    });
+
+    /*======================================================================================================================*/
+
     $("#popCustBtnAdd").click(function () {
+
+       /* $("#customerTable>tr").of("click");*/
 
         let customerId = $("#txtPopCustId").val();
         let customerName = $("#txtPopCustName").val();
@@ -479,8 +529,51 @@
         $("#customerTable").append(row);
 
         $("#customerTable>tr").click(function () {
-            console.log(this);
+            /*console.log($(this));*/
+            let customerId1 = $(this).children(":eq(0)").text();
+            let customerName1 = $(this).children(":eq(1)").text();
+            let customerAddress1 = $(this).children(":eq(2)").text();
+            let customerPhone1 = $(this).children(":eq(3)").text();
+
+            console.log(customerId1, customerName1, customerAddress1, customerPhone1);
+
+            $("#txtCustId").val(customerId1);
+            $("#txtCustName").val(customerName1);
+            $("#txtCustAddress").val(customerAddress1);
+            $("#txtCustPhoneNo").val(customerPhone1);
         });
+    });
+
+    $("#txtPopCustId").keydown(function (event){
+        if (event.key=="Enter"){
+            $("#txtPopCustName").focus();
+        }
+    });
+    $("#txtPopCustName").keydown(function (event){
+        if (event.key=="Enter"){
+            $("#txtPopCustAddress").focus();
+        }
+    });
+    $("#txtPopCustAddress").keydown(function (event){
+        if (event.key=="Enter"){
+            $("#txtPopCustPhone").focus();
+        }
+    });
+
+    $("#txtCustId").keydown(function (event){
+        if (event.key=="Enter"){
+            $("#txtCustName").focus();
+        }
+    });
+    $("#txtCustName").keydown(function (event){
+        if (event.key=="Enter"){
+            $("#txtCustAddress").focus();
+        }
+    });
+    $("#txtCustAddress").keydown(function (event){
+        if (event.key=="Enter"){
+            $("#txtCustPhoneNo").focus();
+        }
     });
 
 </script>
