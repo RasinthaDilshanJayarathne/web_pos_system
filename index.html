@@ -547,6 +547,12 @@
             $("#txtCustAddress").val(customerAddress1);
             $("#txtCustPhoneNo").val(customerPhone1);
         });
+
+        $("#customerTable>tr").dblclick(function (){
+            $(this).remove();
+        });
+
+
     });
 
     $("#txtPopCustId").keydown(function (event){
