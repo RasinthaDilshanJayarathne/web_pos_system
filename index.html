@@ -475,6 +475,11 @@
             $("#txtItemPrice").val(itemPrice1);
             $("#txtItemQTYOnHand").val(itemQtyOnHand1);
         });
+
+        $("#itemTable>tr").dblclick(function (){
+            $(this).remove();
+        });
+
     });
 
     $("#txtPopItemCode").keydown(function (event){
