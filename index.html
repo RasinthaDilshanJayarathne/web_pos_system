@@ -557,6 +557,9 @@
         });
     });
     var regExCusID=/^(C00-)[0-9]{3,4}$/;
+    var regExCusName=/^[A-z ]{3,20}$/;
+    var regExCusAddress=/^[A-z0-9/ ]{6,30}$/;
+    var regExCusPhoneNo=/[0-9]{3}[-]?[0-9]{7}$/;
 
     $("#txtPopCustId").keyup(function (event){
         let input =  $("#txtPopCustId").val();
@@ -574,31 +577,51 @@
         }
     });
 
-    $("#txtPopCustName").keydown(function (event){
-        if (event.key=="Enter"){
-            $("#txtPopCustAddress").focus();
+    $("#txtPopCustName").keyup(function (event){
+        let input =  $("#txtPopCustName").val();
+
+        if (regExCusName.test(input)){
+            $("#txtPopCustName").css('border','2px solid green');
+            $("#error").text("");
+
+            if (event.key=="Enter"){
+                $("#txtPopCustAddress").focus();
+            }
+        }else {
+            $("#txtPopCustName").css('border','2px solid red');
+            $("#error").text("Wrong format:C00-001");
         }
     });
 
-    $("#txtPopCustAddress").keydown(function (event){
-        if (event.key=="Enter"){
-            $("#txtPopCustPhone").focus();
+    $("#txtPopCustAddress").keyup(function (event){
+        let input =  $("#txtPopCustAddress").val();
+
+        if (regExCusName.test(input)){
+            $("#txtPopCustAddress").css('border','2px solid green');
+            $("#error").text("");
+
+            if (event.key=="Enter"){
+                $("#txtPopCustPhone").focus();
+            }
+        }else {
+            $("#txtPopCustAddress").css('border','2px solid red');
+            $("#error").text("Wrong format:C00-001");
         }
     });
 
-    $("#txtCustId").keydown(function (event){
+    $("#txtCustId").keyup(function (event){
         if (event.key=="Enter"){
             $("#txtCustName").focus();
         }
     });
 
-    $("#txtCustName").keydown(function (event){
+    $("#txtCustName").keyup(function (event){
         if (event.key=="Enter"){
             $("#txtCustAddress").focus();
         }
     });
 
-    $("#txtCustAddress").keydown(function (event){
+    $("#txtCustAddress").keyup(function (event){
         if (event.key=="Enter"){
             $("#txtCustPhoneNo").focus();
         }
