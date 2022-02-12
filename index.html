@@ -328,21 +328,27 @@
                     <label for="txtCustId" class="form-label" style="font-weight: bold">ID</label>
                     <input type="text" class="form-control" id="txtCustId" aria-describedby="idHelp3">
                     <div id="idHelp3" class="form-text"></div>
+                    <p><small id="lblError" class="text-danger p-1"></small></p>
                 </div>
                 <div class="mb-2 col-6">
                     <label for="txtCustName" class="form-label" style="font-weight: bold">Name</label>
                     <input type="text" class="form-control" id="txtCustName" aria-describedby="nameHelp3">
                     <div id="nameHelp3" class="form-text"></div>
+                    <p><small id="lblError1" class="text-danger p-1"></small></p>
+
                 </div>
                 <div class="mb-2 col-6">
                     <label for="txtCustAddress" class="form-label" style="font-weight: bold">Address</label>
                     <input type="text" class="form-control" id="txtCustAddress" aria-describedby="addressHelp3">
                     <div id="addressHelp3" class="form-text"></div>
+                    <p><small id="lblError2" class="text-danger p-1"></small></p>
+
                 </div>
                 <div class="mb-2 col-6">
                     <label for="txtCustPhoneNo" class="form-label" style="font-weight: bold">Telephone No</label>
                     <input type="text" class="form-control" id="txtCustPhoneNo" aria-describedby="telNoHelp3">
                     <div id="telNoHelp3" class="form-text"></div>
+                    <p><small id="lblError3" class="text-danger p-1"></small></p>
                 </div>
                 <section class="d-grid gap-2 d-md-flex container-fluid mt-4">
                     <div class="mb-2 col-6">
@@ -369,7 +375,7 @@
                                             <label class="form-label" for="txtPopCustId">ID</label>
                                             <input aria-describedby="idHelp" class="form-control" id="txtPopCustId" type="text">
                                             <div class="form-text" id="id"></div>
-                                            <p><small cla="error" class="text-danger p-1"></small></p>
+                                            <p><small id="error" class="text-danger p-1"></small></p>
                                         </div>
                                         <div class="mb-2 col-6">
                                             <label class="form-label" for="txtPopCustName">Name</label>
@@ -616,10 +622,6 @@
         if (regExCusPhoneNo.test(input)){
             $("#txtPopCustPhone").css('border','2px solid green');
             $("#error3").text("");
-
-            /*if (event.key=="Enter"){
-                $("#txtPopCustPhone").focus();
-            }*/
         }else {
             $("#txtPopCustPhone").css('border','2px solid red');
             $("#error3").text("Wrong format:077-2314432");
@@ -627,20 +629,62 @@
     });
 
     $("#txtCustId").keyup(function (event){
-        if (event.key=="Enter"){
-            $("#txtCustName").focus();
+        let input =  $("#txtCustId").val();
+
+        if (regExCusID.test(input)){
+            $("#txtCustId").css('border','2px solid green');
+            $("#lblError").text("");
+
+            if (event.key=="Enter"){
+                $("#txtCustName").focus();
+            }
+        }else {
+            $("#txtCustId").css('border','2px solid red');
+            $("#lblError").text("Wrong format:C00-001");
         }
     });
 
     $("#txtCustName").keyup(function (event){
-        if (event.key=="Enter"){
-            $("#txtCustAddress").focus();
+        let input =  $("#txtCustName").val();
+
+        if (regExCusName.test(input)){
+            $("#txtCustName").css('border','2px solid green');
+            $("#lblError1").text("");
+
+            if (event.key=="Enter"){
+                $("#txtCustAddress").focus();
+            }
+        }else {
+            $("#txtCustName").css('border','2px solid red');
+            $("#lblError1").text("Wrong format:Nimal");
         }
     });
 
     $("#txtCustAddress").keyup(function (event){
-        if (event.key=="Enter"){
-            $("#txtCustPhoneNo").focus();
+        let input =  $("#txtCustAddress").val();
+
+        if (regExCusAddress.test(input)){
+            $("#txtCustAddress").css('border','2px solid green');
+            $("#lblError2").text("");
+
+            if (event.key=="Enter"){
+                $("#txtCustPhoneNo").focus();
+            }
+        }else {
+            $("#txtCustAddress").css('border','2px solid red');
+            $("#lblError2").text("Wrong format:123/b Galle");
+        }
+    });
+
+    $("#txtCustPhoneNo").keyup(function (event){
+        let input =  $("#txtCustPhoneNo").val();
+
+        if (regExCusPhoneNo.test(input)){
+            $("#txtCustPhoneNo").css('border','2px solid green');
+            $("#lblError3").text("");
+        }else {
+            $("#txtCustPhoneNo").css('border','2px solid red');
+            $("#lblError3").text("Wrong format:077-2314432");
         }
     });
 
