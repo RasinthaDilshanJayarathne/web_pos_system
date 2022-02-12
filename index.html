@@ -369,24 +369,25 @@
                                             <label class="form-label" for="txtPopCustId">ID</label>
                                             <input aria-describedby="idHelp" class="form-control" id="txtPopCustId" type="text">
                                             <div class="form-text" id="id"></div>
-                                            <p><small id="error" class="text-danger p-1"></small></p>
+                                            <p><small cla="error" class="text-danger p-1"></small></p>
                                         </div>
                                         <div class="mb-2 col-6">
                                             <label class="form-label" for="txtPopCustName">Name</label>
                                             <input aria-describedby="nameHelp" class="form-control" id="txtPopCustName" type="text">
                                             <div class="form-text" id="name"></div>
+                                            <p><small id="error1" class="text-danger p-1"></small></p>
                                         </div>
                                         <div class="mb-2 col-6">
                                             <label class="form-label" for="txtPopCustAddress">Address</label>
-                                            <input aria-describedby="addressHelp" class="form-control" id="txtPopCustAddress"
-                                                   type="text">
+                                            <input aria-describedby="addressHelp" class="form-control" id="txtPopCustAddress" type="text">
                                             <div class="form-text" id="address"></div>
+                                            <p><small id="error2" class="text-danger p-1"></small></p>
                                         </div>
                                         <div class="mb-2 col-6">
                                             <label class="form-label" for="txtPopCustPhone">Telephone No</label>
-                                            <input aria-describedby="telNoHelp" class="form-control" id="txtPopCustPhone"
-                                                   type="text">
+                                            <input aria-describedby="telNoHelp" class="form-control" id="txtPopCustPhone" type="text">
                                             <div class="form-text" id="telNo"></div>
+                                            <p><small id="error3" class="text-danger p-1"></small></p>
                                         </div>
                                     </section>
                                 </div>
@@ -582,30 +583,46 @@
 
         if (regExCusName.test(input)){
             $("#txtPopCustName").css('border','2px solid green');
-            $("#error").text("");
+            $("#error1").text("");
 
             if (event.key=="Enter"){
                 $("#txtPopCustAddress").focus();
             }
         }else {
             $("#txtPopCustName").css('border','2px solid red');
-            $("#error").text("Wrong format:C00-001");
+            $("#error1").text("Wrong format:Nimal");
         }
     });
 
     $("#txtPopCustAddress").keyup(function (event){
         let input =  $("#txtPopCustAddress").val();
 
-        if (regExCusName.test(input)){
+        if (regExCusAddress.test(input)){
             $("#txtPopCustAddress").css('border','2px solid green');
-            $("#error").text("");
+            $("#error2").text("");
 
             if (event.key=="Enter"){
                 $("#txtPopCustPhone").focus();
             }
         }else {
             $("#txtPopCustAddress").css('border','2px solid red');
-            $("#error").text("Wrong format:C00-001");
+            $("#error2").text("Wrong format:123/b Galle");
+        }
+    });
+
+    $("#txtPopCustPhone").keyup(function (event){
+        let input =  $("#txtPopCustPhone").val();
+
+        if (regExCusPhoneNo.test(input)){
+            $("#txtPopCustPhone").css('border','2px solid green');
+            $("#error3").text("");
+
+            /*if (event.key=="Enter"){
+                $("#txtPopCustPhone").focus();
+            }*/
+        }else {
+            $("#txtPopCustPhone").css('border','2px solid red');
+            $("#error3").text("Wrong format:077-2314432");
         }
     });
 
