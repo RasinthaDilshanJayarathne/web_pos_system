@@ -489,37 +489,84 @@
         });
     });
 
-    $("#txtPopItemCode").keydown(function (event){
-        if (event.key=="Enter"){
-            $("#txtPopItemName").focus();
+    var regExItemCode=/^(I00-)[0-9]{3,4}$/;
+    var regExItemName=/^[A-z ]{3,20}$/;
+    var regExItemPrice=/^[0-9]{1,10}$/;
+    var regExItemQtyOnHand=/^[0-9]{1,3}$/;
+
+    $("#txtPopItemCode").keyup(function (event){
+        let input =  $("#txtPopItemCode").val();
+
+        if (regExItemCode.test(input)){
+            $("#txtPopItemCode").css('border','2px solid green');
+            $("#error").text("");
+
+            if (event.key=="Enter"){
+                $("#txtPopItemName").focus();
+            }
+        }else {
+            $("#txtPopItemCode").css('border','2px solid red');
+            $("#error").text("Wrong format:I00-001");
         }
     });
 
-    $("#txtPopItemName").keydown(function (event){
-        if (event.key=="Enter"){
-            $("#txtPopItemQuntity").focus();
+    $("#txtPopItemName").keyup(function (event){
+        let input =  $("#txtPopItemName").val();
+
+        if (regExItemCode.test(input)){
+            $("#txtPopItemName").css('border','2px solid green');
+            $("#error").text("");
+
+            if (event.key=="Enter"){
+                $("#txtPopItemQuntity").focus();
+            }
+        }else {
+            $("#txtPopItemName").css('border','2px solid red');
+            $("#error").text("Wrong format:Soap");
         }
     });
 
-    $("#txtPopItemQuntity").keydown(function (event){
-        if (event.key=="Enter"){
-            $("#txtPopItemPrice").focus();
+    $("#txtPopItemQuntity").keyup(function (event){
+        let input =  $("#txtPopItemQuntity").val();
+
+        if (regExItemCode.test(input)){
+            $("#txtPopItemQuntity").css('border','2px solid green');
+            $("#error").text("");
+
+            if (event.key=="Enter"){
+                $("#txtPopItemPrice").focus();
+            }
+        }else {
+            $("#txtPopItemQuntity").css('border','2px solid red');
+            $("#error").text("Wrong format:Soap");
         }
     });
 
-    $("#txtItemCode").keydown(function (event){
+    $("#txtPopItemPrice").keyup(function (event){
+        let input =  $("#txtPopItemPrice").val();
+
+        if (regExItemCode.test(input)){
+            $("#txtPopItemPrice").css('border','2px solid green');
+            $("#error").text("");
+        }else {
+            $("#txtPopItemPrice").css('border','2px solid red');
+            $("#error").text("Wrong format:150");
+        }
+    });
+
+    $("#txtItemCode").keyup(function (event){
         if (event.key=="Enter"){
             $("#txtItemName").focus();
         }
     });
 
-    $("#txtItemName").keydown(function (event){
+    $("#txtItemName").keyup(function (event){
         if (event.key=="Enter"){
             $("#txtItemPrice").focus();
         }
     });
 
-    $("#txtItemPrice").keydown(function (event){
+    $("#txtItemPrice").keyup(function (event){
         if (event.key=="Enter"){
             $("#txtItemQTYOnHand").focus();
         }
