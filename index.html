@@ -224,22 +224,26 @@
                         <label class="form-label" for="txtItemCode" style="font-weight: bold">ID</label>
                         <input aria-describedby="idHelp1" class="form-control" id="txtItemCode" type="text">
                         <div class="form-text" id="idHelp1"></div>
+                        <p><small id="ItemError" class="text-danger p-1"></small></p>
                     </div>
                     <div class="mb-2 col-6">
                         <label class="form-label" for="txtItemName" style="font-weight: bold">Name</label>
                         <input aria-describedby="nameHelp1" class="form-control" id="txtItemName" type="text">
                         <div class="form-text" id="nameHelp1"></div>
+                        <p><small id="ItemError1" class="text-danger p-1"></small></p>
                     </div>
                     <div class="mb-2 col-6">
                         <label class="form-label" for="txtItemPrice" style="font-weight: bold">Unit Price</label>
                         <input aria-describedby="unitPriceHelp1" class="form-control" id="txtItemPrice" type="text">
                         <div class="form-text" id="unitPriceHelp1"></div>
+                        <p><small id="ItemError2" class="text-danger p-1"></small></p>
                     </div>
                     <div class="mb-2 col-6">
                         <label class="form-label" for="txtItemQTYOnHand" style="font-weight: bold">Quantity On
                             Hand</label>
                         <input aria-describedby="qtyOnHandHelp1" class="form-control" id="txtItemQTYOnHand" type="text">
                         <div class="form-text" id="qtyOnHandHelp1"></div>
+                        <p><small id="ItemError3" class="text-danger p-1"></small></p>
                     </div>
                 </section>
                 <section class="d-grid gap-2 d-md-flex container-fluid mt-4">
@@ -267,22 +271,26 @@
                                             <label class="form-label" for="txtPopItemCode">Item Code</label>
                                             <input aria-describedby="idHelp" class="form-control" id="txtPopItemCode" type="text">
                                             <div class="form-text" id="codeHelp"></div>
+                                            <p><small id="popItemError" class="text-danger p-1"></small></p>
                                         </div>
                                         <div class="mb-2 col-6">
                                             <label class="form-label" for="txtPopItemName">Name</label>
                                             <input aria-describedby="nameHelp2" class="form-control" id="txtPopItemName" type="text">
                                             <div class="form-text" id="nameHelp2"></div>
+                                            <p><small id="popItemError1" class="text-danger p-1"></small></p>
                                         </div>
                                         <div class="mb-2 col-6">
                                             <label class="form-label" for="txtPopItemQuntity">Quntity</label>
                                             <input aria-describedby="telNoHelp" class="form-control" id="txtPopItemQuntity" type="text">
                                             <div class="form-text" id="quntityHelp"></div>
+                                            <p><small id="popItemError2" class="text-danger p-1"></small></p>
                                         </div>
                                         <div class="mb-2 col-6">
                                             <label class="form-label" for="txtPopItemPrice">Price</label>
                                             <input aria-describedby="addressHelp" class="form-control" id="txtPopItemPrice"
                                                    type="text">
                                             <div class="form-text" id="priceHelp"></div>
+                                            <p><small id="popItemError3" class="text-danger p-1"></small></p>
                                         </div>
                                     </section>
                                 </div>
@@ -499,76 +507,118 @@
 
         if (regExItemCode.test(input)){
             $("#txtPopItemCode").css('border','2px solid green');
-            $("#error").text("");
+            $("#popItemError").text("");
 
             if (event.key=="Enter"){
                 $("#txtPopItemName").focus();
             }
         }else {
             $("#txtPopItemCode").css('border','2px solid red');
-            $("#error").text("Wrong format:I00-001");
+            $("#popItemError").text("Wrong format:I00-001");
         }
     });
 
     $("#txtPopItemName").keyup(function (event){
         let input =  $("#txtPopItemName").val();
 
-        if (regExItemCode.test(input)){
+        if (regExItemName.test(input)){
             $("#txtPopItemName").css('border','2px solid green');
-            $("#error").text("");
+            $("#popItemError1").text("");
 
             if (event.key=="Enter"){
                 $("#txtPopItemQuntity").focus();
             }
         }else {
             $("#txtPopItemName").css('border','2px solid red');
-            $("#error").text("Wrong format:Soap");
+            $("#popItemError1").text("Wrong format:Soap");
         }
     });
 
     $("#txtPopItemQuntity").keyup(function (event){
         let input =  $("#txtPopItemQuntity").val();
 
-        if (regExItemCode.test(input)){
+        if (regExItemQtyOnHand.test(input)){
             $("#txtPopItemQuntity").css('border','2px solid green');
-            $("#error").text("");
+            $("#popItemError2").text("");
 
             if (event.key=="Enter"){
                 $("#txtPopItemPrice").focus();
             }
         }else {
             $("#txtPopItemQuntity").css('border','2px solid red');
-            $("#error").text("Wrong format:Soap");
+            $("#popItemError2").text("Wrong format:10");
         }
     });
 
     $("#txtPopItemPrice").keyup(function (event){
         let input =  $("#txtPopItemPrice").val();
 
-        if (regExItemCode.test(input)){
+        if (regExItemPrice.test(input)){
             $("#txtPopItemPrice").css('border','2px solid green');
-            $("#error").text("");
+            $("#popItemError3").text("");
         }else {
             $("#txtPopItemPrice").css('border','2px solid red');
-            $("#error").text("Wrong format:150");
+            $("#popItemError3").text("Wrong format:150");
         }
     });
 
     $("#txtItemCode").keyup(function (event){
-        if (event.key=="Enter"){
-            $("#txtItemName").focus();
+        let input =  $("#txtItemCode").val();
+
+        if (regExItemCode.test(input)){
+            $("#txtItemCode").css('border','2px solid green');
+            $("#ItemError").text("");
+
+            if (event.key=="Enter"){
+                $("#txtItemName").focus();
+            }
+        }else {
+            $("#txtItemCode").css('border','2px solid red');
+            $("#ItemError").text("Wrong format:I00-001");
         }
     });
 
     $("#txtItemName").keyup(function (event){
-        if (event.key=="Enter"){
-            $("#txtItemPrice").focus();
+        let input =  $("#txtItemName").val();
+
+        if (regExItemName.test(input)){
+            $("#txtItemName").css('border','2px solid green');
+            $("#ItemError1").text("");
+
+            if (event.key=="Enter"){
+                $("#txtItemPrice").focus();
+            }
+        }else {
+            $("#txtItemName").css('border','2px solid red');
+            $("#ItemError1").text("Wrong format:Soap");
         }
     });
 
     $("#txtItemPrice").keyup(function (event){
-        if (event.key=="Enter"){
-            $("#txtItemQTYOnHand").focus();
+        let input =  $("#txtItemPrice").val();
+
+        if (regExItemPrice.test(input)){
+            $("#txtItemPrice").css('border','2px solid green');
+            $("#ItemError2").text("");
+
+            if (event.key=="Enter"){
+                $("#txtItemQTYOnHand").focus();
+            }
+        }else {
+            $("#txtItemPrice").css('border','2px solid red');
+            $("#ItemError2").text("Wrong format:10");
+        }
+    });
+
+    $("#txtItemQTYOnHand").keyup(function (event){
+        let input =  $("#txtItemQTYOnHand").val();
+
+        if (regExItemQtyOnHand.test(input)){
+            $("#txtItemQTYOnHand").css('border','2px solid green');
+            $("#ItemError3").text("");
+        }else {
+            $("#txtItemQTYOnHand").css('border','2px solid red');
+            $("#ItemError3").text("Wrong format:150");
         }
     });
 
