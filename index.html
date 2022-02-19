@@ -283,10 +283,10 @@
                             style="font-size: 20px;font-weight: bold"
                             type="button">Update
                     </button>
-                    <button class="btn btn-danger  btn-sm h-75 mt-3" id="btnItemDelete"
-                            style="font-size: 20px;font-weight: bold"
-                            type="button">Delete
-                    </button>
+                    <!-- <button class="btn btn-danger  btn-sm h-75 mt-3" id="btnItemDelete"
+                             style="font-size: 20px;font-weight: bold"
+                             type="button">Delete
+                     </button>-->
                     <button class="btn btn-success  btn-sm h-75 mt-3" data-bs-target="#exampleModal"
                             data-bs-toggle="modal"
                             id="btnAdd" style="font-size: 20px;font-weight: bold"
@@ -413,9 +413,9 @@
                     <button class="btn btn-warning  btn-sm h-75 mt-3" id="" style="font-size: 20px;font-weight: bold"
                             type="button">Update
                     </button>
-                    <button class="btn btn-danger  btn-sm h-75 mt-3" style="font-size: 20px;font-weight: bold"
+                   <!-- <button class="btn btn-danger  btn-sm h-75 mt-3" style="font-size: 20px;font-weight: bold"
                             type="button">Delete
-                    </button>
+                    </button>-->
                     <button class="btn btn-success  btn-sm h-75 mt-3" data-bs-target="#customerPopUp"
                             data-bs-toggle="modal" style="font-size: 20px;font-weight: bold"
                             type="button">+New Customer
@@ -544,8 +544,8 @@
         $("#itemTable>tr").dblclick(function () {
             $(this).remove();
         });
+        clearItemPopData();
     });
-
 
     function saveItem() {
         let itemCode = $("#txtPopItemCode").val();
@@ -562,20 +562,22 @@
         itemDB.push(itemObject);
     }
 
-    $("#btnItemDelete").click(function () {
-
-    });
-
     function loadAllItem() {
         $("#itemTable").empty();
         for (var i of itemDB) {
             /*create a html row*/
             let row = `<tr><td>${i.id}</td><td>${i.name}</td><td>${i.price}</td><td>${i.qtyOnHand}</td>
-            <td><button type="button" class="btn-sm btn-danger">Delete</button></tr>`;
+            <td><button id="btnItemDelete" type="button" class="btn-sm btn-danger">Delete</button></tr>`;
             /*select the table body and append the row */
             $("#itemTable").append(row);
         }
     }
+
+    $("#itemTable").on('click', '#btnItemDelete', function () {
+        console.log("Hello");
+        $(this).closest('tr').remove();
+        clearAllItem();
+    })
 
     $("#btnItemSearch").click(function () {
         var searchID = $("#ItemPpoSearchBar").val();
@@ -587,7 +589,7 @@
             $("#txtItemPrice").val(response.address);
             $("#txtItemQTYOnHand").val(response.phoneNo);
         } else {
-            clearAll();
+            clearAllItem();
             alert("No Such a Item");
         }
     });
@@ -725,6 +727,24 @@
         }
     });
 
+    function clearItemPopData() {
+        $('#txtPopItemCode,#txtPopItemName,#txtPopItemQuntity,#txtPopItemPrice').val("");
+        $('#txtPopItemCode,#txtPopItemName,#txtPopItemQuntity,#txtPopItemPrice').css('border', '2px solid #ced4da');
+        $('#txtPopItemCode').focus();
+        /* $("#popBtnAdd").attr('disabled', true);*/
+        /*loadAllCustomers();*/
+        /*$("#lblcusid,#lblcusname,#lblcusaddress,#lblcussalary").text("");*/
+    }
+
+    function clearAllItem() {
+        $('#txtItemCode,#txtItemName,#txtItemPrice,#txtItemQTYOnHand').val("");
+        $('#txtItemCode,#txtItemName,#txtItemPrice,#txtItemQTYOnHand').css('border', '2px solid #ced4da');
+        $('#txtItemCode').focus();
+        /* $("#popBtnAdd").attr('disabled', true);*/
+        /*loadAllCustomers();*/
+        /*$("#lblcusid,#lblcusname,#lblcusaddress,#lblcussalary").text("");*/
+    }
+
     /*======================================================================================================================*/
 
     $("#popCustBtnAdd").click(function () {
@@ -770,11 +790,18 @@
         console.log(customerObject);
     }
 
+    $("#customerTable").on('click', '#btnCustomerDelete', function () {
+        console.log("Hello");
+        $(this).closest('tr').remove();
+        clearAll();
+    })
+
     function loadAllCustomer() {
         $("#customerTable").empty();
         for (var i of customerDB) {
             /*create a html row*/
-            let row = `<tr><td>${i.id}</td><td>${i.name}</td><td>${i.address}</td><td>${i.phoneNo}</td></tr>`;
+            let row = `<tr><td>${i.id}</td><td>${i.name}</td><td>${i.address}</td><td>${i.phoneNo}</td>
+            <td><button id="btnCustomerDelete" type="button" class="btn-sm btn-danger">Delete</button></tr></tr>`;
             /*select the table body and append the row */
             $("#customerTable").append(row);
         }
@@ -932,14 +959,14 @@
         $('#txtPopCustId,#txtPopCustName,#txtPopCustAddress,#txtPopCustPhone').val("");
         $('#txtPopCustId,#txtPopCustName,#txtPopCustAddress,#txtPopCustPhone').css('border', '2px solid #ced4da');
         $('#txtPopCustId').focus();
-        $("#popBtnAdd").attr('disabled', true);
+        /* $("#popBtnAdd").attr('disabled', true);*/
         /*loadAllCustomers();*/
         /*$("#lblcusid,#lblcusname,#lblcusaddress,#lblcussalary").text("");*/
     }
 
     function clearAll() {
         $('#txtCustId,#txtCustName,#txtCustAddress,#txtCustPhoneNo').val("");
-        $('##txtCustId,#txtCustName,#txtCustAddress,#txtCustPhoneNo').css('border', '2px solid #ced4da');
+        $('#txtCustId,#txtCustName,#txtCustAddress,#txtCustPhoneNo').css('border', '2px solid #ced4da');
         $('#txtCustId').focus();
         /* $("#popBtnAdd").attr('disabled', true);*/
         /*loadAllCustomers();*/
