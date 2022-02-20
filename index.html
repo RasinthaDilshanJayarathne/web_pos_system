@@ -792,10 +792,6 @@
         saveCustomer();
         loadAllCustomer();
         loadCustomerDataTextField();
-
-        $("#customerTable>tr").dblclick(function () {
-            $(this).remove();
-        });
         clearPopData();
     });
 
@@ -832,29 +828,29 @@
         console.log(customerObject);
     }
 
-    $("#btnCustS").click(function () {
-        let itemCode = $("#txtItemCode").val();
-        let itemName = $("#txtItemName").val();
-        let itemPrice = $("#txtItemPrice").val();
-        let itemQtyOnHand = $("#txtItemQTYOnHand").val();
+    $("#btnCustUpdate").click(function () {
+        let customerId = $("#txtCustId").val();
+        let customerName = $("#txtCustName").val();
+        let customerAddress = $("#txtCustAddress").val();
+        let customerPhone = $("#txtCustPhoneNo").val();
 
-        for (var i = 0; i < itemDB.length; i++) {
-            if ($("#txtItemCode").val()==itemDB[i].id){
+        for (var i = 0; i < customerDB.length; i++) {
+            if ($("#txtCustId").val()==customerDB[i].id){
                 console.log("Enter");
-                itemDB[i].id= itemCode;
-                itemDB[i].name=itemName;
-                itemDB[i].price=itemPrice;
-                itemDB[i].qtyOnHand=itemQtyOnHand;
+                customerDB[i].id= customerId;
+                customerDB[i].name=customerName;
+                customerDB[i].address=customerAddress;
+                customerDB[i].phoneNo=customerPhone;
             }
         }
-        loadAllItem();
+        loadAllCustomer();
 
-        $("#txtItemCode").val("");
-        $("#txtItemName").val("");
-        $("#txtItemPrice").val("");
-        $("#txtItemQTYOnHand").val("");
+        $("#txtCustId").val("");
+        $("#txtCustName").val("");
+        $("#txtCustAddress").val("");
+        $("#txtCustPhoneNo").val("");
 
-        loadItemDataTextField();
+        loadCustomerDataTextField()
     });
 
     $("#customerTable").on('click', '#btnCustomerDelete', function () {
