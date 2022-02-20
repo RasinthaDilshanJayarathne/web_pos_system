@@ -413,9 +413,9 @@
                     <button class="btn btn-warning  btn-sm h-75 mt-3" id="" style="font-size: 20px;font-weight: bold"
                             type="button">Update
                     </button>
-                   <!-- <button class="btn btn-danger  btn-sm h-75 mt-3" style="font-size: 20px;font-weight: bold"
-                            type="button">Delete
-                    </button>-->
+                    <!-- <button class="btn btn-danger  btn-sm h-75 mt-3" style="font-size: 20px;font-weight: bold"
+                             type="button">Delete
+                     </button>-->
                     <button class="btn btn-success  btn-sm h-75 mt-3" data-bs-target="#customerPopUp"
                             data-bs-toggle="modal" style="font-size: 20px;font-weight: bold"
                             type="button">+New Customer
@@ -533,8 +533,6 @@
             let itemPrice1 = $(this).children(":eq(2)").text();
             let itemQtyOnHand1 = $(this).children(":eq(3)").text();
 
-            console.log(itemCode1, itemName1, itemPrice1, itemQtyOnHand1);
-
             $("#txtItemCode").val(itemCode1);
             $("#txtItemName").val(itemName1);
             $("#txtItemPrice").val(itemPrice1);
@@ -574,10 +572,22 @@
     }
 
     $("#itemTable").on('click', '#btnItemDelete', function () {
-        console.log("Hello");
+        var index = 0;
+        for (var i = 0; i < itemDB.length; i++) {
+            if ($("#txtItemCode").val() == itemDB[i].id) {
+                index = i;
+            }
+        }
+        itemDB.splice(index, 1);
+
+        $("#txtItemCode").val("");
+        $("#txtItemName").val("");
+        $("#txtItemPrice").val("");
+        $("#txtItemQTYOnHand").val("");
+
         $(this).closest('tr').remove();
-        clearAllItem();
-    })
+
+    });
 
     $("#btnItemSearch").click(function () {
         var searchID = $("#ItemPpoSearchBar").val();
@@ -591,6 +601,13 @@
         } else {
             clearAllItem();
             alert("No Such a Item");
+        }
+    });
+
+    $("#btnItemUpdate").click(function () {
+        var i = 0;
+        for (i = 0; i < arguments.length; i++) {
+            data[findIndex(arguments[i].name)] = arguments[i];
         }
     });
 
@@ -791,10 +808,22 @@
     }
 
     $("#customerTable").on('click', '#btnCustomerDelete', function () {
-        console.log("Hello");
+        var index = 0;
+        for (var i = 0; i < customerDB.length; i++) {
+            if ($("#txtCustId").val() == customerDB[i].id) {
+                index = i;
+            }
+        }
+        customerDB.splice(index, 1);
+
+        $("#txtCustId").val("");
+        $("#txtCustName").val("");
+        $("#txtCustAddress").val("");
+        $("#txtCustPhoneNo").val("");
+
         $(this).closest('tr').remove();
-        clearAll();
-    })
+
+    });
 
     function loadAllCustomer() {
         $("#customerTable").empty();
