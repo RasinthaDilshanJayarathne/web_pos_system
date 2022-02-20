@@ -562,51 +562,7 @@
             qtyOnHand: itemQtyOnHand
         };
         itemDB.push(itemObject);
-    }
-
-    function loadAllItem() {
-        $("#itemTable").empty();
-        for (var i of itemDB) {
-            /*create a html row*/
-            let row = `<tr><td>${i.id}</td><td>${i.name}</td><td>${i.price}</td><td>${i.qtyOnHand}</td>
-            <td><button id="btnItemDelete" type="button" class="btn-sm btn-danger">Delete</button></tr>`;
-            /*select the table body and append the row */
-            $("#itemTable").append(row);
-        }
-    }
-
-    $("#itemTable").on('click', '#btnItemDelete', function () {
-        var index = 0;
-        for (var i = 0; i < itemDB.length; i++) {
-            if ($("#txtItemCode").val() == itemDB[i].id) {
-                index = i;
-            }
-        }
-        itemDB.splice(index, 1);
-
-        $("#txtItemCode").val("");
-        $("#txtItemName").val("");
-        $("#txtItemPrice").val("");
-        $("#txtItemQTYOnHand").val("");
-
-        $(this).closest('tr').remove();
-
-    });
-
-    $("#btnItemSearch").click(function () {
-        var searchID = $("#ItemPpoSearchBar").val();
-
-        var response = searchItem(searchID);
-        if (response) {
-            $("#txtItemCode").val(response.id);
-            $("#txtItemName").val(response.name);
-            $("#txtItemPrice").val(response.price);
-            $("#txtItemQTYOnHand").val(response.qtyOnHand);
-        } else {
-            clearAllItem();
-            alert("No Such a Item");
-        }
-    });
+    };
 
     $("#btnItemUpdate").click(function () {
         let itemCode = $("#txtItemCode").val();
@@ -624,13 +580,50 @@
             }
         }
         loadAllItem();
-
-        $("#txtItemCode").val("");
-        $("#txtItemName").val("");
-        $("#txtItemPrice").val("");
-        $("#txtItemQTYOnHand").val("");
-
+        clearAllItem();
         loadItemDataTextField();
+    });
+
+    $("#itemTable").on('click', '#btnItemDelete', function () {
+        var index = 0;
+        for (var i = 0; i < itemDB.length; i++) {
+            if ($("#txtItemCode").val() == itemDB[i].id) {
+                index = i;
+            }
+        }
+        itemDB.splice(index, 1);
+
+        clearAllItem();
+
+        $(this).closest('tr').remove();
+
+    });
+
+
+    function loadAllItem() {
+        $("#itemTable").empty();
+        for (var i of itemDB) {
+            /*create a html row*/
+            let row = `<tr><td>${i.id}</td><td>${i.name}</td><td>${i.price}</td><td>${i.qtyOnHand}</td>
+            <td><button id="btnItemDelete" type="button" class="btn-sm btn-danger">Delete</button></tr>`;
+            /*select the table body and append the row */
+            $("#itemTable").append(row);
+        }
+    }
+
+    $("#btnItemSearch").click(function () {
+        var searchID = $("#ItemPpoSearchBar").val();
+
+        var response = searchItem(searchID);
+        if (response) {
+            $("#txtItemCode").val(response.id);
+            $("#txtItemName").val(response.name);
+            $("#txtItemPrice").val(response.price);
+            $("#txtItemQTYOnHand").val(response.qtyOnHand);
+        } else {
+            clearAllItem();
+            alert("No Such a Item");
+        }
     });
 
     function searchItem(id) {
@@ -844,12 +837,7 @@
             }
         }
         loadAllCustomer();
-
-        $("#txtCustId").val("");
-        $("#txtCustName").val("");
-        $("#txtCustAddress").val("");
-        $("#txtCustPhoneNo").val("");
-
+        clearAll();
         loadCustomerDataTextField()
     });
 
@@ -862,10 +850,7 @@
         }
         customerDB.splice(index, 1);
 
-        $("#txtCustId").val("");
-        $("#txtCustName").val("");
-        $("#txtCustAddress").val("");
-        $("#txtCustPhoneNo").val("");
+        clearAll();
 
         $(this).closest('tr').remove();
 
