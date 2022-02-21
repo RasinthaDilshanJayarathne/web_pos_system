@@ -77,7 +77,6 @@ $("#itemTable").on('click', '#btnItemDelete', function () {
 
 });
 
-
 function loadAllItem() {
     $("#itemTable").empty();
     for (var i of itemDB) {
