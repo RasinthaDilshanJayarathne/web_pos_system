@@ -49,3 +49,26 @@ $("#itemChombo").click(function () {
 });
 
 
+/*
+function generateItemID() {
+    if (itemDB.length !== 0) {
+        let id = itemDB[(itemDB.length) - 1].id;
+        const txt = id.split('0', 2);
+        console.log(txt);
+        let newID = parseInt(txt[1]) + 1;
+        console.log(newID);
+
+        if (newID <= 9) {
+            $("#orderId").text("O00" + newID);
+        } else if (newID <= 99) {
+            $("#orderId").text("O0" + newID);
+        } else if (newID <= 999) {
+            $("#orderId").text("O" + newID);
+        }
+
+    } else {
+        $("#orderId").text("O001");
+    }
+}
+*/
+
