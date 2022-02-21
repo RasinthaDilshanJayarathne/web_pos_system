@@ -6,9 +6,7 @@ $("#popBtnAdd").click(function () {
     loadItemDataTextField();
 
 
-    $("#itemTable>tr").dblclick(function () {
-        $(this).remove();
-    });
+
     clearItemPopData();
 });
 
@@ -40,6 +38,9 @@ function saveItem() {
         qtyOnHand: itemQtyOnHand
     };
     itemDB.push(itemObject);
+
+    loadItemChomboBoxData("<option>"+itemCode+"</option>");
+
 };
 
 $("#btnItemUpdate").click(function () {

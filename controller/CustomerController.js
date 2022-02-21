@@ -5,6 +5,7 @@ $("#popCustBtnAdd").click(function () {
     loadAllCustomer();
     loadCustomerDataTextField();
     clearPopData();
+
 });
 
 function loadCustomerDataTextField(){
@@ -37,7 +38,8 @@ function saveCustomer() {
         phoneNo: customerPhone
     };
     customerDB.push(customerObject);
-    console.log(customerObject);
+
+    loadCustChomboBoxData("<option>"+customerId+"</option>");
 }
 
 $("#btnCustUpdate").click(function () {
