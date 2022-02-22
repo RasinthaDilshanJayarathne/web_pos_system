@@ -27,7 +27,6 @@ function loadItemChomboBoxData(value) {
 }
 
 $("#itemChombo").click(function () {
-    console.log("Enter Order");
     let itemCode = $("#itemChombo").val();
 
     let itemName = $("#orderItemName").val();
@@ -36,7 +35,6 @@ $("#itemChombo").click(function () {
 
     for (var i = 0; i < itemDB.length; i++) {
         if (itemDB[i].id == itemCode) {
-            console.log("Enter if condition");
             itemName = itemDB[i].name;
             itemPrice = itemDB[i].price;
             itemQty =  itemDB[i].qtyOnHand;
@@ -50,7 +48,7 @@ $("#itemChombo").click(function () {
 
 $("#addToCart").click(function (){
     loadItemData();
-
+    /*clearItemData();*/
 });
 
 function loadItemData(){
@@ -62,16 +60,22 @@ function loadItemData(){
     let itemQty = $("#orderQtyOnHand").val();
     let itemOrderQty = $("#orderOrderQty").val();
 
+
     let total = itemOrderQty * itemPrice;
 
-    let row = `<tr><td>${itemCode}</td><td>${itemName}</td><td>${itemPrice}</td><td>${itemOrderQty}</td><td>${total}</td></tr>`
+    $("#totalPrice").val(itemOrderQty * itemPrice);
 
+    console.log(totalPrice);
+
+
+    let row = `<tr><td>${itemCode}</td><td>${itemName}</td><td>${itemPrice}</td><td>${itemOrderQty}</td><td>${total}</td></tr>`
     $("#orderTable").append(row);
-    /*for (var i of itemDB){
-        let row = `<tr><td>${i.id}</td><td>${i.name}</td><td>${i.price}</td><td>${i.qtyOnHand}</td><td><td></td></tr>`;
-        $("#orderTable").append(row);
-    }*/
+
 }
+
+function clearItemData(){
+    $('#itemChombo,#orderItemName,#orderUnitPrice,#orderQtyOnHand,#orderOrderQty').val("");
+};
 
 
 /*

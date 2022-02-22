@@ -87,21 +87,21 @@
                                 <label class="form-label" for="orderCustName"
                                        style="font-weight: bold; font-size: 12px">Name</label>
                                 <input aria-describedby="itemNameHelp" class="form-control" id="orderCustName"
-                                       type="text">
+                                       type="text" disabled>
                                 <div class="form-text" id="itemNameHelp"></div>
                             </div>
                             <div class="mb-2 col-6">
                                 <label class="form-label" for="orderTelephoneNo"
                                        style="font-weight: bold; font-size: 12px">Tel No</label>
                                 <input aria-describedby="telNoHelp" class="form-control" id="orderTelephoneNo"
-                                       type="text">
+                                       type="text" disabled>
                                 <div class="form-text" id="telNoHelp"></div>
                             </div>
                             <div class="mb-2 col-6">
                                 <label class="form-label" for="orderAddress"
                                        style="font-weight: bold; font-size: 12px">Address</label>
                                 <input aria-describedby="addressHelp" class="form-control" id="orderAddress"
-                                       type="text">
+                                       type="text" disabled>
                                 <div class="form-text" id="addressHelp"></div>
                             </div>
                         </section>
@@ -127,21 +127,21 @@
                             <div class="mb-2 col-6">
                                 <label class="form-label" for="orderItemName"
                                        style="font-weight: bold; font-size: 12px">Name</label>
-                                <input aria-describedby="nameHelp" class="form-control" id="orderItemName" type="text">
+                                <input aria-describedby="nameHelp" class="form-control" id="orderItemName" type="text" disabled>
                                 <div class="form-text" id="nameHelp"></div>
                             </div>
                             <div class="mb-2 col-6">
                                 <label class="form-label" for="orderUnitPrice" style="font-weight: bold; font-size: 12px">Unit
                                     Price</label>
                                 <input aria-describedby="unitPriceHelp" class="form-control" id="orderUnitPrice"
-                                       type="text">
+                                       type="text" disabled>
                                 <div class="form-text" id="unitPriceHelp"></div>
                             </div>
                             <div class="mb-2 col-6">
                                 <label class="form-label" for="orderQtyOnHand" style="font-weight: bold; font-size: 12px">QTY
                                     On Hand</label>
                                 <input aria-describedby="qtyOnHandHelp" class="form-control" id="orderQtyOnHand"
-                                       type="text">
+                                       type="text" disabled>
                                 <div class="form-text" id="qtyOnHandHelp"></div>
                             </div>
                             <div class="mb-2 col-12">
@@ -167,10 +167,17 @@
                 <div class="card-body">
                     <form>
                         <section class="row" style="width: 100%">
-                            <div class="mb-2 col-12 mt-3">
-                                <label class="form-label"
-                                       style="font-weight: bold; font-size: 25px; color: #f53b57">Total :- </label>
+                            <div class="mb-2 col-6">
+                                <label class="form-label" style="font-weight: bold; font-size: 25px; color: #f53b57">Total :- </label>
+<!--
+                                <label id="totalPrice" class="form-label" style="font-weight: bold; font-size: 25px; color: #f53b57"> </label>&ndash;&gt;
+-->
                             </div>
+
+                            <div class="mb-2 col-6">
+                                <input aria-describedby="totalPrice" class="form-control w-100" id="totalPrice" type="text" style="font-weight: bold; font-size: 25px; color: #f53b57">
+                            </div>
+
                             <div class="mb-2 col-6 mt-3">
                                 <label class="form-label" for="exampleInputCash"
                                        style="font-weight: bold; font-size: 12px">Cash</label>
