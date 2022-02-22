@@ -48,6 +48,31 @@ $("#itemChombo").click(function () {
     }
 });
 
+$("#addToCart").click(function (){
+    loadItemData();
+
+});
+
+function loadItemData(){
+    $("#orderTable").empty();
+
+    let itemCode = $("#itemChombo").val();
+    let itemName = $("#orderItemName").val();
+    let itemPrice = $("#orderUnitPrice").val();
+    let itemQty = $("#orderQtyOnHand").val();
+    let itemOrderQty = $("#orderOrderQty").val();
+
+    let total = itemOrderQty * itemPrice;
+
+    let row = `<tr><td>${itemCode}</td><td>${itemName}</td><td>${itemPrice}</td><td>${itemOrderQty}</td><td>${total}</td></tr>`
+
+    $("#orderTable").append(row);
+    /*for (var i of itemDB){
+        let row = `<tr><td>${i.id}</td><td>${i.name}</td><td>${i.price}</td><td>${i.qtyOnHand}</td><td><td></td></tr>`;
+        $("#orderTable").append(row);
+    }*/
+}
+
 
 /*
 function generateItemID() {
