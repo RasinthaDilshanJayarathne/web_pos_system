@@ -5,7 +5,6 @@ $("#popCustBtnAdd").click(function () {
     loadAllCustomer();
     loadCustomerDataTextField();
     clearPopData();
-
 });
 
 function loadCustomerDataTextField(){

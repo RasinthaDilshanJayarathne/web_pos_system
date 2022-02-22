@@ -4,9 +4,6 @@ $("#popBtnAdd").click(function () {
     saveItem();
     loadAllItem();
     loadItemDataTextField();
-
-
-
     clearItemPopData();
 });
 

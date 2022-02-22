@@ -63,8 +63,7 @@
                     <form>
                         <section class="row" style="width: 100%">
                             <div class="mb-2 col-6">
-                                <label class="form-label" for="orderId"
-                                       style="font-weight: bold; font-size: 12px">Order ID</label>
+                                <label class="form-label" for="orderId" style="font-weight: bold; font-size: 12px">Order ID</label>
                                 <input aria-describedby="idHelp" class="form-control" id="orderId" type="text">
                                 <div class="form-text" id="idHelp"></div>
                             </div>
@@ -167,52 +166,79 @@
                 <div class="card-body">
                     <form>
                         <section class="row" style="width: 100%">
-                            <div class="mb-2 col-6">
-                                <label class="form-label" style="font-weight: bold; font-size: 25px; color: #f53b57">Total :- </label>
-<!--
-                                <label id="totalPrice" class="form-label" style="font-weight: bold; font-size: 25px; color: #f53b57"> </label>&ndash;&gt;
--->
-                            </div>
 
-                            <div class="mb-2 col-6">
-                                <input aria-describedby="totalPrice" class="form-control w-100" id="totalPrice" type="text" style="font-weight: bold; font-size: 25px; color: #f53b57">
-                            </div>
-
-                            <div class="mb-2 col-6 mt-3">
-                                <label class="form-label" for="exampleInputCash"
-                                       style="font-weight: bold; font-size: 12px">Cash</label>
-                                <input aria-describedby="cashHelp" class="form-control" id="exampleInputCash"
-                                       type="text">
-                                <div class="form-text" id="cashHelp"></div>
-                            </div>
-                            <div class="mb-2 col-6 mt-3">
-                                <label class="form-label" style="font-weight: bold; font-size: 12px">Discount</label>
-                                <select aria-label="Default select example" class="form-select">
-                                    <option selected>0.00</option>
-                                    <option value="1">10</option>
-                                    <option value="2">20</option>
-                                    <option value="3">30</option>
-                                    <option value="3">40</option>
-                                    <option value="3">50</option>
-                                    <option value="3">60</option>
-                                    <option value="3">70</option>
-                                    <option value="3">80</option>
-                                    <option value="3">90</option>
-                                    <option value="3">100</option>
+                            <div class="mb-2 col-12 mt-1">
+                                <label id="discount" class="form-label" style="font-weight: bold; font-size: 12px">Discount</label>
+                                <select id="discountCmb" aria-label="Default select example" class="form-select">
+                                    <option value="1">Select Discount</option>
+                                    <option value="1">5</option>
+                                    <option value="2">10</option>
+                                    <option value="3">15</option>
+                                    <option value="3">20</option>
                                 </select>
                             </div>
-                            <div class="mb-2 col-12 mt-4">
-                                <label class="form-label" style="font-weight: bold; font-size: 20px; color: #0fbcf9">Balance :- </label>
+
+                            <div class="mb-2 col-6">
+                                <label class="form-label" for="orderOrderQty" style="font-weight: bold; font-size: 12px">Total </label>
+                                <input aria-describedby="orderQtyHelp" class="form-control" id="total" type="text" style="color: #f53b57;font-weight: bold;" disabled>
                             </div>
+
+                            <div class="mb-2 col-6">
+                                <label class="form-label" for="cash" style="font-weight: bold; font-size: 12px">Cash</label>
+                                <input aria-describedby="cashHelp" class="form-control" id="cash" type="text">
+                            </div>
+
+                            <div class="mb-2 col-6">
+                                <label class="form-label" for="cash" style="font-weight: bold; font-size: 12px">Balance</label>
+                                <input aria-describedby="cashHelp" class="form-control" id="balance" type="text" style="color: #0fbcf9;font-weight: bold;" disabled>
+                            </div>
+
                         </section>
                         <section class="row ">
                             <div class="mt-5 col-5 justify-content-lg-start">
                                 <button class="btn btn-success  btn-sm w-100" style="font-weight: bold" type="button">Purchase</button>
                             </div>
+
                             <div class="mt-5 col-5 justify-content-lg-end">
-                                <button class="btn btn-warning  btn-sm w-100" style="font-weight: bold" type="button">Order Details</button>
+                                <button class="btn btn-warning  btn-sm w-100" data-bs-target="#orderDetail" data-bs-toggle="modal" id="btnOrderDetail" style="font-weight: bold" type="button" type="button">Order Details
+                                </button>
                             </div>
                         </section>
+
+
+                        <div aria-hidden="true" aria-labelledby="exampleModalLabel" class="modal fade" id="orderDetail"
+                             tabindex="-1">
+                            <div class="modal-dialog modal-lg">
+                                <div class="modal-content">
+                                    <div class="modal-header" style="background: #fd7e14">
+                                        <h5 class="modal-title" id="orderDetailLabel">Order Detail Form</h5>
+                                        <button aria-label="Close" class="btn-close" data-bs-dismiss="modal" type="button"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <section class="row" style="width: 100%">
+                                            <table class="table table-dark table-striped mt-0 container-fluid">
+                                                <thead>
+                                                <tr>
+                                                    <th scope="col">Order Id</th>
+                                                    <th scope="col">Order Date</th>
+                                                    <th scope="col">Customer Id</th>
+                                                    <th scope="col">Customer Name</th>
+                                                    <th scope="col">Item Code</th>
+                                                    <th scope="col">Item Name</th>
+                                                    <th scope="col">Discount</th>
+                                                    <th scope="col">Total</th>
+                                                </tr>
+                                                </thead>
+                                                <tbody id="orderDetailTable">
+
+                                                </tbody>
+                                            </table>
+                                        </section>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
 
                     </form>
                 </div>
@@ -229,6 +255,7 @@
                 <th scope="col">Price</th>
                 <th scope="col">Order Quantity</th>
                 <th scope="col">Total</th>
+                <th scope="col">Option</th>
             </tr>
             </thead>
             <tbody id="orderTable">
@@ -290,8 +317,7 @@
                     </button>
                     <button class="btn btn-success  btn-sm h-75 mt-3" data-bs-target="#exampleModal"
                             data-bs-toggle="modal"
-                            id="btnAdd" style="font-size: 20px;font-weight: bold"
-                            type="button">+New Item
+                            id="btnAdd" style="font-size: 20px;font-weight: bold" type="button">+New Item
                     </button>
 
                     <!-- Modal -->
