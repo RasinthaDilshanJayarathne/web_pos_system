@@ -49,7 +49,6 @@ $("#btnCustUpdate").click(function () {
 
     for (var i = 0; i < customerDB.length; i++) {
         if ($("#txtCustId").val()==customerDB[i].id){
-            console.log("Enter");
             customerDB[i].id= customerId;
             customerDB[i].name=customerName;
             customerDB[i].address=customerAddress;

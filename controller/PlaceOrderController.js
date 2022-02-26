@@ -49,18 +49,13 @@ $("#itemChombo").click(function () {
 $("#addToCart").click(function () {
     loadItemData();
     clearItemData();
+    loadItemCartTable();
 });
 
-let itemCode;
-let itemName;
-let itemPrice;
-let itemQty;
-let itemOrderQty;
-let cash;
-let total;
+let itemCode;let itemName;let itemPrice;let itemQty;let itemOrderQty;let cash;let total;
 
+$("#orderTable").empty();
 function loadItemData() {
-
     itemCode = $("#itemChombo").val();
     itemName = $("#orderItemName").val();
     itemPrice = $("#orderUnitPrice").val();
@@ -72,11 +67,58 @@ function loadItemData() {
 
     $("#totalPrice").val(itemOrderQty * itemPrice);
 
-    $("#orderTable").empty();
-    let row = `<tr><td>${itemCode}</td><td>${itemName}</td><td>${itemPrice}</td><td>${itemOrderQty}</td><td>${total}</td>
-                <td><button id="btnItemCartDelete" type="button" class="btn-sm btn-danger">Delete</button></tr></tr>`;
-    $("#orderTable").append(row);
+    /*let row = `<tr><td>${itemCode}</td><td>${itemName}</td><td>${itemPrice}</td><td>${itemQty}</td><td>${itemOrderQty}</td><td>${total}</td>
+                <td><button id="btnItemCartDelete" type="button" class="btn-sm btn-danger">Delete</button>
+                <button id="btnItemCartUpdate" type="button" class="btn-sm btn-primary">Update</button></tr>`;
+
+    $("#orderTable").append(row);*/
+
+    for (var i = 0; i < itemDB.length; i++) {
+        if ($("#txtCustId").val()==itemDB[i].id){
+            itemCode = itemDB[i].id;
+            itemName = itemDB[i].name;
+            itemPrice = itemDB[i].price;
+            itemQty = itemDB[i].qtyOnHand;
+        }
+        let row = `<tr><td>${itemCode}</td><td>${itemName}</td><td>${itemPrice}</td><td>${itemQty}</td><td>${itemOrderQty}</td><td>${total}</td>
+                <td><button id="btnItemCartDelete" type="button" class="btn-sm btn-danger">Delete</button>
+                <button id="btnItemCartUpdate" type="button" class="btn-sm btn-primary">Update</button></tr>`;
+
+        $("#orderTable").append(row);
+    }
 };
+
+function loadItemCartTable(){
+    $("#orderTable>tr").click(function () {
+        let itemId = $(this).children(":eq(0)").text();
+        let itemName = $(this).children(":eq(1)").text();
+        let unitPrice = $(this).children(":eq(2)").text();
+        let qtyOnHand = $(this).children(":eq(3)").text();
+        let orderQty = $(this).children(":eq(4)").text();
+
+        $("#itemChombo").val(itemId);
+        $("#orderItemName").val(itemName);
+        $("#orderUnitPrice").val(unitPrice);
+        $("#orderQtyOnHand").val(qtyOnHand);
+        $("#orderOrderQty").val(orderQty);
+    });
+};
+
+$("#btnItemCartUpdate").click(function (){
+
+  /*let updateItemId = $("#itemChombo").val();
+   let updateItemName = $("#orderItemName").val();
+   let updateItemUnitPrice = $("#orderUnitPrice").val();
+   let updateItemQtyOnHand = $("#orderQtyOnHand").val();
+   let updateItemOrderQty = $("#orderOrderQty").val();
+
+    updateItemId = updateItemId;
+    updateItemName = updateItemName;
+    updateItemUnitPrice = updateItemUnitPrice;
+    updateItemQtyOnHand = updateItemQtyOnHand;
+    updateItemOrderQty = updateItemOrderQty;*/
+
+});
 
 $("#orderTable").on('click', '#btnItemCartDelete', function () {
     $(this).closest('tr').remove();
@@ -97,9 +139,20 @@ $("#discountCmb").click(function () {
     console.log(finalBalance);
 });
 
+$("#btnPurchase").click(function (){
+    console.log("Enter");
+    for (var i = 0; i < itemDB.length; i++) {
+        console.log("Enter1");
+        if (itemCode == itemDB[i].id){
+           let newQtyOnHand = itemDB[i].qtyOnHand - itemOrderQty;
+            itemQty = newQtyOnHand;
+        }
+        console.log(itemQty);
+    }
+});
 
-/*function generateItemID() {
-    if (itemDB.length !== 0) {
+function generateItemID() {
+   /* if (itemDB.length !== 0) {
         let id = itemDB[(itemDB.length) - 1].id;
         const txt = id.split('0', 2);
         console.log(txt);
@@ -113,9 +166,21 @@ $("#discountCmb").click(function () {
         } else if (newID <= 999) {
             $("#orderId").text("O" + newID);
         }
-
     } else {
         $("#orderId").text("O001");
-    }
-}*/
+    }*/
 
+    /*try {
+        let lastOrderId = orderTable[orderTable.length - 1].getOrderID();
+        let newOrderId = parseInt(lastOrderId.substring(1, 4)) + 1;
+        if (newOrderId < 10) {
+            $("#txtOrderID").val("O00" + newOrderId);
+        } else if (newOrderId < 100) {
+            $("#txtOrderID").val("O0" + newOrderId);
+        } else {
+            $("#txtOrderID").val("O" + newOrderId);
+        }
+    } catch (e) {
+        $("#txtOrderID").val("O001");
+    }*/
+}

@@ -1,3 +1,26 @@
+$("#btnAdd").click(function () {
+    if (itemDB.length !== 0) {
+        let id = itemDB[(itemDB.length) - 1].id;
+        const txt = id.split('I', 2);
+        /*console.log(txt);*/
+        let newID = parseInt(txt[1]) + 1;
+        /*console.log(newID);*/
+
+        if (newID <= 9) {
+            $("#txtPopItemCode").text("I00" + newID);
+        } else if (newID <= 99) {
+            $("#txtPopItemCode").text("I0" + newID);
+        } else if (newID <= 999) {
+            $("#txtPopItemCode").text("I" + newID);
+        }
+
+    } else {
+        $("#txtPopItemCode").text("I001");
+    }
+
+    /*console.log($("#txtPopItemCode").val());*/
+});
+
 $("#popBtnAdd").click(function () {
     $("#itemTable>tr").off("click");
 
@@ -5,6 +28,7 @@ $("#popBtnAdd").click(function () {
     loadAllItem();
     loadItemDataTextField();
     clearItemPopData();
+
 });
 
 function loadItemDataTextField(){
@@ -108,6 +132,8 @@ function searchItem(id) {
         }
     }
 }
+
+
 
 var regExItemCode = /^(I00-)[0-9]{3,4}$/;
 var regExItemName = /^[A-z ]{3,20}$/;
