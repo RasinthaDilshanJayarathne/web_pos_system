@@ -1,24 +1,5 @@
 $("#btnAdd").click(function () {
-    if (itemDB.length !== 0) {
-        let id = itemDB[(itemDB.length) - 1].id;
-        const txt = id.split('I', 2);
-        /*console.log(txt);*/
-        let newID = parseInt(txt[1]) + 1;
-        /*console.log(newID);*/
 
-        if (newID <= 9) {
-            $("#txtPopItemCode").text("I00" + newID);
-        } else if (newID <= 99) {
-            $("#txtPopItemCode").text("I0" + newID);
-        } else if (newID <= 999) {
-            $("#txtPopItemCode").text("I" + newID);
-        }
-
-    } else {
-        $("#txtPopItemCode").text("I001");
-    }
-
-    /*console.log($("#txtPopItemCode").val());*/
 });
 
 $("#popBtnAdd").click(function () {
@@ -52,13 +33,13 @@ function saveItem() {
     let itemPrice = $("#txtPopItemPrice").val();
     let itemQtyOnHand = $("#txtPopItemQuntity").val();
 
-    var itemObject = {
+   /* var itemObject = {
         id: itemCode,
         name: itemName,
         price: itemPrice,
         qtyOnHand: itemQtyOnHand
-    };
-    itemDB.push(itemObject);
+    };*/
+    itemDB.push(new ItemDTO(itemCode,itemName, itemPrice, itemQtyOnHand));
 
     loadItemChomboBoxData("<option>"+itemCode+"</option>");
 
@@ -277,3 +258,22 @@ function clearAllItem() {
     /*loadAllCustomers();*/
     /*$("#lblcusid,#lblcusname,#lblcusaddress,#lblcussalary").text("");*/
 }
+
+/*
+function generateItemCode() {
+    try {
+        let lastItemCode = itemTable[itemTable.length-1].getCode();
+        let newItemCode = parseInt(lastItemCode.substring(1,4))+1;
+        if (newItemCode < 10) {
+            $("#txtItemCode").text("#P00"+newItemCode);
+        }else if (newItemCode < 100) {
+            $("#txtItemCode").text("#P0"+newItemCode);
+        } else {
+            $("#txtItemCode").text("#P"+newItemCode);
+        }
+    } catch (e) {
+        $("#txtItemCode").text("#P001");
+    }
+
+}
+generateItemCode();*/

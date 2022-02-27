@@ -1,3 +1,20 @@
+function genarateOrderId() {
+    try {
+        let lastOrderId = orderTable[orderDB.length-1].getOrderId();
+        let newOrderId = parseInt(lastOrderId.substring(1,4))+1;
+        if (newOrderId < 10) {
+            $("#orderId").text("#D00"+newOrderId);
+        }else if (newOrderId < 100) {
+            $("#orderId").text("#D0"+newOrderId);
+        } else {
+            $("#orderId").text("#D"+newOrderId);
+        }
+    } catch (e) {
+        $("#orderId").text("#D001");
+    }
+}
+
+
 function loadCustChomboBoxData(value) {
     $("#custChombo").append(value);
 }
@@ -141,46 +158,5 @@ $("#discountCmb").click(function () {
 
 $("#btnPurchase").click(function (){
     console.log("Enter");
-    for (var i = 0; i < itemDB.length; i++) {
-        console.log("Enter1");
-        if (itemCode == itemDB[i].id){
-           let newQtyOnHand = itemDB[i].qtyOnHand - itemOrderQty;
-            itemQty = newQtyOnHand;
-        }
-        console.log(itemQty);
-    }
+    genarateOrderId();
 });
-
-function generateItemID() {
-   /* if (itemDB.length !== 0) {
-        let id = itemDB[(itemDB.length) - 1].id;
-        const txt = id.split('0', 2);
-        console.log(txt);
-        let newID = parseInt(txt[1]) + 1;
-        console.log(newID);
-
-        if (newID <= 9) {
-            $("#orderId").text("O00" + newID);
-        } else if (newID <= 99) {
-            $("#orderId").text("O0" + newID);
-        } else if (newID <= 999) {
-            $("#orderId").text("O" + newID);
-        }
-    } else {
-        $("#orderId").text("O001");
-    }*/
-
-    /*try {
-        let lastOrderId = orderTable[orderTable.length - 1].getOrderID();
-        let newOrderId = parseInt(lastOrderId.substring(1, 4)) + 1;
-        if (newOrderId < 10) {
-            $("#txtOrderID").val("O00" + newOrderId);
-        } else if (newOrderId < 100) {
-            $("#txtOrderID").val("O0" + newOrderId);
-        } else {
-            $("#txtOrderID").val("O" + newOrderId);
-        }
-    } catch (e) {
-        $("#txtOrderID").val("O001");
-    }*/
-}

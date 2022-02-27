@@ -1,4 +1,4 @@
-function itemDTO(itemCode,itemName,itemPrice,itemQtyOnHand){
+function ItemDTO(itemCode,itemName,itemPrice,itemQtyOnHand){
     this.__icode = itemCode;
     this.__iname = itemName;
     this.__iprice = itemPrice;
