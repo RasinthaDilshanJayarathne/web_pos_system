@@ -53,11 +53,10 @@ $("#btnItemUpdate").click(function () {
 
     for (var i = 0; i < itemDB.length; i++) {
         if ($("#txtItemCode").val()==itemDB[i].id){
-            console.log("Enter");
-            itemDB[i].id= itemCode;
-            itemDB[i].name=itemName;
-            itemDB[i].price=itemPrice;
-            itemDB[i].qtyOnHand=itemQtyOnHand;
+            itemDB[i].getItemCode(itemCode);
+            itemDB[i].getItemName(itemName);
+            itemDB[i].getItemPrice(itemPrice);
+            itemDB[i].getItemQtyOnHand(itemQtyOnHand);
         }
     }
     loadAllItem();
@@ -82,12 +81,23 @@ $("#itemTable").on('click', '#btnItemDelete', function () {
 
 function loadAllItem() {
     $("#itemTable").empty();
-    for (var i of itemDB) {
-        /*create a html row*/
+    /*for (var i of itemDB) {
+        /!*create a html row*!/
         let row = `<tr><td>${i.id}</td><td>${i.name}</td><td>${i.price}</td><td>${i.qtyOnHand}</td>
             <td><button id="btnItemDelete" type="button" class="btn-sm btn-danger">Delete</button></tr>`;
-        /*select the table body and append the row */
+        /!*select the table body and append the row *!/
         $("#itemTable").append(row);
+    }*/
+
+    for (let i = 0; i < itemDB.length; i++){
+
+        $("#itemTable").append("<tr>" +
+            "<td>"+itemDB[i].getItemCode()+"</td>" +
+            "<td>"+itemDB[i].getItemName()+"</td>" +
+            "<td>"+itemDB[i].getItemPrice()+"</td>" +
+            "<td>"+itemDB[i].getItemQtyOnHand()+"</td>" +
+            `<td><button id="btnItemDelete" type="button" class="btn-sm btn-danger">Delete</button></td>`+
+            "</tr>");
     }
 }
 
