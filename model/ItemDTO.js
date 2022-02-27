@@ -1,31 +1,31 @@
-function itemDTO(){
-    var itemCode;
-    var itemName;
-    var itemPrice;
-    var itemQtyOnHand;
+function itemDTO(itemCode,itemName,itemPrice,itemQtyOnHand){
+    this.__icode = itemCode;
+    this.__iname = itemName;
+    this.__iprice = itemPrice;
+    this.__iqtyonhand = itemQtyOnHand;
 
     this.getItemCode = function (){
-        return this.itemCode;
+        return this.__icode;
     }
     this.setItemCode = function (itemCode){
-        this.itemCode = itemCode;
+        this.__icode = itemCode;
     }
     this.getItemName = function (){
-        return this.itemName;
+        return this.__iname;
     }
     this.setItemName = function (itemName){
-        this.itemName = itemName;
+        this.__iname = itemName;
     }
     this.getItemPrice = function (){
-        return this.itemPrice;
+        return this.__iprice;
     }
     this.setItemPrice = function (itemPrice){
-        this.itemPrice = itemPrice;
+        this.__iprice = itemPrice;
     }
     this.getItemQtyOnHand = function (){
-        return this.itemQtyOnHand;
+        return this.__iqtyonhand;
     }
     this.setItemQtyOnHand = function (itemQtyOnHand){
-        this.itemQtyOnHand = itemQtyOnHand;
+        this.__iqtyonhand = itemQtyOnHand;
     }
 }

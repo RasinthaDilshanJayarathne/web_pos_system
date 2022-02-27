@@ -25,10 +25,10 @@ function CustomerDTO(customerId, customerName, customerAddress, customerPhone) {
         this.__address = customerAddress;
     }
 
-    this.getCustomerContact = function () {
+    this.getCustomerPhone = function () {
         return this.__contact;
     }
-    this.setCustomerContact = function (customerPhone) {
+    this.setCustomerPhone = function (customerPhone) {
         this.__contact = customerPhone;
     }
 }
