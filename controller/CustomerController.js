@@ -77,13 +77,24 @@ $("#customerTable").on('click', '#btnCustomerDelete', function () {
 
 function loadAllCustomer() {
     $("#customerTable").empty();
-    for (var i of customerDB) {
-        /*create a html row*/
+    /*for (var i of customerDB) {
+        /!*create a html row*!/
         let row = `<tr><td>${i.id}</td><td>${i.name}</td><td>${i.address}</td><td>${i.phoneNo}</td>
             <td><button id="btnCustomerDelete" type="button" class="btn-sm btn-danger">Delete</button></tr></tr>`;
-        /*select the table body and append the row */
+        /!*select the table body and append the row *!/
         $("#customerTable").append(row);
         console.log(row);
+    }*/
+
+    for (let i = 0; i < customerDB.length; i++){
+
+        $("#customerTable").append("<tr>" +
+            "<td>"+customerDB[i].getCustomerId()+"</td>" +
+            "<td>"+customerDB[i].getCustomerName()+"</td>" +
+            "<td>"+customerDB[i].getCustomerAddress()+"</td>" +
+            "<td>"+customerDB[i].getCustomerPhone()+"</td>" +
+            `<td><button id="btnItemDelete" type="button" class="btn-sm btn-danger">Delete</button></td>`+
+            "</tr>");
     }
 }
 
