@@ -33,7 +33,7 @@ function saveItem() {
     let itemPrice = $("#txtPopItemPrice").val();
     let itemQtyOnHand = $("#txtPopItemQuntity").val();
 
-   /* var itemObject = {
+    /*var itemObject = {
         id: itemCode,
         name: itemName,
         price: itemPrice,

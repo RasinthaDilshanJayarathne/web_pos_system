@@ -30,13 +30,13 @@ function saveCustomer() {
     let customerAddress = $("#txtPopCustAddress").val();
     let customerPhone = $("#txtPopCustPhone").val();
 
-    var customerObject = {
+    /*var customerObject = {
         id: customerId,
         name: customerName,
         address: customerAddress,
         phoneNo: customerPhone
-    };
-    customerDB.push(customerObject);
+    };*/
+    customerDB.push(new CustomerDTO(customerId,customerName, customerAddress, customerPhone));
 
     loadCustChomboBoxData("<option>"+customerId+"</option>");
 }
@@ -83,6 +83,7 @@ function loadAllCustomer() {
             <td><button id="btnCustomerDelete" type="button" class="btn-sm btn-danger">Delete</button></tr></tr>`;
         /*select the table body and append the row */
         $("#customerTable").append(row);
+        console.log(row);
     }
 }
 
