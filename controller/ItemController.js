@@ -33,12 +33,6 @@ function saveItem() {
     let itemPrice = $("#txtPopItemPrice").val();
     let itemQtyOnHand = $("#txtPopItemQuntity").val();
 
-    /*var itemObject = {
-        id: itemCode,
-        name: itemName,
-        price: itemPrice,
-        qtyOnHand: itemQtyOnHand
-    };*/
     itemDB.push(new ItemDTO(itemCode,itemName, itemPrice, itemQtyOnHand));
 
     loadItemChomboBoxData("<option>"+itemCode+"</option>");
@@ -52,11 +46,10 @@ $("#btnItemUpdate").click(function () {
     let itemQtyOnHand = $("#txtItemQTYOnHand").val();
 
     for (var i = 0; i < itemDB.length; i++) {
-        if ($("#txtItemCode").val()==itemDB[i].id){
-            itemDB[i].getItemCode(itemCode);
-            itemDB[i].getItemName(itemName);
-            itemDB[i].getItemPrice(itemPrice);
-            itemDB[i].getItemQtyOnHand(itemQtyOnHand);
+        if (itemDB[i].getItemCode() === itemCode){
+            itemDB[i].setItemName(itemName);
+            itemDB[i].setItemPrice(itemPrice);
+            itemDB[i].setItemQtyOnHand(itemQtyOnHand);
         }
     }
     loadAllItem();
@@ -67,30 +60,19 @@ $("#btnItemUpdate").click(function () {
 $("#itemTable").on('click', '#btnItemDelete', function () {
     var index = 0;
     for (var i = 0; i < itemDB.length; i++) {
-        if ($("#txtItemCode").val() == itemDB[i].id) {
+        if ($("#txtItemCode").val() == itemDB[i].getItemCode()) {
             index = i;
         }
     }
     itemDB.splice(index, 1);
-
     clearAllItem();
-
     $(this).closest('tr').remove();
 
 });
 
 function loadAllItem() {
     $("#itemTable").empty();
-    /*for (var i of itemDB) {
-        /!*create a html row*!/
-        let row = `<tr><td>${i.id}</td><td>${i.name}</td><td>${i.price}</td><td>${i.qtyOnHand}</td>
-            <td><button id="btnItemDelete" type="button" class="btn-sm btn-danger">Delete</button></tr>`;
-        /!*select the table body and append the row *!/
-        $("#itemTable").append(row);
-    }*/
-
     for (let i = 0; i < itemDB.length; i++){
-
         $("#itemTable").append("<tr>" +
             "<td>"+itemDB[i].getItemCode()+"</td>" +
             "<td>"+itemDB[i].getItemName()+"</td>" +
@@ -102,9 +84,9 @@ function loadAllItem() {
 }
 
 $("#btnItemSearch").click(function () {
-    var searchID = $("#ItemPpoSearchBar").val();
+    let searchID = $("#ItemPpoSearchBar").val();
 
-    var response = searchItem(searchID);
+    /*var response = searchItem(searchID);
     if (response) {
         $("#txtItemCode").val(response.id);
         $("#txtItemName").val(response.name);
@@ -113,7 +95,17 @@ $("#btnItemSearch").click(function () {
     } else {
         clearAllItem();
         alert("No Such a Item");
+    }*/
+
+    for (let i = 0; i<itemDB.length; i++){
+        if (itemDB[i].getItemCode() === searchID.toLowerCase()){
+            $("#txtItemCode").val(itemDB[i].getItemCode());
+            $("#txtItemName").val(itemDB[i].getItemName());
+            $("#txtItemPrice").val(itemDB[i].getItemPrice());
+            $("#txtItemQTYOnHand").val(itemDB[i].getItemQtyOnHand());
+        }
     }
+
 });
 
 function searchItem(id) {
