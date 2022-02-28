@@ -86,31 +86,22 @@ function loadAllItem() {
 $("#btnItemSearch").click(function () {
     let searchID = $("#ItemPpoSearchBar").val();
 
-    /*var response = searchItem(searchID);
+    var response = searchItem(searchID);
     if (response) {
-        $("#txtItemCode").val(response.id);
-        $("#txtItemName").val(response.name);
-        $("#txtItemPrice").val(response.price);
-        $("#txtItemQTYOnHand").val(response.qtyOnHand);
+        $("#txtItemCode").val(response.getItemCode());
+        $("#txtItemName").val(response.getItemName());
+        $("#txtItemPrice").val(response.getItemPrice());
+        $("#txtItemQTYOnHand").val(response.getItemQtyOnHand());
     } else {
-        clearAllItem();
-        alert("No Such a Item");
-    }*/
-
-    for (let i = 0; i<itemDB.length; i++){
-        if (itemDB[i].getItemCode() === searchID.toLowerCase()){
-            $("#txtItemCode").val(itemDB[i].getItemCode());
-            $("#txtItemName").val(itemDB[i].getItemName());
-            $("#txtItemPrice").val(itemDB[i].getItemPrice());
-            $("#txtItemQTYOnHand").val(itemDB[i].getItemQtyOnHand());
-        }
+        clearAll();
+        alert("No Such a Customer");
     }
 
 });
 
 function searchItem(id) {
     for (let i = 0; i < itemDB.length; i++) {
-        if (itemDB[i].id == id) {
+        if (itemDB[i].getItemCode() == id) {
             return itemDB[i];
         }
     }

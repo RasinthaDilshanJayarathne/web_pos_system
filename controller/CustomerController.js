@@ -9,13 +9,11 @@ $("#popCustBtnAdd").click(function () {
 
 function loadCustomerDataTextField(){
     $("#customerTable>tr").click(function () {
-        /*console.log($(this));*/
+
         let customerId1 = $(this).children(":eq(0)").text();
         let customerName1 = $(this).children(":eq(1)").text();
         let customerAddress1 = $(this).children(":eq(2)").text();
         let customerPhone1 = $(this).children(":eq(3)").text();
-
-        console.log(customerId1, customerName1, customerAddress1, customerPhone1);
 
         $("#txtCustId").val(customerId1);
         $("#txtCustName").val(customerName1);
@@ -30,12 +28,6 @@ function saveCustomer() {
     let customerAddress = $("#txtPopCustAddress").val();
     let customerPhone = $("#txtPopCustPhone").val();
 
-    /*var customerObject = {
-        id: customerId,
-        name: customerName,
-        address: customerAddress,
-        phoneNo: customerPhone
-    };*/
     customerDB.push(new CustomerDTO(customerId,customerName, customerAddress, customerPhone));
 
     loadCustChomboBoxData("<option>"+customerId+"</option>");
@@ -48,11 +40,10 @@ $("#btnCustUpdate").click(function () {
     let customerPhone = $("#txtCustPhoneNo").val();
 
     for (var i = 0; i < customerDB.length; i++) {
-        if ($("#txtCustId").val()==customerDB[i].id){
-            customerDB[i].id= customerId;
-            customerDB[i].name=customerName;
-            customerDB[i].address=customerAddress;
-            customerDB[i].phoneNo=customerPhone;
+        if (customerDB[i].getCustomerId() === customerId){
+            customerDB[i].setCustomerName(customerName);
+            customerDB[i].setCustomerAddress(customerAddress);
+            customerDB[i].setCustomerPhone(customerPhone);
         }
     }
     loadAllCustomer();
@@ -63,7 +54,7 @@ $("#btnCustUpdate").click(function () {
 $("#customerTable").on('click', '#btnCustomerDelete', function () {
     var index = 0;
     for (var i = 0; i < customerDB.length; i++) {
-        if ($("#txtCustId").val() == customerDB[i].id) {
+        if ($("#txtCustId").val() == customerDB[i].getCustomerId()) {
             index = i;
         }
     }
@@ -93,7 +84,7 @@ function loadAllCustomer() {
             "<td>"+customerDB[i].getCustomerName()+"</td>" +
             "<td>"+customerDB[i].getCustomerAddress()+"</td>" +
             "<td>"+customerDB[i].getCustomerPhone()+"</td>" +
-            `<td><button id="btnItemDelete" type="button" class="btn-sm btn-danger">Delete</button></td>`+
+            `<td><button id="btnCustomerDelete" type="button" class="btn-sm btn-danger">Delete</button></td>`+
             "</tr>");
     }
 }
@@ -103,19 +94,20 @@ $("#btnCustSearch").click(function () {
 
     var response = searchCustomer(searchID);
     if (response) {
-        $("#txtCustId").val(response.id);
-        $("#txtCustName").val(response.name);
-        $("#txtCustAddress").val(response.address);
-        $("#txtCustPhoneNo").val(response.phoneNo);
+        $("#txtCustId").val(response.getCustomerId());
+        $("#txtCustName").val(response.getCustomerName());
+        $("#txtCustAddress").val(response.getCustomerAddress());
+        $("#txtCustPhoneNo").val(response.getCustomerPhone());
     } else {
         clearAll();
         alert("No Such a Customer");
     }
+
 });
 
 function searchCustomer(id) {
     for (let i = 0; i < customerDB.length; i++) {
-        if (customerDB[i].id == id) {
+        if (customerDB[i].getCustomerId() == id) {
             return customerDB[i];
         }
     }
