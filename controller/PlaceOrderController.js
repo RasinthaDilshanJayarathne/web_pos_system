@@ -28,7 +28,6 @@ function loadCustChomboBoxData(value) {
 
 $("#custChombo").click(function () {
     let custId = $("#custChombo").val();
-
     let custName = $("#orderCustName").val();
     let telephoneNo = $("#orderTelephoneNo").val();
     let address = $("#orderAddress").val();
@@ -52,7 +51,6 @@ function loadItemChomboBoxData(value) {
 
 $("#itemChombo").click(function () {
     let itemCode = $("#itemChombo").val();
-
     let itemName = $("#orderItemName").val();
     let itemPrice = $("#orderUnitPrice").val();
     let itemQty = $("#orderQtyOnHand").val();
