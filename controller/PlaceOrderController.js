@@ -1,3 +1,10 @@
+$("#addToCart").click(function () {
+    loadItemData();
+    clearItemData();
+    loadItemCartTable();
+    genarateOrderId();
+});
+
 function genarateOrderId() {
     try {
         let lastOrderId = orderTable[orderDB.length-1].getOrderId();
@@ -27,10 +34,10 @@ $("#custChombo").click(function () {
     let address = $("#orderAddress").val();
 
     for (var i = 0; i < customerDB.length; i++) {
-        if (customerDB[i].id == custId) {
-            custName = customerDB[i].name;
-            telephoneNo = customerDB[i].phoneNo;
-            address = customerDB[i].address;
+        if (customerDB[i].getCustomerId() == custId) {
+            custName = customerDB[i].getCustomerName();
+            telephoneNo = customerDB[i].getCustomerPhone();
+            address = customerDB[i].getCustomerAddress();
 
             $("#orderCustName").val(custName);
             $("#orderTelephoneNo").val(telephoneNo);
@@ -51,22 +58,16 @@ $("#itemChombo").click(function () {
     let itemQty = $("#orderQtyOnHand").val();
 
     for (var i = 0; i < itemDB.length; i++) {
-        if (itemDB[i].id == itemCode) {
-            itemName = itemDB[i].name;
-            itemPrice = itemDB[i].price;
-            itemQty = itemDB[i].qtyOnHand;
+        if (itemDB[i].getItemCode() == itemCode) {
+            itemName = itemDB[i].getItemName();
+            itemPrice = itemDB[i].getItemPrice();
+            itemQty = itemDB[i].getItemQtyOnHand();
 
             $("#orderItemName").val(itemName);
             $("#orderUnitPrice").val(itemPrice);
             $("#orderQtyOnHand").val(itemQty);
         }
     }
-});
-
-$("#addToCart").click(function () {
-    loadItemData();
-    clearItemData();
-    loadItemCartTable();
 });
 
 let itemCode;let itemName;let itemPrice;let itemQty;let itemOrderQty;let cash;let total;
@@ -120,6 +121,12 @@ function loadItemCartTable(){
         $("#orderOrderQty").val(orderQty);
     });
 };
+
+$("#btnPurchase").click(function (){
+    genarateOrderId();
+});
+
+
 
 $("#btnItemCartUpdate").click(function (){
 
