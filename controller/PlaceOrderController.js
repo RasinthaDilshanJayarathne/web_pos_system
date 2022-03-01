@@ -5,21 +5,23 @@ $("#addToCart").click(function () {
     genarateOrderId();
 });
 
-function genarateOrderId() {
+function generateOrderID() {
     try {
-        let lastOrderId = orderTable[orderDB.length-1].getOrderId();
+        let lastOrderId = orderDB[orderDB.length-1].getOrderId();
         let newOrderId = parseInt(lastOrderId.substring(1,4))+1;
         if (newOrderId < 10) {
-            $("#orderId").text("#D00"+newOrderId);
+            $("#orderId").val("D00-00"+newOrderId);
         }else if (newOrderId < 100) {
-            $("#orderId").text("#D0"+newOrderId);
+            $("#orderId").val("D00-0"+newOrderId);
         } else {
-            $("#orderId").text("#D"+newOrderId);
+            $("#orderId").val("D00-"+newOrderId);
         }
     } catch (e) {
-        $("#orderId").text("#D001");
+        $("#orderId").val("D00-001");
     }
+
 }
+generateOrderID();
 
 
 function loadCustChomboBoxData(value) {
@@ -70,7 +72,7 @@ $("#itemChombo").click(function () {
 
 let itemCode;let itemName;let itemPrice;let itemQty;let itemOrderQty;let cash;let total;
 
-$("#orderTable").empty();
+
 function loadItemData() {
     itemCode = $("#itemChombo").val();
     itemName = $("#orderItemName").val();
@@ -83,18 +85,13 @@ function loadItemData() {
 
     $("#totalPrice").val(itemOrderQty * itemPrice);
 
-    /*let row = `<tr><td>${itemCode}</td><td>${itemName}</td><td>${itemPrice}</td><td>${itemQty}</td><td>${itemOrderQty}</td><td>${total}</td>
-                <td><button id="btnItemCartDelete" type="button" class="btn-sm btn-danger">Delete</button>
-                <button id="btnItemCartUpdate" type="button" class="btn-sm btn-primary">Update</button></tr>`;
-
-    $("#orderTable").append(row);*/
-
+    $("#orderTable").empty();
     for (var i = 0; i < itemDB.length; i++) {
-        if ($("#txtCustId").val()==itemDB[i].id){
-            itemCode = itemDB[i].id;
-            itemName = itemDB[i].name;
-            itemPrice = itemDB[i].price;
-            itemQty = itemDB[i].qtyOnHand;
+        if ($("#txtCustId").val()==itemDB[i].getItemCode()){
+            itemCode = itemDB[i].getItemCode();
+            itemName = itemDB[i].getItemName();
+            itemPrice = itemDB[i].getItemPrice();
+            itemQty = itemDB[i].getItemQtyOnHand();
         }
         let row = `<tr><td>${itemCode}</td><td>${itemName}</td><td>${itemPrice}</td><td>${itemQty}</td><td>${itemOrderQty}</td><td>${total}</td>
                 <td><button id="btnItemCartDelete" type="button" class="btn-sm btn-danger">Delete</button>
@@ -121,7 +118,7 @@ function loadItemCartTable(){
 };
 
 $("#btnPurchase").click(function (){
-    genarateOrderId();
+    generateOrderID();
 });
 
 
