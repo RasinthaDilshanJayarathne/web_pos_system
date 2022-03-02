@@ -71,6 +71,7 @@ $("#itemChombo").click(function () {
 
 let itemCode;let itemName;let itemPrice;let itemQty;let itemOrderQty;let cash;let total; let mainTotal;
 
+$("#orderTable").empty();
 function loadItemData() {
     itemCode = $("#itemChombo").val();
     itemName = $("#orderItemName").val();
@@ -85,8 +86,8 @@ function loadItemData() {
 
     $("#totalPrice").val(itemOrderQty * itemPrice);
 
-    $("#orderTable").empty();
-    for (let i = 0; i < itemDB.length; i++){
+
+    /*for (let i = 0; i < itemDB.length; i++){
         $("#orderTable").append("<tr>" +
             "<td>"+itemDB[i].getItemCode()+"</td>" +
             "<td>"+itemDB[i].getItemName()+"</td>" +
@@ -97,7 +98,25 @@ function loadItemData() {
             `<td><button id="btnItemCartDelete" type="button" class="btn-sm btn-danger">Delete</button>
             <button id="btnItemCartUpdate" type="button" class="btn-sm btn-primary">Update</button></td>`+
             "</tr>");
+    }*/
+
+    let A = $(this).children(":eq(0)").val();
+
+    if (A == itemCode){
+        $(this).$("#orderTable>tr").append();
+    }else {
+        $("#orderTable").append("<tr>" +
+            "<td>"+itemCode+"</td>" +
+            "<td>"+itemName+"</td>" +
+            "<td>"+itemPrice+"</td>" +
+            "<td>"+availableQty+"</td>" +
+            "<td>"+itemOrderQty+"</td>" +
+            "<td>"+total+"</td>" +
+            `<td><button id="btnItemCartDelete" type="button" class="btn-sm btn-danger">Delete</button>
+            <button id="btnItemCartUpdate" type="button" class="btn-sm btn-primary">Update</button></td>`+
+            "</tr>");
     }
+
 
 };
 
@@ -125,7 +144,13 @@ $("#btnPurchase").click(function (){
     let discount = $("#discountCmb").val();
     let total = $("#total").val();
 
+    let itemCode = $("#itemChombo").val();
+    let orderQty = $("#orderOrderQty").val();
+    let totItemPrice = $("#total").val();
+
     orderDB.push(new OrderDTO(orderId,customerId,date,discount,total));
+    orderDetailDB.push(new OrderDetailDTO(orderId,itemCode,orderQty,totItemPrice));
+
     console.log("AAAAA");
     clearCustomerData();
     generateOrderID();

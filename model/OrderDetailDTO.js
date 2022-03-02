@@ -1,8 +1,8 @@
-function OrderDetail(orderId, itemCode, orderQty, totAmount) {
+function OrderDetailDTO(orderId, itemCode, orderQty, totItemPrice) {
     this.__oid = orderId;
     this.__code = itemCode;
     this.__qty = orderQty;
-    this.__totAmount = totAmount;
+    this.__totItemPrice = totItemPrice;
 
     this.getOrderid = function () {
         return this.__oid;
@@ -26,9 +26,9 @@ function OrderDetail(orderId, itemCode, orderQty, totAmount) {
     }
 
     this.getTotAmount = function () {
-        return this.__totAmount;
+        return this.__totItemPrice;
     }
-    this.setTotAmount = function (totAmount) {
-        this.__totAmount = totAmount;
+    this.setTotAmount = function (totItemPrice) {
+        this.__totItemPrice = totItemPrice;
     }
 }
