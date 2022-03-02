@@ -70,7 +70,7 @@ $("#itemChombo").click(function () {
     }
 });
 
-let itemCode;let itemName;let itemPrice;let itemQty;let itemOrderQty;let cash;let total;
+let itemCode;let itemName;let itemPrice;let itemQty;let itemOrderQty;let cash;let total; let mainTotal;
 
 
 function loadItemData() {
@@ -81,24 +81,27 @@ function loadItemData() {
     itemOrderQty = $("#orderOrderQty").val();
     cash = $("#cash").val();
 
+    let availableQty = itemQty - itemOrderQty;
+    $("#orderQtyOnHand").val(availableQty);
     total = itemOrderQty * itemPrice;
 
     $("#totalPrice").val(itemOrderQty * itemPrice);
 
-    $("#orderTable").empty();
-    for (var i = 0; i < itemDB.length; i++) {
-        if ($("#txtCustId").val()==itemDB[i].getItemCode()){
-            itemCode = itemDB[i].getItemCode();
-            itemName = itemDB[i].getItemName();
-            itemPrice = itemDB[i].getItemPrice();
-            itemQty = itemDB[i].getItemQtyOnHand();
-        }
-        let row = `<tr><td>${itemCode}</td><td>${itemName}</td><td>${itemPrice}</td><td>${itemQty}</td><td>${itemOrderQty}</td><td>${total}</td>
-                <td><button id="btnItemCartDelete" type="button" class="btn-sm btn-danger">Delete</button>
-                <button id="btnItemCartUpdate" type="button" class="btn-sm btn-primary">Update</button></tr>`;
 
-        $("#orderTable").append(row);
+    $("#orderTable").empty();
+    for (let i = 0; i < itemDB.length; i++){
+        $("#orderTable").append("<tr>" +
+            "<td>"+itemDB[i].getItemCode()+"</td>" +
+            "<td>"+itemDB[i].getItemName()+"</td>" +
+            "<td>"+itemDB[i].getItemPrice()+"</td>" +
+            "<td>"+availableQty+"</td>" +
+            "<td>"+itemOrderQty+"</td>" +
+            "<td>"+total+"</td>" +
+            `<td><button id="btnItemCartDelete" type="button" class="btn-sm btn-danger">Delete</button>
+            <button id="btnItemCartUpdate" type="button" class="btn-sm btn-primary">Update</button></td>`+
+            "</tr>");
     }
+
 };
 
 function loadItemCartTable(){
@@ -146,6 +149,11 @@ $("#orderTable").on('click', '#btnItemCartDelete', function () {
 function clearItemData() {
     $('#itemChombo,#orderItemName,#orderUnitPrice,#orderQtyOnHand,#orderOrderQty').val("");
 }
+
+function clearCustomerData() {
+    $('#custChombo,#orderCustName,#orderTelephoneNo,#orderAddress').val("");
+}
+
 
 $("#discountCmb").click(function () {
     let discountPresentage = $("#discountCmb").val();

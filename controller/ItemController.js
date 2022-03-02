@@ -1,6 +1,3 @@
-$("#btnAdd").click(function () {
-
-});
 
 $("#popBtnAdd").click(function () {
     $("#itemTable>tr").off("click");
