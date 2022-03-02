@@ -2,13 +2,13 @@ $("#addToCart").click(function () {
     loadItemData();
     clearItemData();
     loadItemCartTable();
-    genarateOrderId();
+    generateOrderID();
 });
 
 function generateOrderID() {
     try {
         let lastOrderId = orderDB[orderDB.length-1].getOrderId();
-        let newOrderId = parseInt(lastOrderId.substring(1,4))+1;
+        let newOrderId = parseInt(lastOrderId.substring(1,6))+1;
         if (newOrderId < 10) {
             $("#orderId").val("D00-00"+newOrderId);
         }else if (newOrderId < 100) {
@@ -19,8 +19,7 @@ function generateOrderID() {
     } catch (e) {
         $("#orderId").val("D00-001");
     }
-
-}
+};
 generateOrderID();
 
 
@@ -72,7 +71,6 @@ $("#itemChombo").click(function () {
 
 let itemCode;let itemName;let itemPrice;let itemQty;let itemOrderQty;let cash;let total; let mainTotal;
 
-
 function loadItemData() {
     itemCode = $("#itemChombo").val();
     itemName = $("#orderItemName").val();
@@ -86,7 +84,6 @@ function loadItemData() {
     total = itemOrderQty * itemPrice;
 
     $("#totalPrice").val(itemOrderQty * itemPrice);
-
 
     $("#orderTable").empty();
     for (let i = 0; i < itemDB.length; i++){
@@ -121,7 +118,18 @@ function loadItemCartTable(){
 };
 
 $("#btnPurchase").click(function (){
+
+    let orderId = $("#orderId").val();
+    let customerId = $("#custChombo").val();
+    let date = $("#orderDate").val();
+    let discount = $("#discountCmb").val();
+    let total = $("#total").val();
+
+    orderDB.push(new OrderDTO(orderId,customerId,date,discount,total));
+    console.log("AAAAA");
+    clearCustomerData();
     generateOrderID();
+
 });
 
 
@@ -147,7 +155,7 @@ $("#orderTable").on('click', '#btnItemCartDelete', function () {
 });
 
 function clearItemData() {
-    $('#itemChombo,#orderItemName,#orderUnitPrice,#orderQtyOnHand,#orderOrderQty').val("");
+    $('#itemChombo,#orderItemName,#orderUnitPrice,#orderQtyOnHand,#orderOrderQty,orderId,orderDate').val("");
 }
 
 function clearCustomerData() {
@@ -164,9 +172,4 @@ $("#discountCmb").click(function () {
 
     $("#balance").val(finalBalance);
     console.log(finalBalance);
-});
-
-$("#btnPurchase").click(function (){
-    console.log("Enter");
-    genarateOrderId();
 });

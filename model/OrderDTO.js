@@ -1,4 +1,4 @@
-function Orders(orderId, customerId, date, discount, total) {
+function OrderDTO(orderId, customerId, date, discount, total) {
     this.__oid = orderId;
     this.__cid = customerId;
     this.__date = date;
