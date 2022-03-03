@@ -118,6 +118,7 @@ function loadItemData() {
     }
 
 
+
 };
 
 function loadItemCartTable(){
@@ -142,15 +143,15 @@ $("#total").keyup(function (event){
         console.log("BBB");
 
 
-        if (total <= 10000 && total < 10000 ){
+        if (finalTotal <= 10000 && finalTotal < 10000 ){
             console.log("AAA");
-            discount = (total/100) * 20;
+            discount = (finalTotal/100) * 20;
             console.log(discount);
         }
     }
 });
 
-let total;let discount;
+let finalTotal;let discount;
 
 $("#btnPurchase").click(function (){
 
@@ -158,14 +159,14 @@ $("#btnPurchase").click(function (){
     let customerId = $("#custChombo").val();
     let date = $("#orderDate").val();
     discount = $("#discountCmb").val();
-    total = $("#total").val();
+    finalTotal = $("#total").val();
 
     let itemCode = $("#itemChombo").val();
     let orderQty = $("#orderOrderQty").val();
     let totItemPrice = $("#total").val();
 
 
-    orderDB.push(new OrderDTO(orderId,customerId,date,discount,total));
+    orderDB.push(new OrderDTO(orderId,customerId,date,discount,finalTotal));
     orderDetailDB.push(new OrderDetailDTO(orderId,itemCode,orderQty,totItemPrice));
 
     clearCustomerData();
