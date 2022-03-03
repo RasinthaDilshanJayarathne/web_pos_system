@@ -148,10 +148,10 @@ $("#btnPurchase").click(function (){
     let orderQty = $("#orderOrderQty").val();
     let totItemPrice = $("#total").val();
 
+
     orderDB.push(new OrderDTO(orderId,customerId,date,discount,total));
     orderDetailDB.push(new OrderDetailDTO(orderId,itemCode,orderQty,totItemPrice));
 
-    console.log("AAAAA");
     clearCustomerData();
     generateOrderID();
 
