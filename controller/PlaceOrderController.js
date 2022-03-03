@@ -86,25 +86,6 @@ function loadItemData() {
 
     $("#totalPrice").val(itemOrderQty * itemPrice);
 
-
-    /*for (let i = 0; i < itemDB.length; i++){
-        $("#orderTable").append("<tr>" +
-            "<td>"+itemDB[i].getItemCode()+"</td>" +
-            "<td>"+itemDB[i].getItemName()+"</td>" +
-            "<td>"+itemDB[i].getItemPrice()+"</td>" +
-            "<td>"+availableQty+"</td>" +
-            "<td>"+itemOrderQty+"</td>" +
-            "<td>"+total+"</td>" +
-            `<td><button id="btnItemCartDelete" type="button" class="btn-sm btn-danger">Delete</button>
-            <button id="btnItemCartUpdate" type="button" class="btn-sm btn-primary">Update</button></td>`+
-            "</tr>");
-    }*/
-
-    let A = $(this).children(":eq(0)").val();
-
-    if (A == itemCode){
-        $(this).$("#orderTable>tr").append();
-    }else {
         $("#orderTable").append("<tr>" +
             "<td>"+itemCode+"</td>" +
             "<td>"+itemName+"</td>" +
@@ -115,9 +96,20 @@ function loadItemData() {
             `<td><button id="btnItemCartDelete" type="button" class="btn-sm btn-danger">Delete</button>
             <button id="btnItemCartUpdate" type="button" class="btn-sm btn-primary">Update</button></td>`+
             "</tr>");
+
+    $("#total").val(total);
+
+    if (total >= 10000){
+        $("#discountCmb").val((total/100) * 20);
+    }else if(total >= 8000 && total < 9999){
+        $("#discountCmb").val((total/100) * 15);
+    }else if(total >= 6000 && total < 7999){
+        $("#discountCmb").val((total/100) * 10);
+    }else if(total >= 2000 && total < 5999) {
+        $("#discountCmb").val((total / 100) * 5);
+    }else {
+        $("#discountCmb").val("No Discount....");
     }
-
-
 
 };
 
@@ -137,28 +129,14 @@ function loadItemCartTable(){
     });
 };
 
-$("#total").keyup(function (event){
-
-    if (event.key == "Enter"){
-        console.log("BBB");
-
-
-        if (finalTotal <= 10000 && finalTotal < 10000 ){
-            console.log("AAA");
-            discount = (finalTotal/100) * 20;
-            console.log(discount);
-        }
-    }
-});
-
-let finalTotal;let discount;
+let finalTotal;
 
 $("#btnPurchase").click(function (){
 
     let orderId = $("#orderId").val();
     let customerId = $("#custChombo").val();
     let date = $("#orderDate").val();
-    discount = $("#discountCmb").val();
+    let discount = $("#discountCmb").val();
     finalTotal = $("#total").val();
 
     let itemCode = $("#itemChombo").val();
@@ -194,6 +172,8 @@ $("#btnItemCartUpdate").click(function (){
 
 $("#orderTable").on('click', '#btnItemCartDelete', function () {
     $(this).closest('tr').remove();
+    $('#discountCmb,#total').val("");
+
 });
 
 function clearItemData() {
