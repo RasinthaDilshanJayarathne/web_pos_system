@@ -136,13 +136,29 @@ function loadItemCartTable(){
     });
 };
 
+$("#total").keyup(function (event){
+
+    if (event.key == "Enter"){
+        console.log("BBB");
+
+
+        if (total <= 10000 && total < 10000 ){
+            console.log("AAA");
+            discount = (total/100) * 20;
+            console.log(discount);
+        }
+    }
+});
+
+let total;let discount;
+
 $("#btnPurchase").click(function (){
 
     let orderId = $("#orderId").val();
     let customerId = $("#custChombo").val();
     let date = $("#orderDate").val();
-    let discount = $("#discountCmb").val();
-    let total = $("#total").val();
+    discount = $("#discountCmb").val();
+    total = $("#total").val();
 
     let itemCode = $("#itemChombo").val();
     let orderQty = $("#orderOrderQty").val();
