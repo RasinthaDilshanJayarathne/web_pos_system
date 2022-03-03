@@ -97,19 +97,21 @@ function loadItemData() {
             <button id="btnItemCartUpdate" type="button" class="btn-sm btn-primary">Update</button></td>`+
             "</tr>");
 
-    $("#total").val(total);
+    let A = $("#total").val(total);
 
     if (total >= 10000){
-        $("#discountCmb").val((total/100) * 20);
+        discount = $("#discountCmb").val((total/100) * 20);
     }else if(total >= 8000 && total < 9999){
-        $("#discountCmb").val((total/100) * 15);
+        discount = $("#discountCmb").val((total/100) * 15);
     }else if(total >= 6000 && total < 7999){
-        $("#discountCmb").val((total/100) * 10);
+        discount = $("#discountCmb").val((total/100) * 10);
     }else if(total >= 2000 && total < 5999) {
-        $("#discountCmb").val((total / 100) * 5);
+        discount = $("#discountCmb").val((total / 100) * 5);
     }else {
         $("#discountCmb").val("No Discount....");
     }
+
+    $("#subToal").val("AAAAAAAAAAAA");
 
 };
 
@@ -129,14 +131,14 @@ function loadItemCartTable(){
     });
 };
 
-let finalTotal;
+let finalTotal;let discount;
 
 $("#btnPurchase").click(function (){
 
     let orderId = $("#orderId").val();
     let customerId = $("#custChombo").val();
     let date = $("#orderDate").val();
-    let discount = $("#discountCmb").val();
+    discount = $("#discountCmb").val();
     finalTotal = $("#total").val();
 
     let itemCode = $("#itemChombo").val();
@@ -172,7 +174,8 @@ $("#btnItemCartUpdate").click(function (){
 
 $("#orderTable").on('click', '#btnItemCartDelete', function () {
     $(this).closest('tr').remove();
-    $('#discountCmb,#total').val("");
+    $('#discountCmb,#total,#subToal').val("");
+    clearItemData();
 
 });
 
