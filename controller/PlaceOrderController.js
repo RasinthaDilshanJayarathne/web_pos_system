@@ -24,21 +24,53 @@ $("#addToCart").click(function () {
             duplicate=true;
         }
     }
-
     if (duplicate != true) {
         loadItemData();
-        minusQty($("#txtOrderItemNumQty").val());
+        minusQty($("#orderOrderQty").val());
     }else if (duplicate == true){
-        manageQuantity(tableRowCount.children(':nth-child(4)').text(),$("#txtOrderItemNumQty").val());
-        $(tableRow).children(':nth-child(4)').text($("#txtOrderItemNumQty").val());
+        manageQuantity(tableRowCount.children(':nth-child(4)').text(),$("#orderOrderQty").val());
+        $(tableRowCount).children(':nth-child(4)').text($("#orderOrderQty").val());
 
     }
 
-    loadItemData();
+    $("#orderTable>tr").click(function () {
+
+        tableRowCount =$(this);
+
+        let itemId = $(this).children(":eq(0)").text();
+        let itemName = $(this).children(":eq(1)").text();
+        let unitPrice = $(this).children(":eq(2)").text();
+        let orderQty = $(this).children(":eq(3)").text();
+
+        $("#itemChombo").val(itemId);
+        $("#orderItemName").val(itemName);
+        $("#orderUnitPrice").val(unitPrice);
+        $("#orderOrderQty").val(orderQty);
+    });
     /*clearItemData();*/
-    loadItemCartTable();
 
 });
+
+function minusQty(orderQty){
+    var minusQty = parseInt(orderQty);
+    var manageQty = parseInt($("#orderQtyOnHand").val());
+
+    manageQty = manageQty - minusQty;
+
+    $("#orderQtyOnHand").val(manageQty);
+}
+
+function manageQuantity(prevQty,nowQty){
+    var prevQty = parseInt(prevQty);
+    var nowQty = parseInt(nowQty);
+    var availableQty = parseInt($("#orderQtyOnHand").val());
+
+    availableQty = availableQty + prevQty;
+    availableQty = availableQty - nowQty;
+
+    $("#orderQtyOnHand").val(availableQty);
+
+}
 
 function loadCustChomboBoxData(value) {
     $("#custChombo").append(value);
@@ -86,34 +118,35 @@ $("#itemChombo").click(function () {
     }
 });
 
-let itemCode;let itemName;let itemPrice;let itemQty;let itemOrderQty;let total;let subTotal;let discount;
+let itemCode;let itemName;let itemPrice;let itemQty;let itemOrderQty;let subTotal;
 
 $("#orderTable").empty();
 function loadItemData() {
+
     itemCode = $("#itemChombo").val();
     itemName = $("#orderItemName").val();
     itemPrice = $("#orderUnitPrice").val();
     itemQty = $("#orderQtyOnHand").val();
     itemOrderQty = $("#orderOrderQty").val();
 
-    let availableQty = itemQty - itemOrderQty;
-    $("#orderQtyOnHand").val(availableQty);
-    total = itemOrderQty * itemPrice;
+    let total;
+    let discount;
+
+    total = itemPrice * itemOrderQty;
+
 
     $("#totalPrice").val(itemOrderQty * itemPrice);
 
-        $("#orderTable").append("<tr>" +
-            "<td>"+itemCode+"</td>" +
-            "<td>"+itemName+"</td>" +
-            "<td>"+itemPrice+"</td>" +
-            "<td>"+availableQty+"</td>" +
-            "<td>"+itemOrderQty+"</td>" +
-            "<td>"+total+"</td>" +
-            `<td><button id="btnItemCartDelete" type="button" class="btn-sm btn-danger">Delete</button>
-            <button id="btnItemCartUpdate" type="button" class="btn-sm btn-primary">Update</button></td>`+
-            "</tr>");
+    $("#orderTable").append("<tr>" +
+        "<td>" + itemCode + "</td>" +
+        "<td>" + itemName + "</td>" +
+        "<td>" + itemPrice + "</td>" +
+        "<td>" + itemOrderQty + "</td>" +
+        "<td>" + total + "</td>" +
+        `<td><button id="btnItemCartDelete" type="button" class="btn-sm btn-danger">Delete</button></td>`+
+        "</tr>");
 
-    $("#total").val(total);
+    /*$("#total").val(total);*/
 
     calculateDiscount();
 
@@ -136,22 +169,6 @@ function calculateDiscount(){
         $("#discountCmb").val("00");
     }
 }
-
-function loadItemCartTable(){
-    $("#orderTable>tr").click(function () {
-        let itemId = $(this).children(":eq(0)").text();
-        let itemName = $(this).children(":eq(1)").text();
-        let unitPrice = $(this).children(":eq(2)").text();
-        let qtyOnHand = $(this).children(":eq(3)").text();
-        let orderQty = $(this).children(":eq(4)").text();
-
-        $("#itemChombo").val(itemId);
-        $("#orderItemName").val(itemName);
-        $("#orderUnitPrice").val(unitPrice);
-        $("#orderQtyOnHand").val(qtyOnHand);
-        $("#orderOrderQty").val(orderQty);
-    });
-};
 
 $("#btnPurchase").click(function (){
 
