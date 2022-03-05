@@ -1,27 +1,44 @@
-$("#addToCart").click(function () {
-    loadItemData();
-    clearItemData();
-    loadItemCartTable();
-    generateOrderID();
-});
-
 function generateOrderID() {
-    try {
-        let lastOrderId = orderDB[orderDB.length-1].getOrderId();
-        let newOrderId = parseInt(lastOrderId.substring(1,6))+1;
-        if (newOrderId < 10) {
-            $("#orderId").val("D00-00"+newOrderId);
-        }else if (newOrderId < 100) {
-            $("#orderId").val("D00-0"+newOrderId);
-        } else {
-            $("#orderId").val("D00-"+newOrderId);
-        }
-    } catch (e) {
-        $("#orderId").val("D00-001");
+    $("#orderId").val("O00-0001");
+    var orderId=orderDB[orderDB.length-1].getOrderId();
+    var tempId = parseInt(orderId.split("-")[1]);
+    tempId = tempId+1;
+    if (tempId <= 9){
+        $("#orderId").val("O00-000"+tempId);
+    }else if (tempId <= 99) {
+        $("#orderId").val("O00-00" + tempId);
+    }else if (tempId <= 999){
+        $("#orderId").val("O00-0" + tempId);
+    }else {
+        $("#orderId").val("O00-"+tempId);
     }
-};
-generateOrderID();
+}
 
+var tableRowCount;
+
+$("#addToCart").click(function () {
+
+    var duplicate = false;
+    for (var i = 0; i < $("#orderTable tr").length; i++) {
+        if($("#itemChombo option:selected").text()==$("#orderTable tr").children(':nth-child(1)')[i].innerText){
+            duplicate=true;
+        }
+    }
+
+    if (duplicate != true) {
+        loadItemData();
+        minusQty($("#txtOrderItemNumQty").val());
+    }else if (duplicate == true){
+        manageQuantity(tableRowCount.children(':nth-child(4)').text(),$("#txtOrderItemNumQty").val());
+        $(tableRow).children(':nth-child(4)').text($("#txtOrderItemNumQty").val());
+
+    }
+
+    loadItemData();
+    /*clearItemData();*/
+    loadItemCartTable();
+
+});
 
 function loadCustChomboBoxData(value) {
     $("#custChombo").append(value);
@@ -69,7 +86,7 @@ $("#itemChombo").click(function () {
     }
 });
 
-let itemCode;let itemName;let itemPrice;let itemQty;let itemOrderQty;let cash;let total; let mainTotal;
+let itemCode;let itemName;let itemPrice;let itemQty;let itemOrderQty;let total;let subTotal;let discount;
 
 $("#orderTable").empty();
 function loadItemData() {
@@ -78,7 +95,6 @@ function loadItemData() {
     itemPrice = $("#orderUnitPrice").val();
     itemQty = $("#orderQtyOnHand").val();
     itemOrderQty = $("#orderOrderQty").val();
-    cash = $("#cash").val();
 
     let availableQty = itemQty - itemOrderQty;
     $("#orderQtyOnHand").val(availableQty);
@@ -97,23 +113,29 @@ function loadItemData() {
             <button id="btnItemCartUpdate" type="button" class="btn-sm btn-primary">Update</button></td>`+
             "</tr>");
 
-    let A = $("#total").val(total);
+    $("#total").val(total);
 
-    if (total >= 10000){
-        discount = $("#discountCmb").val((total/100) * 20);
-    }else if(total >= 8000 && total < 9999){
-        discount = $("#discountCmb").val((total/100) * 15);
-    }else if(total >= 6000 && total < 7999){
-        discount = $("#discountCmb").val((total/100) * 10);
-    }else if(total >= 2000 && total < 5999) {
-        discount = $("#discountCmb").val((total / 100) * 5);
-    }else {
-        $("#discountCmb").val("No Discount....");
-    }
-
-    $("#subToal").val("AAAAAAAAAAAA");
+    calculateDiscount();
 
 };
+
+function calculateDiscount(){
+    if (total >= 10000){
+        discount = $("#discountCmb").val((total/100) * 20);
+        $("#subToal").val(total - discount);
+    }else if(total >= 8000 && total < 9999){
+        discount = $("#discountCmb").val((total/100) * 15);
+        $("#subToal").val(total - discount);
+    }else if(total >= 6000 && total < 7999){
+        discount = $("#discountCmb").val((total/100) * 10);
+        $("#subToal").val(total - discount);
+    }else if(total >= 2000 && total < 5999) {
+        discount = $("#discountCmb").val((total / 100) * 5);
+        $("#subToal").val(total - discount);
+    }else {
+        $("#discountCmb").val("00");
+    }
+}
 
 function loadItemCartTable(){
     $("#orderTable>tr").click(function () {
@@ -131,50 +153,50 @@ function loadItemCartTable(){
     });
 };
 
-let finalTotal;let discount;
-
 $("#btnPurchase").click(function (){
+
+    placeOrder();
+    pushOrderDetails();
+    clearCustomerData();
+    clearItemData();
+    generateOrderID();
+});
+
+function placeOrder(){
 
     let orderId = $("#orderId").val();
     let customerId = $("#custChombo").val();
     let date = $("#orderDate").val();
     discount = $("#discountCmb").val();
-    finalTotal = $("#total").val();
+    subTotal = $("#subToal").val();
 
-    let itemCode = $("#itemChombo").val();
-    let orderQty = $("#orderOrderQty").val();
-    let totItemPrice = $("#total").val();
+    orderDB.push(new OrderDTO(orderId,customerId,date,discount,subTotal));
+}
 
+function pushOrderDetails(){
 
-    orderDB.push(new OrderDTO(orderId,customerId,date,discount,finalTotal));
-    orderDetailDB.push(new OrderDetailDTO(orderId,itemCode,orderQty,totItemPrice));
+    for (let i = 0; i < $("#orderTable tr").length; i++){
+        var orderDetail = new OrderDetailDTO(
+            $("#orderId").val(),
+            $("#orderDate").val(),
+            $("#custChombo").val(),
+            $("#orderCustName").val(),
+            $("#orderTable tr").children(':nth-child(1)')[i].innerText,
+            $("#orderTable tr").children(':nth-child(2)')[i].innerText,
+            $("#orderTable tr").children(':nth-child(5)')[i].innerText,
+            $("#orderTable tr").children(':nth-child(6)')[i].innerText)
 
-    clearCustomerData();
-    generateOrderID();
+        orderDetailDB.push(orderDetail);
+    }
+}
 
-});
-
-
-
-$("#btnItemCartUpdate").click(function (){
-
-  /*let updateItemId = $("#itemChombo").val();
-   let updateItemName = $("#orderItemName").val();
-   let updateItemUnitPrice = $("#orderUnitPrice").val();
-   let updateItemQtyOnHand = $("#orderQtyOnHand").val();
-   let updateItemOrderQty = $("#orderOrderQty").val();
-
-    updateItemId = updateItemId;
-    updateItemName = updateItemName;
-    updateItemUnitPrice = updateItemUnitPrice;
-    updateItemQtyOnHand = updateItemQtyOnHand;
-    updateItemOrderQty = updateItemOrderQty;*/
-
+$("#btnOrderDetail").click(function (){
+    loadAllOrderDetail();
 });
 
 $("#orderTable").on('click', '#btnItemCartDelete', function () {
     $(this).closest('tr').remove();
-    $('#discountCmb,#total,#subToal').val("");
+    $('#discountCmb,#total').val("");
     clearItemData();
 
 });
@@ -184,17 +206,5 @@ function clearItemData() {
 }
 
 function clearCustomerData() {
-    $('#custChombo,#orderCustName,#orderTelephoneNo,#orderAddress').val("");
+    $('#custChombo,#orderCustName,#orderTelephoneNo,#orderAddress,#orderDate').val("");
 }
-
-
-$("#discountCmb").click(function () {
-    let discountPresentage = $("#discountCmb").val();
-    let finalBalance = $("#balance").val();
-
-    let A = total - ((total * discountPresentage) / 100);
-    finalBalance = cash - A;
-
-    $("#balance").val(finalBalance);
-    console.log(finalBalance);
-});

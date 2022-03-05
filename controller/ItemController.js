@@ -248,22 +248,3 @@ function clearAllItem() {
     /*loadAllCustomers();*/
     /*$("#lblcusid,#lblcusname,#lblcusaddress,#lblcussalary").text("");*/
 }
-
-/*
-function generateItemCode() {
-    try {
-        let lastItemCode = itemTable[itemTable.length-1].getCode();
-        let newItemCode = parseInt(lastItemCode.substring(1,4))+1;
-        if (newItemCode < 10) {
-            $("#txtItemCode").text("#P00"+newItemCode);
-        }else if (newItemCode < 100) {
-            $("#txtItemCode").text("#P0"+newItemCode);
-        } else {
-            $("#txtItemCode").text("#P"+newItemCode);
-        }
-    } catch (e) {
-        $("#txtItemCode").text("#P001");
-    }
-
-}
-generateItemCode();*/
