@@ -35,30 +35,25 @@ $("#addToCart").click(function () {
 
     $("#orderTable>tr").click(function () {
 
-        tableRowCount =$(this);
+        tableRowCount = $(this);
 
-        let itemId = $(this).children(":eq(0)").text();
+        let itemCode = $(this).children(":eq(0)").text();
         let itemName = $(this).children(":eq(1)").text();
         let unitPrice = $(this).children(":eq(2)").text();
-        let orderQty = $(this).children(":eq(3)").text();
+        let qty = $(this).children(":eq(3)").text();
+        let total = $(this).children(":eq(4)").text();
 
-        $("#itemChombo").val(itemId);
+
+        $("#itemChombo").val(itemCode);
         $("#orderItemName").val(itemName);
         $("#orderUnitPrice").val(unitPrice);
-        $("#orderOrderQty").val(orderQty);
+        $("#orderOrderQty").val(qty);
+        $("#total").val(total);
+
     });
     /*clearItemData();*/
 
 });
-
-function minusQty(orderQty){
-    var minusQty = parseInt(orderQty);
-    var manageQty = parseInt($("#orderQtyOnHand").val());
-
-    manageQty = manageQty - minusQty;
-
-    $("#orderQtyOnHand").val(manageQty);
-}
 
 function manageQuantity(prevQty,nowQty){
     var prevQty = parseInt(prevQty);
@@ -69,7 +64,15 @@ function manageQuantity(prevQty,nowQty){
     availableQty = availableQty - nowQty;
 
     $("#orderQtyOnHand").val(availableQty);
+}
 
+function minusQty(orderQty){
+    var minusQty = parseInt(orderQty);
+    var manageQty = parseInt($("#orderQtyOnHand").val());
+
+    manageQty = manageQty - minusQty;
+
+    $("#orderQtyOnHand").val(manageQty);
 }
 
 function loadCustChomboBoxData(value) {
@@ -118,7 +121,7 @@ $("#itemChombo").click(function () {
     }
 });
 
-let itemCode;let itemName;let itemPrice;let itemQty;let itemOrderQty;let subTotal;
+let itemCode;let itemName;let itemPrice;let itemQty;let itemOrderQty;let subTotal; let total;let discount;
 
 $("#orderTable").empty();
 function loadItemData() {
@@ -129,13 +132,10 @@ function loadItemData() {
     itemQty = $("#orderQtyOnHand").val();
     itemOrderQty = $("#orderOrderQty").val();
 
-    let total;
-    let discount;
-
     total = itemPrice * itemOrderQty;
 
 
-    $("#totalPrice").val(itemOrderQty * itemPrice);
+   /* $("#totalPrice").val(itemOrderQty * itemPrice);*/
 
     $("#orderTable").append("<tr>" +
         "<td>" + itemCode + "</td>" +
@@ -146,7 +146,6 @@ function loadItemData() {
         `<td><button id="btnItemCartDelete" type="button" class="btn-sm btn-danger">Delete</button></td>`+
         "</tr>");
 
-    /*$("#total").val(total);*/
 
     calculateDiscount();
 
