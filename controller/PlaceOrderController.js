@@ -1,16 +1,16 @@
 function generateOrderID() {
     $("#orderId").val("O00-0001");
-    var orderId=orderDB[orderDB.length-1].getOrderId();
+    var orderId = orderDB[orderDB.length - 1].getOrderId();
     var tempId = parseInt(orderId.split("-")[1]);
-    tempId = tempId+1;
-    if (tempId <= 9){
-        $("#orderId").val("O00-000"+tempId);
-    }else if (tempId <= 99) {
+    tempId = tempId + 1;
+    if (tempId <= 9) {
+        $("#orderId").val("O00-000" + tempId);
+    } else if (tempId <= 99) {
         $("#orderId").val("O00-00" + tempId);
-    }else if (tempId <= 999){
+    } else if (tempId <= 999) {
         $("#orderId").val("O00-0" + tempId);
-    }else {
-        $("#orderId").val("O00-"+tempId);
+    } else {
+        $("#orderId").val("O00-" + tempId);
     }
 }
 
@@ -20,59 +20,102 @@ $("#addToCart").click(function () {
 
     var duplicate = false;
     for (var i = 0; i < $("#orderTable tr").length; i++) {
-        if($("#itemChombo option:selected").text()==$("#orderTable tr").children(':nth-child(1)')[i].innerText){
-            duplicate=true;
+
+        if ($("#itemChombo option:selected").text() == $("#orderTable tr").children(':nth-child(1)')[i].innerText) {
+            duplicate = true;
         }
     }
     if (duplicate != true) {
+
         loadItemData();
         minusQty($("#orderOrderQty").val());
-    }else if (duplicate == true){
-        manageQuantity(tableRowCount.children(':nth-child(4)').text(),$("#orderOrderQty").val());
-        $(tableRowCount).children(':nth-child(4)').text($("#orderOrderQty").val());
+        manageTotal( $("#orderOrderQty").val() * $("#orderUnitPrice").val());
+
+    } else if (duplicate == true) {
+
+        manageQuantity(tableRowCount.children(':nth-child(5)').text(), $("#orderOrderQty").val());
+        $(tableRowCount).children(':nth-child(4)').text($("#orderQtyOnHand").val());
+        $(tableRowCount).children(':nth-child(5)').text($("#orderOrderQty").val());
+
+        updateManageTotal(tableRowCount.children(':nth-child(6)').text(), $("#orderOrderQty").val() * $("#orderUnitPrice").val());
+        $(tableRowCount).children(':nth-child(6)').text($("#orderOrderQty").val() * $("#orderUnitPrice").val());
 
     }
 
-    $("#orderTable>tr").click(function () {
+    $("#orderTable>tr").click('click', function () {
 
         tableRowCount = $(this);
 
         let itemCode = $(this).children(":eq(0)").text();
         let itemName = $(this).children(":eq(1)").text();
         let unitPrice = $(this).children(":eq(2)").text();
-        let qty = $(this).children(":eq(3)").text();
-        let total = $(this).children(":eq(4)").text();
+        let available = $(this).children(":eq(3)").text();
+        let qty = $(this).children(":eq(4)").text();
+        let total = $(this).children(":eq(5)").text();
 
 
         $("#itemChombo").val(itemCode);
         $("#orderItemName").val(itemName);
         $("#orderUnitPrice").val(unitPrice);
         $("#orderOrderQty").val(qty);
-        $("#total").val(total);
+        $("#orderQtyOnHand").val(available);
+
 
     });
     /*clearItemData();*/
 
 });
 
-function manageQuantity(prevQty,nowQty){
+var tot = 0;
+function manageTotal(amount) {
+    tot += amount;
+    $("#total").val(tot);
+    calculateDiscount();
+
+    let A = $("#total").val();
+    let B = $("#discountCmb").val();
+
+    $("#subToal").val(A-B);
+}
+
+function updateManageTotal(prvTotal,nowTotal) {
+    tot -= prvTotal;
+    tot += nowTotal;
+
+    $("#total").val(tot);
+    calculateDiscount();
+
+    let A = $("#total").val();
+    let B = $("#discountCmb").val();
+
+    $("#subToal").val(A-B);
+}
+
+function manageQuantity(prevQty, nowQty) {
     var prevQty = parseInt(prevQty);
     var nowQty = parseInt(nowQty);
     var availableQty = parseInt($("#orderQtyOnHand").val());
 
-    availableQty = availableQty + prevQty;
-    availableQty = availableQty - nowQty;
+    availableQty += prevQty;
+    availableQty -= nowQty;
 
     $("#orderQtyOnHand").val(availableQty);
 }
 
-function minusQty(orderQty){
+function minusQty(orderQty) {
     var minusQty = parseInt(orderQty);
     var manageQty = parseInt($("#orderQtyOnHand").val());
 
     manageQty = manageQty - minusQty;
 
     $("#orderQtyOnHand").val(manageQty);
+}
+
+function manageBalence(){
+    let A = $("#subToal").val();
+    let B = $("#cash").val();
+
+    $("#balance").val(B - A);
 }
 
 function loadCustChomboBoxData(value) {
@@ -121,64 +164,67 @@ $("#itemChombo").click(function () {
     }
 });
 
-let itemCode;let itemName;let itemPrice;let itemQty;let itemOrderQty;let subTotal; let total;let discount;
+let itemCode;
+let subTotal;
+let discount;
 
 $("#orderTable").empty();
 function loadItemData() {
 
-    itemCode = $("#itemChombo").val();
-    itemName = $("#orderItemName").val();
-    itemPrice = $("#orderUnitPrice").val();
-    itemQty = $("#orderQtyOnHand").val();
-    itemOrderQty = $("#orderOrderQty").val();
+    let itemCode = $("#itemChombo").val();
+    let itemName = $("#orderItemName").val();
+    let itemPrice = $("#orderUnitPrice").val();
+    let itemQty = $("#orderQtyOnHand").val();
+    let itemOrderQty = $("#orderOrderQty").val();
 
-    total = itemPrice * itemOrderQty;
+    let total = itemPrice * itemOrderQty;
 
-
-   /* $("#totalPrice").val(itemOrderQty * itemPrice);*/
+    let avalilableQty = itemQty - itemOrderQty;
 
     $("#orderTable").append("<tr>" +
         "<td>" + itemCode + "</td>" +
         "<td>" + itemName + "</td>" +
         "<td>" + itemPrice + "</td>" +
+        "<td>" + avalilableQty + "</td>" +
         "<td>" + itemOrderQty + "</td>" +
         "<td>" + total + "</td>" +
         `<td><button id="btnItemCartDelete" type="button" class="btn-sm btn-danger">Delete</button></td>`+
         "</tr>");
 
-
     calculateDiscount();
 
-};
+}
 
-function calculateDiscount(){
-    if (total >= 10000){
-        discount = $("#discountCmb").val((total/100) * 20);
-        $("#subToal").val(total - discount);
-    }else if(total >= 8000 && total < 9999){
-        discount = $("#discountCmb").val((total/100) * 15);
-        $("#subToal").val(total - discount);
-    }else if(total >= 6000 && total < 7999){
-        discount = $("#discountCmb").val((total/100) * 10);
-        $("#subToal").val(total - discount);
-    }else if(total >= 2000 && total < 5999) {
-        discount = $("#discountCmb").val((total / 100) * 5);
-        $("#subToal").val(total - discount);
-    }else {
+function calculateDiscount() {
+    if (tot >= 10000) {
+        discount = $("#discountCmb").val((tot / 100) * 20);
+        $("#subToal").val(tot - discount);
+    } else if (tot >= 8000 && tot < 9999) {
+        discount = $("#discountCmb").val((tot / 100) * 15);
+        $("#subToal").val(tot - discount);
+    } else if (tot >= 6000 && tot < 7999) {
+        discount = $("#discountCmb").val((tot / 100) * 10);
+        $("#subToal").val(tot - discount);
+    } else if (tot >= 2000 && tot < 5999) {
+        discount = $("#discountCmb").val((tot / 100) * 5);
+        $("#subToal").val(tot - discount);
+    } else {
         $("#discountCmb").val("00");
     }
 }
 
-$("#btnPurchase").click(function (){
+$("#btnPurchase").click(function () {
 
     placeOrder();
     pushOrderDetails();
     clearCustomerData();
+    manageBalence();
     clearItemData();
+    $("#orderTable").empty();
     generateOrderID();
 });
 
-function placeOrder(){
+function placeOrder() {
 
     let orderId = $("#orderId").val();
     let customerId = $("#custChombo").val();
@@ -186,12 +232,12 @@ function placeOrder(){
     discount = $("#discountCmb").val();
     subTotal = $("#subToal").val();
 
-    orderDB.push(new OrderDTO(orderId,customerId,date,discount,subTotal));
+    orderDB.push(new OrderDTO(orderId, customerId, date, discount, subTotal));
 }
 
-function pushOrderDetails(){
+function pushOrderDetails() {
 
-    for (let i = 0; i < $("#orderTable tr").length; i++){
+    for (let i = 0; i < $("#orderTable tr").length; i++) {
         var orderDetail = new OrderDetailDTO(
             $("#orderId").val(),
             $("#orderDate").val(),
@@ -206,7 +252,7 @@ function pushOrderDetails(){
     }
 }
 
-$("#btnOrderDetail").click(function (){
+$("#btnOrderDetail").click(function () {
     loadAllOrderDetail();
 });
 
@@ -223,4 +269,8 @@ function clearItemData() {
 
 function clearCustomerData() {
     $('#custChombo,#orderCustName,#orderTelephoneNo,#orderAddress,#orderDate').val("");
+}
+
+function clearOrderData() {
+    $('#total,#discountCmb,#orderTelephoneNo,#orderAddress,#orderDate').val("");
 }

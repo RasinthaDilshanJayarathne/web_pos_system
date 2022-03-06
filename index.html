@@ -211,20 +211,27 @@
 
                         </section>
                         <section class="row ">
-                            <div class="mt-5 col-5 justify-content-lg-start">
+                            <div class="mt-5 col-5 justify-content-lg-start col-md-4">
                                 <button class="btn btn-success  btn-sm w-100" id="btnPurchase" style="font-weight: bold"
                                         type="button">Purchase
                                 </button>
                             </div>
 
-                            <div class="mt-5 col-5 justify-content-lg-end">
+                            <div class="mt-5 col-5 justify-content-lg-end col-md-4 ">
                                 <button class="btn btn-warning  btn-sm w-100" data-bs-target="#orderDetail"
                                         data-bs-toggle="modal" id="btnOrderDetail" style="font-weight: bold"
                                         type="button" type="button">Order Details
                                 </button>
                             </div>
-                        </section>
 
+                            <div class="mt-5 col-5 justify-content-lg-end col-md-4">
+                                <button class="btn btn-danger  btn-sm w-100" data-bs-target="#clear"
+                                        data-bs-toggle="modal" id="clear" style="font-weight: bold"
+                                        type="button" type="button">Clear Details
+                                </button>
+                            </div>
+
+                        </section>
 
                         <div aria-hidden="true" aria-labelledby="exampleModalLabel" class="modal fade" id="orderDetail"
                              tabindex="-1">
@@ -274,7 +281,7 @@
                 <th scope="col">Item Code</th>
                 <th scope="col">Item Name</th>
                 <th scope="col">Price</th>
-                <!--<th scope="col">Qty On Hand</th>-->
+                <th scope="col">Qty On Hand</th>
                 <th scope="col">Order Quantity</th>
                 <th scope="col">Total</th>
                 <th scope="col">Option</th>
