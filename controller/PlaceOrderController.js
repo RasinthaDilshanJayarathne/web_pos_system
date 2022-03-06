@@ -271,6 +271,6 @@ function clearCustomerData() {
     $('#custChombo,#orderCustName,#orderTelephoneNo,#orderAddress,#orderDate').val("");
 }
 
-function clearOrderData() {
-    $('#total,#discountCmb,#orderTelephoneNo,#orderAddress,#orderDate').val("");
-}
+$("#clear").click(function (){
+    $('#total,#discountCmb,#subToal,#cash,#balance').val("");
+});
