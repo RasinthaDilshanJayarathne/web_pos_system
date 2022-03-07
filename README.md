@@ -7,6 +7,13 @@ Home Page 🖥
 
 Customer Form 👩🏼‍🤝‍👩🏻
 
+![Screenshot (890)](https://user-images.githubusercontent.com/87766409/156990932-3b9ce177-c38d-4d13-8f53-8cea4e4e3061.png)
+
 Item Form 🍟
 
+![Screenshot (891)](https://user-images.githubusercontent.com/87766409/156990957-dc9578f6-0c3d-43fc-9015-86d99ed4b7f5.png)
+
+
 Place Order Form 🎫
+
+![Screenshot (892)](https://user-images.githubusercontent.com/87766409/156990991-f167ce3f-26a3-46b2-8024-beb9d3c6d00a.png)
