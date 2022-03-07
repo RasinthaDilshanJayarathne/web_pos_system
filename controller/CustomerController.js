@@ -1,5 +1,10 @@
-$("#popCustBtnAdd").click(function () {
 
+
+/*$("#addNewCustomerBtn").click(function () {
+    generateCustomerId();
+});*/
+
+$("#popCustBtnAdd").click(function () {
     /* $("#customerTable>tr").of("click");*/
     saveCustomer();
     loadAllCustomer();
@@ -30,7 +35,7 @@ function saveCustomer() {
 
     customerDB.push(new CustomerDTO(customerId,customerName, customerAddress, customerPhone));
 
-    loadCustChomboBoxData("<option>"+customerId+"</option>");
+    /*loadCustChomboBoxData("<option>"+customerId+"</option>");*/
 }
 
 $("#btnCustUpdate").click(function () {

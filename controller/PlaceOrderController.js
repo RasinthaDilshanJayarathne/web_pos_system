@@ -121,9 +121,21 @@ function manageBalence(){
     $("#balance").val(B - A);
 }
 
-function loadCustChomboBoxData(value) {
+/*function loadCustChomboBoxData(value) {
     $("#custChombo").append(value);
-}
+}*/
+
+$('#custChombo').click(function () {
+    var customerId = $('#custChombo').val();
+    for (let i = 0; i < customerDB.length; i++) {
+        if (customerDB[i].getCustomerId() == customerId) {
+            $('#orderCustName').val(customerDB[i].getCustomerName());
+            $('#orderTelephoneNo').val(customerDB[i].getCustomerPhone());
+            $('#orderAddress').val(customerDB[i].getCustomerAddress());
+        }
+    }
+});
+
 
 $("#custChombo").click(function () {
     let custId = $("#custChombo").val();
@@ -144,8 +156,22 @@ $("#custChombo").click(function () {
     }
 });
 
+/*
 function loadItemChomboBoxData(value) {
     $("#itemChombo").append(value);
+}
+*/
+function loadItemData(){
+    $('#itemChombo').click(function () {
+        var itemCode = $('#itemChombo').val();
+        for (let i = 0; i < itemDB.length; i++) {
+            if (itemDB[i].getItemCode() == itemCode) {
+                $('#orderItemName').val(itemDB[i].getItemName());
+                $('#orderUnitPrice').val(itemDB[i].getItemPrice());
+                $('#orderQtyOnHand').val(itemDB[i].getItemQtyOnHand());
+            }
+        }
+    });
 }
 
 $("#itemChombo").click(function () {

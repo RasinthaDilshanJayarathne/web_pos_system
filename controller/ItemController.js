@@ -32,7 +32,7 @@ function saveItem() {
 
     itemDB.push(new ItemDTO(itemCode,itemName, itemPrice, itemQtyOnHand));
 
-    loadItemChomboBoxData("<option>"+itemCode+"</option>");
+    /*loadItemChomboBoxData("<option>"+itemCode+"</option>");*/
 
 };
 
@@ -62,8 +62,10 @@ $("#itemTable").on('click', '#btnItemDelete', function () {
         }
     }
     itemDB.splice(index, 1);
+    loadItemData();
     clearAllItem();
     $(this).closest('tr').remove();
+
 
 });
 
