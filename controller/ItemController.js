@@ -35,7 +35,7 @@ function saveItem() {
     var A = $("#totalItem").valueOf(itemDB.length);
     console.log(A);
 
-    /*loadItemChomboBoxData("<option>"+itemCode+"</option>");*/
+    loadItemChomboBoxData("<option>"+itemCode+"</option>");
 
 };
 

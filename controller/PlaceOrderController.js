@@ -14,7 +14,7 @@ function generateOrderID() {
     }
 }
 
-function setCurrentDate(){
+function setCurrentDate() {
     let orderDate = $("#orderDate");
     let today = new Date();
     let dd = String(today.getDate()).padStart(2, '0');
@@ -27,7 +27,7 @@ function setCurrentDate(){
 var tableRowCount;
 
 $("#addToCart").click(function () {
-   /* checkQuntity();*/
+    /* checkQuntity();*/
 
     var duplicate = false;
     for (var i = 0; i < $("#orderTable tr").length; i++) {
@@ -40,7 +40,7 @@ $("#addToCart").click(function () {
 
         loadItemData();
         minusQty($("#orderOrderQty").val());
-        manageTotal( $("#orderOrderQty").val() * $("#orderUnitPrice").val());
+        manageTotal($("#orderOrderQty").val() * $("#orderUnitPrice").val());
 
     } else if (duplicate == true) {
 
@@ -76,10 +76,10 @@ $("#addToCart").click(function () {
     /*clearItemData();*/
 
 
-
 });
 
 var tot = 0;
+
 function manageTotal(amount) {
     tot += amount;
     $("#total").val(tot);
@@ -88,10 +88,10 @@ function manageTotal(amount) {
     let A = $("#total").val();
     let B = $("#discountCmb").val();
 
-    $("#subToal").val(A-B);
+    $("#subToal").val(A - B);
 }
 
-function updateManageTotal(prvTotal,nowTotal) {
+function updateManageTotal(prvTotal, nowTotal) {
     tot -= prvTotal;
     tot += nowTotal;
 
@@ -101,7 +101,7 @@ function updateManageTotal(prvTotal,nowTotal) {
     let A = $("#total").val();
     let B = $("#discountCmb").val();
 
-    $("#subToal").val(A-B);
+    $("#subToal").val(A - B);
 }
 
 function manageQuantity(prevQty, nowQty) {
@@ -124,18 +124,18 @@ function minusQty(orderQty) {
     $("#orderQtyOnHand").val(manageQty);
 }
 
-function manageBalence(){
+function manageBalence() {
     let A = $("#subToal").val();
     let B = $("#cash").val();
 
     $("#balance").val(B - A);
 }
 
-/*function loadCustChomboBoxData(value) {
+function loadCustChomboBoxData(value) {
     $("#custChombo").append(value);
-}*/
+}
 
-$('#custChombo').click(function () {
+/*$('#custChombo').click(function () {
     var customerId = $('#custChombo').val();
     for (let i = 0; i < customerDB.length; i++) {
         if (customerDB[i].getCustomerId() == customerId) {
@@ -144,7 +144,7 @@ $('#custChombo').click(function () {
             $('#orderAddress').val(customerDB[i].getCustomerAddress());
         }
     }
-});
+});*/
 
 
 $("#custChombo").click(function () {
@@ -166,12 +166,11 @@ $("#custChombo").click(function () {
     }
 });
 
-/*
 function loadItemChomboBoxData(value) {
     $("#itemChombo").append(value);
 }
-*/
-function loadItemData(){
+
+/*function loadItemData(){
     $('#itemChombo').click(function () {
         var itemCode = $('#itemChombo').val();
         for (let i = 0; i < itemDB.length; i++) {
@@ -182,7 +181,7 @@ function loadItemData(){
             }
         }
     });
-}
+}*/
 
 $("#itemChombo").click(function () {
     let itemCode = $("#itemChombo").val();
@@ -208,6 +207,7 @@ let subTotal;
 let discount;
 
 $("#orderTable").empty();
+
 function loadItemData() {
 
     let itemCode = $("#itemChombo").val();
@@ -231,7 +231,7 @@ function loadItemData() {
         "<td>" + avalilableQty + "</td>" +
         "<td>" + itemOrderQty + "</td>" +
         "<td>" + total + "</td>" +
-        `<td><button id="btnItemCartDelete" type="button" class="btn-sm btn-danger">Delete</button></td>`+
+        `<td><button id="btnItemCartDelete" type="button" class="btn-sm btn-danger">Delete</button></td>` +
         "</tr>");
 
     calculateDiscount();
@@ -292,9 +292,12 @@ function pushOrderDetails() {
             $("#orderTable tr").children(':nth-child(5)')[i].innerText,
             $("#orderTable tr").children(':nth-child(6)')[i].innerText)
 
+        console.log($("#orderTable tr").children(':nth-child(6)')[i].innerText);
+
         orderDetailDB.push(orderDetail);
     }
 }
+
 
 function checkQuntity() {
     var orderQtyOnHand = parseInt($('#orderQtyOnHand').val());
@@ -326,6 +329,6 @@ function clearCustomerData() {
     $('#custChombo,#orderCustName,#orderTelephoneNo,#orderAddress,#orderDate').val("");
 }
 
-$("#clear").click(function (){
+$("#clear").click(function () {
     $('#total,#discountCmb,#subToal,#cash,#balance').val("");
 });

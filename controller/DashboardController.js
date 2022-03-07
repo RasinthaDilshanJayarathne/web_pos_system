@@ -22,18 +22,13 @@ document.getElementById("navCustomer").addEventListener("click", function () {
     document.getElementById("customer").style.display = "block";
     document.getElementById("item").style.display = "none";
 });*/
-$("#placeOrder").click(function (){
-   generateOrderID();
-   setCurrentDate();
-   /* addToCarBtnDesable();*/
+$("#placeOrder").click(function () {
+    generateOrderID();
+    setCurrentDate();
+    /* addToCarBtnDesable();*/
+    loadItemChomboBoxData();
+
 });
-
-/*$("#home").click(function (){
-    $("#totalItem").valueOf(itemDB.length);
-    $("#totalCustomer").valueOf(customerDB.length);
-    $("#totalOrder").valueOf(orderDB.length);
-});*/
-
 /*
 function addToCarBtnDesable(){
     if ($('#itemChombo,#orderItemName,#orderUnitPrice,#orderQtyOnHand,#orderOrderQty').val("")){
@@ -43,7 +38,7 @@ function addToCarBtnDesable(){
 */
 
 
-$("#addNewCustomerBtn").click(function (){
+$("#addNewCustomerBtn").click(function () {
     console.log("Hello");
     var customerId = customerDB[customerDB.length - 1].getCustomerId();
     var tempId = parseInt(customerId.split("-")[1]);
@@ -59,7 +54,7 @@ $("#addNewCustomerBtn").click(function (){
     }
 });
 
-$("#addNewItem").click(function (){
+$("#addNewItem").click(function () {
     console.log("Hello");
     var customerId = itemDB[itemDB.length - 1].getItemCode();
     var tempId = parseInt(customerId.split("-")[1]);

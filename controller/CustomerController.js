@@ -35,7 +35,7 @@ function saveCustomer() {
 
     customerDB.push(new CustomerDTO(customerId,customerName, customerAddress, customerPhone));
 
-    /*loadCustChomboBoxData("<option>"+customerId+"</option>");*/
+    loadCustChomboBoxData("<option>"+customerId+"</option>");
 }
 
 $("#btnCustUpdate").click(function () {
@@ -171,6 +171,7 @@ $("#txtPopCustAddress").keyup(function (event) {
     }
 });
 
+
 $("#txtPopCustPhone").keyup(function (event) {
     let input = $("#txtPopCustPhone").val();
 
@@ -242,6 +243,7 @@ $("#txtCustPhoneNo").keyup(function (event) {
         $("#lblError3").text("Wrong format:077-2314432");
     }
 });
+
 
 function clearPopData() {
     $('#txtPopCustId,#txtPopCustName,#txtPopCustAddress,#txtPopCustPhone').val("");
