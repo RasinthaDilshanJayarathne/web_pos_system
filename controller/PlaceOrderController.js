@@ -17,6 +17,7 @@ function generateOrderID() {
 var tableRowCount;
 
 $("#addToCart").click(function () {
+   /* checkQuntity();*/
 
     var duplicate = false;
     for (var i = 0; i < $("#orderTable tr").length; i++) {
@@ -63,6 +64,8 @@ $("#addToCart").click(function () {
 
     });
     /*clearItemData();*/
+
+
 
 });
 
@@ -181,6 +184,10 @@ function loadItemData() {
 
     let avalilableQty = itemQty - itemOrderQty;
 
+    /*if ($("#orderQtyOnHand") >= $("#orderOrderQty")){
+
+    }*/
+
     $("#orderTable").append("<tr>" +
         "<td>" + itemCode + "</td>" +
         "<td>" + itemName + "</td>" +
@@ -222,6 +229,7 @@ $("#btnPurchase").click(function () {
     clearItemData();
     $("#orderTable").empty();
     generateOrderID();
+    tot = 0;
 });
 
 function placeOrder() {
@@ -249,6 +257,17 @@ function pushOrderDetails() {
             $("#orderTable tr").children(':nth-child(6)')[i].innerText)
 
         orderDetailDB.push(orderDetail);
+    }
+}
+
+function checkQuntity() {
+    var orderQtyOnHand = parseInt($('#orderQtyOnHand').val());
+    var orderQty = parseInt($('#orderOrderQty').val());
+    if (orderQty > orderQtyOnHand) {
+        $('#orderOrderQty').val('');
+    } else {
+        loadItemData();
+        clearItemData();
     }
 }
 
