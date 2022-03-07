@@ -32,6 +32,9 @@ function saveItem() {
 
     itemDB.push(new ItemDTO(itemCode,itemName, itemPrice, itemQtyOnHand));
 
+    var A = $("#totalItem").valueOf(itemDB.length);
+    console.log(A);
+
     /*loadItemChomboBoxData("<option>"+itemCode+"</option>");*/
 
 };

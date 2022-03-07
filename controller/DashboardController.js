@@ -24,7 +24,24 @@ document.getElementById("navCustomer").addEventListener("click", function () {
 });*/
 $("#placeOrder").click(function (){
    generateOrderID();
+   setCurrentDate();
+   /* addToCarBtnDesable();*/
 });
+
+/*$("#home").click(function (){
+    $("#totalItem").valueOf(itemDB.length);
+    $("#totalCustomer").valueOf(customerDB.length);
+    $("#totalOrder").valueOf(orderDB.length);
+});*/
+
+/*
+function addToCarBtnDesable(){
+    if ($('#itemChombo,#orderItemName,#orderUnitPrice,#orderQtyOnHand,#orderOrderQty').val("")){
+        document.getElementById("addToCart").disabled = true;
+    }
+}
+*/
+
 
 $("#addNewCustomerBtn").click(function (){
     console.log("Hello");
